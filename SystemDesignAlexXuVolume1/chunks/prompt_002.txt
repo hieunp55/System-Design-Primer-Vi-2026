@@ -1,0 +1,814 @@
+Bạn là chuyên gia dịch thuật kỹ thuật Anh → Việt, chuyên tài liệu kỹ thuật/công nghệ, có kinh nghiệm dịch như biên dịch viên bản ngữ chuyên nghiệp. Nhiệm vụ: dịch TOÀN BỘ nội dung Markdown dưới đây sang tiếng Việt, không bỏ sót bất kỳ phần nào. Đây là MỘT PHẦN (chunk) của một tài liệu lớn hơn, hãy dịch độc lập đoạn này, không thêm lời mở đầu/kết luận về việc đây chỉ là một phần.
+
+QUY TẮC BẮT BUỘC — VI PHẠM LÀ SAI:
+
+1. XÁC ĐỊNH LOẠI TÀI LIỆU TRƯỚC KHI DỊCH
+   - Tự phân tích nội dung để xác định loại tài liệu (kỹ thuật/lập trình, tài chính, bảo hiểm, pháp lý, marketing, học thuật, vận hành, sản phẩm...).
+   - Chọn văn phong và thuật ngữ CHUẨN NGÀNH tương ứng trong tiếng Việt, nhất quán xuyên suốt.
+
+2. VĂN PHONG — MƯỢT NHƯ NGƯỜI DỊCH, KHÔNG GIẢM CHÍNH XÁC
+   - Dịch mượt, tự nhiên, đúng ngữ pháp tiếng Việt — như biên dịch viên bản ngữ dịch tay, KHÔNG dịch máy móc kiểu word-by-word.
+   - Được phép đảo cấu trúc câu, tách/gộp câu cho tự nhiên, miễn giữ nguyên 100% ý nghĩa, thông tin, logic, số liệu gốc.
+   - Khi "mượt mà" và "chính xác" xung đột → LUÔN ưu tiên chính xác.
+
+3. DỊCH ĐẦY ĐỦ 100%
+   - Không tóm tắt, không rút gọn, không lược bỏ đoạn/câu/mục/bullet nào.
+   - Số lượng heading, đoạn văn, bảng, code block ở output PHẢI khớp 1:1 với input.
+   - Đoạn dài dịch hết, không cắt ngắn.
+
+4. GIỮ NGUYÊN THUẬT NGỮ TIẾNG ANH
+   - Thuật ngữ chuyên ngành (tên công nghệ, framework, pattern, tên hàm/biến, acronym...) giữ nguyên tiếng Anh, không dịch, không phiên âm.
+   - Ngay sau lần xuất hiện ĐẦU TIÊN của mỗi thuật ngữ, thêm chú thích ngắn trong ngoặc giải thích nghĩa bằng tiếng Việt.
+   - Các lần xuất hiện sau KHÔNG cần chú thích lại.
+
+5. GIỮ NGUYÊN FORMAT — RẤT QUAN TRỌNG
+   - VỀ ẢNH (làm trước khi dịch): ĐẾM chính xác số lượng thẻ ảnh dạng ![...](...) trong đoạn gốc bên dưới. Output PHẢI có ĐÚNG số lượng thẻ ảnh đó, không được thiếu một cái nào — kể cả ảnh không có caption, không rõ ngữ cảnh, hay trông như ảnh trang trí/lặp lại. Copy nguyên URL 100%, không sửa, không rút gọn, không thay bằng mô tả text.
+   - Giữ cấp độ heading (#, ##, ###...), giữ đúng số lượng heading.
+   - Giữ cấu trúc bảng (số cột, số hàng, alignment, header row).
+   - Giữ code block (```lang ... ```) — KHÔNG dịch code; comment được dịch tại chỗ; **được phép reformat code, tự động xuống dòng/indent chuẩn, không giữ nguyên code 1 dòng; không đổi logic/cú pháp**.
+   - Giữ blockquote, callout/note/warning (>, [!NOTE], [!WARNING]...).
+   - Giữ list, nested list, checkbox (- [ ]).
+   - Giữ nguyên link thường ([text](url)) — chỉ dịch phần text hiển thị, TUYỆT ĐỐI giữ nguyên URL.
+   - TRƯỚC KHI TRẢ KẾT QUẢ: tự đếm lại số heading, số ảnh, số dòng ``` giữa bản gốc và bản dịch (KHÔNG tính fence 4 backtick ngoài cùng), nếu lệch phải sửa lại cho khớp.
+
+6. GIẢI THÍCH ẨN DỤ / KHÁI NIỆM KHÓ
+   - Với ẩn dụ, thành ngữ, khái niệm trừu tượng khó hiểu với người Việt, thêm khối giải thích riêng ngay sau đoạn đó:
+     > 💡 **Giải thích thêm:** [giải thích dễ hiểu, đủ chuyên sâu, có ví dụ thực tế]
+     > Nguồn tham khảo: [link cụ thể để kiểm chứng]
+   - CHỈ đưa link nếu chắc chắn tồn tại và đúng nội dung — không bịa link.
+   - Không tìm được nguồn tin cậy → ghi rõ: "(Không có nguồn trích dẫn xác thực — cần tự kiểm chứng thêm)".
+
+7. CHỐNG HALLUCINATION (BẮT BUỘC)
+   - Không tự thêm thông tin/số liệu/ví dụ/kết luận KHÔNG có trong bản gốc — trừ phần giải thích ẩn dụ ở mục 6 (phải gắn nhãn rõ là phần bổ sung).
+   - Câu gốc mơ hồ → dịch sát nghĩa nhất, nếu không chắc ghi chú: "[CẦN KIỂM CHỨNG: câu gốc mơ hồ]".
+   - Không tự sửa/thêm/bớt logic kỹ thuật gốc. Không bịa trích dẫn/số liệu/link vô căn cứ.
+   - Không tự tóm tắt các đoạn dài thành ý chính rồi diễn giải lại — phải dịch từng câu.
+
+8. OUTPUT
+   - Trả về DUY NHẤT nội dung Markdown đã dịch, bọc trong MỘT khối code ngoài cùng dùng đúng 4 dấu backtick: dòng đầu là ````markdown, dòng cuối là ````.
+   - Lý do: bên trong có thể chứa code block 3 backtick (```json ... ```). Fence ngoài PHẢI dài hơn fence trong, nếu không khối ngoài sẽ bị đóng sớm.
+   - CẤM dùng 3 backtick cho fence ngoài cùng. Các code block bên trong giữ nguyên 3 backtick như bản gốc.
+   - Nếu bản gốc có fence từ 4 backtick trở lên, fence ngoài dùng nhiều hơn fence dài nhất bên trong ít nhất 1 backtick.
+   - Toàn bộ kết quả nằm trong MỘT khối duy nhất: không đóng/mở lại giữa chừng, không có chữ nào ngoài khối.
+   - Không đổi tiêu đề gốc trừ khi cần dịch tiêu đề.
+
+--- NỘI DUNG GỐC CẦN DỊCH (một phần của tài liệu) ---
+
+Let us use an example in Figure 4-3 to illustrate how rate limiting works in this design. Assume our API allows 2 requests per second, and a client sends 3 requests to the server within a second. The first two requests are routed to API servers. However, the rate limiter middleware throttles the third request and returns a HTTP status code 429. The HTTP 429 response status code indicates a user has sent too many requests.
+
+![Image](output/image_000036_8864f716ec20c27573d8cb19a5244177cc448599a85f8f325521cb012de76cac.png)
+
+Rate limiter Figure 4-3
+
+Cloud microservices [4] have become widely popular and rate limiting is usually implemented within a component called API gateway. API gateway is a fully managed service that supports rate limiting, SSL termination, authentication, IP whitelisting, servicing static content, etc. For now, we only need to know that the API gateway is a middleware that supports rate limiting. While designing a rate limiter, an important question to ask ourselves is: where should the rater limiter be implemented, on the server-side or in a gateway? There is no absolute answer. It depends on your company's current technology stack, engineering resources, priorities, goals, etc. Here are a few general guidelines: · Evaluate your current technology stack, such as programming language, cache service, etc. Make sure your current programming language is efficient to implement rate limiting on the server-side. · Identify the rate limiting algorithm that fits your business needs. When you implement everything on the server-side, you have full control of the algorithm. However, your choice might be limited if you use a third-party gateway. · If you have already used microservice architecture and included an API gateway in the design to perform authentication, IP whitelisting, etc., you may add a rate limiter to the API gateway. · Building your own rate limiting service takes time. If you do not have enough engineering resources to implement a rate limiter, a commercial API gateway is a better
+
+- option.
+
+## Algorithms for rate limiting
+
+Rate limiting can be implemented using different algorithms, and each of them has distinct pros and cons. Even though this chapter does not focus on algorithms, understanding them at high-level helps to choose the right algorithm or combination of algorithms to fit our use cases. Here is a list of popular algorithms:
+
+- Token bucket
+- Leaking bucket
+- Fixed window counter
+- Sliding window log
+- Sliding window counter
+
+## Token bucket algorithm
+
+The token bucket algorithm is widely used for rate limiting. It is simple, well understood and commonly used by internet companies. Both Amazon [5] and Stripe [6] use this algorithm to throttle their API requests.
+
+The token bucket algorithm work as follows:
+
+- A token bucket is a container that has pre-defined capacity. Tokens are put in the bucket at preset rates periodically. Once the bucket is full, no more tokens are added. As shown in Figure 4-4, the token bucket capacity is 4. The refiller puts 2 tokens into the bucket every second. Once the bucket is full, extra tokens will overflow.
+- Each request consumes one token. When a request arrives, we check if there are enough tokens in the bucket. Figure 4-5 explains how it works.
+- If there are enough tokens, we take one token out for each request, and the request goes through.
+- If there are not enough tokens, the request is dropped.
+- Start with 4 tokens
+- Start with 3 tokens
+- The request will go through
+- All three requests will go through
+- 1 token is consumed
+- 3 tokens are consumed
+
+Figure 4-4
+
+![Image](output/image_000037_ef786125730ca18ef2cfef09c2f2b9737b1b1c285fb421382f9196f0f291bb3f.png)
+
+Figure 4-6 illustrates how token consumption, refill, and rate limiting logic work. In this example, the token bucket size is 4, and the refill rate is 4 per 1 minute.
+
+![Image](output/image_000038_0b992cbb2d2704d3afe71927ccbb07b3da25135a6c685d45d8deed0841e5bdcb.png)
+
+![Image](output/image_000039_02dc82c928897e81d1f824132a8409ba718170750a4d0a3495d0c5cf3c1b620a.png)
+
+![Image](output/image_000040_40727930727fd659b6c1f4210588b71a6a505616a3a5803a79e086c0c6dcf3c4.png)
+
+![Image](output/image_000041_ff26af5e87cd55ce998bd683f2c2b3714d54543b208d02ec9e3c7880405aa642.png)
+
+![Image](output/image_000042_f077e035cae7f59512fb290f3d71ac5d2fbe99bcc6e30e6cc9b88581bb8de66f.png)
+
+Figure 4-6
+
+The token bucket algorithm takes two parameters: · Bucket size: the maximum number of tokens allowed in the bucket · Refill rate: number of tokens put into the bucket every second How many buckets do we need? This varies, and it depends on the rate-limiting rules. Here are a few examples. · It is usually necessary to have different buckets for different API endpoints. For instance, if a user is allowed to make 1 post per second, add 150 friends per day, and like 5 posts per second, 3 buckets are required for each user. · If we need to throttle requests based on IP addresses, each IP address requires a bucket. · If the system allows a maximum of 10,000 requests per second, it makes sense to have a global bucket shared by all requests. Pros: · The algorithm is easy to implement. · Memory efficient. · Token bucket allows a burst of traffic for short periods. A request can go through as long as there are tokens left. Cons:
+
+- Two parameters in the algorithm are bucket size and token refill rate. However, it might
+
+be challenging to tune them properly.
+
+## Leaking bucket algorithm
+
+The leaking bucket algorithm is similar to the token bucket except that requests are processed at a fixed rate. It is usually implemented with a first-in-first-out (FIFO) queue. The algorithm works as follows:
+
+- When a request arrives, the system checks if the queue is full. If it is not full, the request is added to the queue.
+- Otherwise, the request is dropped.
+- Requests are pulled from the queue and processed at regular intervals.
+
+Figure 4-7 explains how the algorithm works.
+
+Figure 4-7
+
+![Image](output/image_000043_a49381d617d2a1327a46e5eb4dd0d9a9835dac16aea823327553143bab365bd4.png)
+
+Leaking bucket algorithm takes the following two parameters:
+
+- Bucket size: it is equal to the queue size. The queue holds the requests to be processed at a fixed rate.
+- Outflow rate: it defines how many requests can be processed at a fixed rate, usually in seconds.
+
+Shopify, an ecommerce company, uses leaky buckets for rate-limiting [7].
+
+## Pros:
+
+- Memory efficient given the limited queue size.
+- Requests are processed at a fixed rate therefore it is suitable for use cases that a stable outflow rate is needed.
+
+## Cons:
+
+- A burst of traffic fills up the queue with old requests, and if they are not processed in time, recent requests will be rate limited.
+- There are two parameters in the algorithm. It might not be easy to tune them properly.
+
+## Fixed window counter algorithm
+
+Fixed window counter algorithm works as follows:
+
+- The algorithm divides the timeline into fix-sized time windows and assign a counter for each window.
+- Each request increments the counter by one.
+- Once the counter reaches the pre-defined threshold, new requests are dropped until a new time window starts.
+
+Let us use a concrete example to see how it works. In Figure 4-8, the time unit is 1 second and the system allows a maximum of 3 requests per second. In each second window, if more than 3 requests are received, extra requests are dropped as shown in Figure 4-8.
+
+Figure 4-8
+
+![Image](output/image_000044_13f6558772ceb4bd962546ee1aa81619357f5c41dacd5ab3ab8b56c19450f624.png)
+
+A major problem with this algorithm is that a burst of traffic at the edges of time windows could cause more requests than allowed quota to go through. Consider the following case:
+
+![Image](output/image_000045_f3fbb4841fc91149bec227c5529491263b8390c430db4e7b705062b4597eeb5d.png)
+
+In Figure 4-9, the system allows a maximum of 5 requests per minute, and the available quota resets at the human-friendly round minute. As seen, there are five requests between 2:00:00 and 2:01:00 and five more requests between 2:01:00 and 2:02:00. For the one-minute window between 2:00:30 and 2:01:30, 10 requests go through. That is twice as many as allowed requests.
+
+## Pros:
+
+- Memory efficient.
+- Easy to understand. · Resetting available quota at the end of a unit time window fits certain use cases. Cons: · Spike in traffic at the edges of a window could cause more requests than the allowed quota to go through.
+
+## Sliding window log algorithm
+
+As discussed previously, the fixed window counter algorithm has a major issue: it allows more requests to go through at the edges of a window. The sliding window log algorithm fixes the issue. It works as follows:
+
+- The algorithm keeps track of request timestamps. Timestamp data is usually kept in cache, such as sorted sets of Redis [8].
+- When a new request comes in, remove all the outdated timestamps. Outdated timestamps are defined as those older than the start of the current time window.
+- Add timestamp of the new request to the log.
+- If the log size is the same or lower than the allowed count, a request is accepted. Otherwise, it is rejected.
+
+We explain the algorithm with an example as revealed in Figure 4-10.
+
+## Allow 2 requests per minute
+
+![Image](output/image_000046_114c60abf3b324865aa2bfb644705fcf5ca48b0ae451ad6d94663040a5c28852.png)
+
+Figure 4-10
+
+In this example, the rate limiter allows 2 requests per minute. Usually, Linux timestamps are stored in the log. However, human-readable representation of time is used in our example for
+
+better readability.
+
+- The log is empty when a new request arrives at 1:00:01. Thus, the request is allowed.
+- A new request arrives at 1:00:30, the timestamp 1:00:30 is inserted into the log. After the insertion, the log size is 2, not larger than the allowed count. Thus, the request is allowed.
+- A new request arrives at 1:00:50, and the timestamp is inserted into the log. After the insertion, the log size is 3, larger than the allowed size 2. Therefore, this request is rejected even though the timestamp remains in the log.
+- A new request arrives at 1:01:40. Requests in the range [1:00:40,1:01:40) are within the latest time frame, but requests sent before 1:00:40 are outdated. Two outdated timestamps, 1:00:01 and 1:00:30, are removed from the log. After the remove operation, the log size becomes 2; therefore, the request is accepted.
+
+## Pros:
+
+- Rate limiting implemented by this algorithm is very accurate. In any rolling window, requests will not exceed the rate limit.
+
+## Cons:
+
+- The algorithm consumes a lot of memory because even if a request is rejected, its timestamp might still be stored in memory.
+
+## Sliding window counter algorithm
+
+The sliding window counter algorithm is a hybrid approach that combines the fixed window counter and sliding window log. The algorithm can be implemented by two different approaches. We will explain one implementation in this section and provide reference for the other implementation at the end of the section. Figure 4-11 illustrates how this algorithm works.
+
+![Image](output/image_000047_b3893a9b78b085598aca7b8ffde866fbe5c59447c88a684e4c3d5d3b36201504.png)
+
+Assume the rate limiter allows a maximum of 7 requests per minute, and there are 5 requests in the previous minute and 3 in the current minute. For a new request that arrives at a 30% position in the current minute, the number of requests in the rolling window is calculated using the following formula:
+
+- Requests in current window + requests in the previous window * overlap percentage of the rolling window and previous window
+
+· Using this formula, we get 3 + 5 * 0.7% = 6.5 request. Depending on the use case, the number can either be rounded up or down. In our example, it is rounded down to 6. Since the rate limiter allows a maximum of 7 requests per minute, the current request can go through. However, the limit will be reached after receiving one more request. Due to the space limitation, we will not discuss the other implementation here. Interested readers should refer to the reference material [9]. This algorithm is not perfect. It has pros and cons. Pros · It smooths out spikes in traffic because the rate is based on the average rate of the previous window. · Memory efficient. Cons · It only works for not-so-strict look back window. It is an approximation of the actual rate because it assumes requests in the previous window are evenly distributed. However, this problem may not be as bad as it seems. According to experiments done by Cloudflare [10], only 0.003% of requests are wrongly allowed or rate limited among 400 million requests. High-level architecture
+
+The basic idea of rate limiting algorithms is simple. At the high-level, we need a counter to keep track of how many requests are sent from the same user, IP address, etc. If the counter is larger than the limit, the request is disallowed. Where shall we store counters? Using the database is not a good idea due to slowness of disk access. In-memory cache is chosen because it is fast and supports time-based expiration strategy. For instance, Redis [11] is a popular option to implement rate limiting. It is an inmemory store that offers two commands: INCR and EXPIRE. · INCR: It increases the stored counter by 1. · EXPIRE: It sets a timeout for the counter. If the timeout expires, the counter is automatically deleted.
+
+Figure 4-12 shows the high-level architecture for rate limiting, and this works as follows:
+
+![Image](output/image_000048_ddce108ca2b48a62a9ae927ff3355e1ec758c5517a23d1d8aed729cc0a3da3a7.png)
+
+· The client sends a request to rate limiting middleware. · Rate limiting middleware fetches the counter from the corresponding bucket in Redis and Figure 4-12
+
+checks if the limit is reached or not. · If the limit is reached, the request is rejected.
+
+- If the limit is not reached, the request is sent to API servers. Meanwhile, the system increments the counter and saves it back to Redis.
+
+## Step 3 - Design deep dive
+
+The high-level design in Figure 4-12 does not answer the following questions: · How are rate limiting rules created? Where are the rules stored? · How to handle requests that are rate limited? In this section, we will first answer the questions regarding rate limiting rules and then go over the strategies to handle rate-limited requests. Finally, we will discuss rate limiting in
+
+distributed environment, a detailed design, performance optimization and monitoring. Rate limiting rules Lyft open-sourced their rate-limiting component [12]. We will peek inside of the component and look at some examples of rate limiting rules: domain: messaging descriptors: - key: message\_type Value: marketing rate\_limit: unit: day requests\_per\_unit: 5 In the above example, the system is configured to allow a maximum of 5 marketing messages per day. Here is another example: domain: auth descriptors: - key: auth\_type Value: login rate\_limit: unit: minute requests\_per\_unit: 5 This rule shows that clients are not allowed to login more than 5 times in 1 minute. Rules are generally written in configuration files and saved on disk. Exceeding the rate limit In case a request is rate limited, APIs return a HTTP response code 429 (too many requests) to the client. Depending on the use cases, we may enqueue the rate-limited requests to be processed later. For example, if some orders are rate limited due to system overload, we may keep those orders to be processed later. Rate limiter headers
+
+How does a client know whether it is being throttled? And how does a client know the number of allowed remaining requests before being throttled? The answer lies in HTTP response headers. The rate limiter returns the following HTTP headers to clients: X-Ratelimit-Remaining: The remaining number of allowed requests within the window. X-Ratelimit-Limit: It indicates how many calls the client can make per time window. X-Ratelimit-Retry-After: The number of seconds to wait until you can make a request again without being throttled. When a user has sent too many requests, a 429 too many requests error and X-Ratelimit- Retry-After header are returned to the client.
+
+## Detailed design
+
+Figure 4-13 presents a detailed design of the system.
+
+Figure 4-13
+
+![Image](output/image_000049_8c325a9bf08c0c0aa12b7638415e687ab190afa393d8bffa54f8782659752d18.png)
+
+- Rules are stored on the disk. Workers frequently pull rules from the disk and store them
+
+in the cache. · When a client sends a request to the server, the request is sent to the rate limiter middleware first. · Rate limiter middleware loads rules from the cache. It fetches counters and last request timestamp from Redis cache. Based on the response, the rate limiter decides: · if the request is not rate limited, it is forwarded to API servers. · if the request is rate limited, the rate limiter returns 429 too many requests error to
+
+- the client. In the meantime, the request is either dropped or forwarded to the queue.
+
+## Rate limiter in a distributed environment
+
+Building a rate limiter that works in a single server environment is not difficult. However, scaling the system to support multiple servers and concurrent threads is a different story.
+
+There are two challenges: · Race condition · Synchronization issue
+
+## Race condition
+
+As discussed earlier, rate limiter works as follows at the high-level: · Read the counter value from Redis. · Check if ( counter + 1 ) exceeds the threshold. · If not, increment the counter value by 1 in Redis.
+
+Race conditions can happen in a highly concurrent environment as shown in Figure 4-14.
+
+![Image](output/image_000050_f85a4e408d985cbda4523db0a516b7dc261efebf2ac883d059a2055581d4e9f2.png)
+
+Assume the counter value in Redis is 3. If two requests concurrently read the counter value before either of them writes the value back, each will increment the counter by one and write it back without checking the other thread. Both requests (threads) believe they have the correct counter value 4. However, the correct counter value should be 5. Locks are the most obvious solution for solving race condition. However, locks will significantly slow down the system. Two strategies are commonly used to solve the problem: Lua script [13] and sorted sets data structure in Redis [8]. For readers interested in these strategies, refer to the corresponding reference materials [8] [13]. Figure 4-14
+
+## Synchronization issue
+
+Synchronization is another important factor to consider in a distributed environment. To support millions of users, one rate limiter server might not be enough to handle the traffic. When multiple rate limiter servers are used, synchronization is required. For example, on the left side of Figure 4-15, client 1 sends requests to rate limiter 1, and client 2 sends requests to rate limiter 2. As the web tier is stateless, clients can send requests to a different rate limiter as shown on the right side of Figure 4-15. If no synchronization happens, rate limiter 1 does not contain any data about client 2. Thus, the rate limiter cannot work properly.
+
+![Image](output/image_000051_7556f881e24139e060df6a914fc07fc51f617a87b0c276b48ba40c8475c0efa7.png)
+
+Figure 4-15
+
+One possible solution is to use sticky sessions that allow a client to send traffic to the same rate limiter. This solution is not advisable because it is neither scalable nor flexible. A better approach is to use centralized data stores like Redis. The design is shown in Figure 4-16.
+
+![Image](output/image_000052_a66ae8dbb102395653e075c1bebddf1be44e540e58d70fe96c1c07fcc7e0ea7e.png)
+
+## Performance optimization
+
+Performance optimization is a common topic in system design interviews. We will cover two areas to improve. First, multi-data center setup is crucial for a rate limiter because latency is high for users located far away from the data center. Most cloud service providers build many edge server locations around the world. For example, as of 5/20 2020, Cloudflare has 194 geographically distributed edge servers [14]. Traffic is automatically routed to the closest edge server to reduce latency.
+
+![Image](output/image_000053_53c545ddf79181b1c09ef7e3e42db5d87913f7a27a96d4e84d002c395e7c6fce.png)
+
+Figure 4-17 (source: [10])
+
+Second, synchronize data with an eventual consistency model. If you are unclear about the eventual consistency model, refer to the "Consistency" section in "Chapter 6: Design a Key-
+
+value Store." Monitoring
+
+After the rate limiter is put in place, it is important to gather analytics data to check whether
+
+the rate limiter is effective. Primarily, we want to make sure: · The rate limiting algorithm is effective. · The rate limiting rules are effective.
+
+For example, if rate limiting rules are too strict, many valid requests are dropped. In this case, we want to relax the rules a little bit. In another example, we notice our rate limiter becomes ineffective when there is a sudden increase in traffic like flash sales. In this scenario, we may replace the algorithm to support burst traffic. Token bucket is a good fit here.
+
+## Step 4 - Wrap up
+
+In this chapter, we discussed different algorithms of rate limiting and their pros/cons. Algorithms discussed include: · Token bucket · Leaking bucket · Fixed window · Sliding window log · Sliding window counter Then, we discussed the system architecture, rate limiter in a distributed environment, performance optimization and monitoring. Similar to any system design interview questions, there are additional talking points you can mention if time allows: · Hard vs soft rate limiting. · Hard: The number of requests cannot exceed the threshold. · Soft: Requests can exceed the threshold for a short period. · Rate limiting at different levels. In this chapter, we only talked about rate limiting at the application level (HTTP: layer 7). It is possible to apply rate limiting at other layers. For example, you can apply rate limiting by IP addresses using Iptables [15] (IP: layer 3). Note: The Open Systems Interconnection model (OSI model) has 7 layers [16]: Layer 1: Physical layer, Layer 2: Data link layer, Layer 3: Network layer, Layer 4: Transport layer, Layer 5: Session layer, Layer 6: Presentation layer, Layer 7: Application layer. · Avoid being rate limited. Design your client with best practices: · Use client cache to avoid making frequent API calls. · Understand the limit and do not send too many requests in a short time frame. · Include code to catch exceptions or errors so your client can gracefully recover from exceptions. · Add sufficient back off time to retry logic.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Rate-limiting strategies and techniques: https://cloud.google.com/solutions/rate-limitingstrategies-techniques [2] Twitter rate limits: https://developer.twitter.com/en/docs/basics/rate-limits [3] Google docs usage limits: https://developers.google.com/docs/api/limits [4] IBM microservices: https://www.ibm.com/cloud/learn/microservices [5] Throttle API requests for better throughput: https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-requestthrottling.html [6] Stripe rate limiters: https://stripe.com/blog/rate-limiters [7] Shopify REST Admin API rate limits: https://help.shopify.com/en/api/reference/restadmin-api-rate-limits [8] Better Rate Limiting With Redis Sorted Sets: https://engineering.classdojo.com/blog/2015/02/06/rolling-rate-limiter/ [9] System Design - Rate limiter and Data modelling: https://medium.com/@saisandeepmopuri/system-design-rate-limiter-and-data-modelling9304b0d18250 [10] How we built rate limiting capable of scaling to millions of domains: https://blog.cloudflare.com/counting-things-a-lot-of-different-things/ [11] Redis website: https://redis.io/ [12] Lyft rate limiting: https://github.com/lyft/ratelimit [13] Scaling your API with rate limiters: https://gist.github.com/ptarjan/e38f45f2dfe601419ca3af937fff574d#request-rate-limiter [14] What is edge computing: https://www.cloudflare.com/learning/serverless/glossary/whatis-edge-computing/ [15] Rate Limit Requests with Iptables: https://blog.programster.org/rate-limit-requests-withiptables [16] OSI model: https://en.wikipedia.org/wiki/OSI\_model#Layer\_architecture
+
+## CHAPTER 5: DESIGN CONSISTENT HASHING
+
+To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let us take an in-depth look at the problem.
+
+## The rehashing problem
+
+If you have n cache servers, a common way to balance the load is to use the following hash method: serverIndex = hash(key) % N, where N is the size of the server pool. Let us use an example to illustrate how it works. As shown in Table 5-1, we have 4 servers
+
+and 8 string keys with their hashes.
+
+| key   |     hash |   hash % 4 |
+|-------|----------|------------|
+| key0  | 18358617 |          1 |
+| key1  | 26143584 |          0 |
+| key2  | 18131146 |          2 |
+| key3  | 35863496 |          0 |
+| key4  | 34085809 |          1 |
+| key5  | 27581703 |          3 |
+| key6  | 38164978 |          2 |
+| key7  | 22530351 |          3 |
+
+## Table 5-1
+
+To fetch the server where a key is stored, we perform the modular operation f(key) % 4. For instance, hash(key0) % 4 = 1 means a client must contact server 1 to fetch the cached data. Figure 5-1 shows the distribution of keys based on Table 5-1.
+
+## serverIndex hash % 4
+
+Figure 5-1
+
+![Image](output/image_000054_2b5feab7dca1ba24b79aefcb3688501d275aa9993012836770e90d1854e786f7.png)
+
+This approach works well when the size of the server pool is fixed, and the data distribution is even. However, problems arise when new servers are added, or existing servers are removed. For example, if server 1 goes offline, the size of the server pool becomes 3. Using the same hash function, we get the same hash value for a key. But applying modular operation gives us different server indexes because the number of servers is reduced by 1. We get the results as shown in Table 5-2 by applying hash % 3:
+
+Table 5-2
+
+| key   |     Hash |   hash % 3 |
+|-------|----------|------------|
+| key0  | 18358617 |          0 |
+| key1  | 26143584 |          0 |
+| key2  | 18131146 |          1 |
+| key3  | 35863496 |          2 |
+| key4  | 34085809 |          1 |
+| key5  | 27581703 |          0 |
+| key6  | 38164978 |          1 |
+| key7  | 22530351 |          0 |
+
+Figure 5-2 shows the new distribution of keys based on Table 5-2.
+
+## serverIndex hash 1% = 3
+
+Figure 5-2
+
+![Image](output/image_000055_ddc9d33980437dedb296d9f656fac2304f94f6056e6d70e990dc350d8339475a.png)
+
+As shown in Figure 5-2, most keys are redistributed, not just the ones originally stored in the offline server (server 1). This means that when server 1 goes offline, most cache clients will connect to the wrong servers to fetch data. This causes a storm of cache misses. Consistent hashing is an effective technique to mitigate this problem.
+
+## Consistent hashing
+
+Quoted from Wikipedia: "Consistent hashing is a special kind of hashing such that when a hash table is re-sized and consistent hashing is used, only k/n keys need to be remapped on average, where k is the number of keys, and n is the number of slots. In contrast, in most traditional hash tables, a change in the number of array slots causes nearly all keys to be remapped [1]".
+
+## Hash space and hash ring
+
+Now we understand the definition of consistent hashing, let us find out how it works. Assume SHA-1 is used as the hash function f, and the output range of the hash function is: x0, x1, x2, x3, …, xn. In cryptography, SHA-1's hash space goes from 0 to 2^160 - 1. That means x0 corresponds to 0, xn corresponds to 2^160 - 1, and all the other hash values in the middle fall between 0 and 2^160 - 1. Figure 5-3 shows the hash space.
+
+![Image](output/image_000056_7e077bca253ebe14a72511455780977c29d5950dd3d4666d58395e4957899cd7.png)
+
+By collecting both ends, we get a hash ring as shown in Figure 5-4: Figure 5-3
+
+xn XO
+
+Figure 5-4
+
+## Hash servers
+
+Using the same hash function f, we map servers based on server IP or name onto the ring. Figure 5-5 shows that 4 servers are mapped on the hash ring.
+
+![Image](output/image_000057_1bff138276828621794a0471b8fdd2e583a8a513b48b0ba84d7ed49b030eeba1.png)
+
+## Hash keys
+
+One thing worth mentioning is that hash function used here is different from the one in "the rehashing problem," and there is no modular operation. As shown in Figure 5-6, 4 cache keys (key0, key1, key2, and key3) are hashed onto the hash ring To determine which server a key is stored on, we go clockwise from the key position on the ring until a server is found. Figure 5-7 explains this process. Going clockwise, key0 is stored on server 0; key1 is stored on server 1; key2 is stored on server 2 and key3 is stored on server 3.
+
+![Image](output/image_000058_ef0c2aa37e35ff0fc97f1115fad102e21c1c880f688e3772472887db0047ce75.png)
+
+![Image](output/image_000059_4390b123102bae94121a66848a07721be2a3c7477fda13657401a0171306b2c9.png)
+
+## Add a server
+
+Using the logic described above, adding a new server will only require redistribution of a fraction of keys. In Figure 5-8, after a new server 4 is added, only key0 needs to be redistributed. k1, k2, and k3 remain on the same servers. Let us take a close look at the logic. Before server 4 is added, key0 is stored on server 0. Now, key0 will be stored on server 4 because server 4 is the first server it encounters by going clockwise from key0's position on the ring. The other keys are not redistributed based on consistent hashing algorithm.
+
+Figure 5-8
+
+![Image](output/image_000060_1a7b0c99cb312071e45c094e3a0f773cca01098b222994d9e6763d68dfe9a964.png)
+
+## Remove a server
+
+When a server is removed, only a small fraction of keys require redistribution with consistent hashing. In Figure 5-9, when server 1 is removed, only key1 must be remapped to server 2. The rest of the keys are unaffected.
+
+![Image](output/image_000061_af60dd3a4af2f3e21a9bfddcb1ad67ca6bf13fe3079471ad7e234050ca6a001a.png)
+
+## Two issues in the basic approach
+
+The consistent hashing algorithm was introduced by Karger et al. at MIT [1]. The basic steps
+
+- are: · Map servers and keys on to the ring using a uniformly distributed hash function. · To find out which server a key is mapped to, go clockwise from the key position until the first server on the ring is found. partitions on the ring assigned to each server is very small or fairly large. In Figure 5-10, if s1
+
+Two problems are identified with this approach. First, it is impossible to keep the same size of partitions on the ring for all servers considering a server can be added or removed. A partition is the hash space between adjacent servers. It is possible that the size of the is removed, s2's partition (highlighted with the bidirectional arrows) is twice as large as s0 and s3's partition.
+
+![Image](output/image_000062_5eb8c5726a3f294e86d3e12df0b1b106b80b7a6cb9916c8c922768948047acee.png)
+
+Second, it is possible to have a non-uniform key distribution on the ring. For instance, if servers are mapped to positions listed in Figure 5-11, most of the keys are stored on server 2. However, server 1 and server 3 have no data.
+
+![Image](output/image_000063_1892100109b54f7ed8107b307589ea0cc018f46c4fb285509deb32b272907129.png)
+
+A technique called virtual nodes or replicas is used to solve these problems.
+
+## Virtual nodes
+
+A virtual node refers to the real node, and each server is represented by multiple virtual nodes on the ring. In Figure 5-12, both server 0 and server 1 have 3 virtual nodes. The 3 is arbitrarily chosen; and in real-world systems, the number of virtual nodes is much larger. Instead of using s0, we have s0\_0, s0\_1, and s0\_2 to represent server 0 on the ring. Similarly, s1\_0, s1\_1, and s1\_2 represent server 1 on the ring. With virtual nodes, each server is responsible for multiple partitions. Partitions (edges) with label s0 are managed by server 0. On the other hand, partitions with label s1 are managed by server 1.
+
+![Image](output/image_000064_e8afe48e62453fd32c4cfe2db4e99c99fc885f81388f16351b9edee4ace49a59.png)
+
+Figure 5-12
+
+To find which server a key is stored on, we go clockwise from the key's location and find the first virtual node encountered on the ring. In Figure 5-13, to find out which server k0 is stored on, we go clockwise from k0's location and find virtual node s1\_1, which refers to server 1.
+
+![Image](output/image_000065_624980cac5a1782d258f47103a0b8776992f010e46b4b0472bc6f5b9a76bc186.png)
+
+As the number of virtual nodes increases, the distribution of keys becomes more balanced. This is because the standard deviation gets smaller with more virtual nodes, leading to balanced data distribution. Standard deviation measures how data are spread out. The outcome of an experiment carried out by online research [2] shows that with one or two hundred virtual nodes, the standard deviation is between 5% (200 virtual nodes) and 10% (100 virtual nodes) of the mean. The standard deviation will be smaller when we increase the number of virtual nodes. However, more spaces are needed to store data about virtual nodes. This is a tradeoff, and we can tune the number of virtual nodes to fit our system requirements.
+
+## Find affected keys
+
+When a server is added or removed, a fraction of data needs to be redistributed. How can we find the affected range to redistribute the keys? In Figure 5-14, server 4 is added onto the ring. The affected range starts from s4 (newly added node) and moves anticlockwise around the ring until a server is found (s3). Thus, keys located between s3 and s4 need to be redistributed to s4.
+
+Figure 5-14
+
+![Image](output/image_000066_bdc380a98263e06c8670854b53bd11d2fd0cc0bbba3cbdfd25a04ead9600bf76.png)
+
+When a server (s1) is removed as shown in Figure 5-15, the affected range starts from s1 (removed node) and moves anticlockwise around the ring until a server is found (s0). Thus, keys located between s0 and s1 must be redistributed to s2.
+
+![Image](output/image_000067_c887555f9aa6d84e70992ec896fbe8407894f0eae7460a89e01fcbcf91f36052.png)
+
+## Wrap up
+
+In this chapter, we had an in-depth discussion about consistent hashing, including why it is needed and how it works. The benefits of consistent hashing include: · Minimized keys are redistributed when servers are added or removed. · It is easy to scale horizontally because data are more evenly distributed. · Mitigate hotspot key problem. Excessive access to a specific shard could cause server overload. Imagine data for Katy Perry, Justin Bieber, and Lady Gaga all end up on the same shard. Consistent hashing helps to mitigate the problem by distributing the data more evenly. Consistent hashing is widely used in real-world systems, including some notable ones: · Partitioning component of Amazon's Dynamo database [3] · Data partitioning across the cluster in Apache Cassandra [4] · Discord chat application [5] · Akamai content delivery network [6] · Maglev network load balancer [7]
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Consistent hashing: https://en.wikipedia.org/wiki/Consistent\_hashing [2] Consistent Hashing: https://tom-e-white.com/2007/11/consistent-hashing.html [3] Dynamo: Amazon's Highly Available Key-value Store: https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf [4] Cassandra - A Decentralized Structured Storage System: http://www.cs.cornell.edu/Projects/ladis2009/papers/Lakshman-ladis2009.PDF [5] How Discord Scaled Elixir to 5,000,000 Concurrent Users: https://blog.discord.com/scaling-elixir-f9b8e1e7c29b [6] CS168: The Modern Algorithmic Toolbox Lecture #1: Introduction and Consistent Hashing: http://theory.stanford.edu/~tim/s16/l/l1.pdf [7] Maglev: A Fast and Reliable Software Network Load Balancer:
+
+[https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf)
+
+## CHAPTER 6: DESIGN A KEY-VALUE STORE
+
+A key-value store, also referred to as a key-value database, is a non-relational database. Each unique identifier is stored as a key with its associated value. This data pairing is known as a
+
+"key-value" pair. In a key-value pair, the key must be unique, and the value associated with the key can be accessed through the key. Keys can be plain text or hashed values. For performance reasons,
+
+a short key works better. What do keys look like? Here are a few examples: · Plain text key: "last\_logged\_in\_at" · Hashed key: 253DDEC4
+
+The value in a key-value pair can be strings, lists, objects, etc. The value is usually treated as an opaque object in key-value stores, such as Amazon dynamo [1], Memcached [2], Redis [3], etc.
+
+Here is a data snippet in a key-value store:
+
+|   Key | value   |
+|-------|---------|
+|   145 | john    |
+|   147 | bob     |
+|   160 | Julia   |
+
+## Table 6-1
+
+In this chapter, you are asked to design a key-value store that supports the following
+
+operations: - put(key, value) // insert "value" associated with "key"
+
+- get(key) // get "value" associated with "key"
+
+## Understand the problem and establish design scope
+
+There is no perfect design. Each design achieves a specific balance regarding the tradeoffs of the read, write, and memory usage. Another tradeoff has to be made was between consistency and availability. In this chapter, we design a key-value store that comprises of the following characteristics: · The size of a key-value pair is small: less than 10 KB. · Ability to store big data. · High availability: The system responds quickly, even during failures. · High scalability: The system can be scaled to support large data set. · Automatic scaling: The addition/deletion of servers should be automatic based on traffic. · Tunable consistency. · Low latency.
+
+## Single server key-value store
+
+Developing a key-value store that resides in a single server is easy. An intuitive approach is
+
+to store key-value pairs in a hash table, which keeps everything in memory. Even though memory access is fast, fitting everything in memory may be impossible due to the space constraint. Two optimizations can be done to fit more data in a single server: · Data compression · Store only frequently used data in memory and the rest on disk Even with these optimizations, a single server can reach its capacity very quickly. A
+
+distributed key-value store is required to support big data.
+
+## Distributed key-value store
+
+A distributed key-value store is also called a distributed hash table, which distributes keyvalue pairs across many servers. When designing a distributed system, it is important to understand CAP (Consistency, Availability, Partition Tolerance) theorem.
+
+## CAP theorem
+
+CAP theorem states it is impossible for a distributed system to simultaneously provide more than two of these three guarantees: consistency, availability, and partition tolerance. Let us
+
+establish a few definitions. Consistency: consistency means all clients see the same data at the same time no matter which node they connect to. Availability: availability means any client which requests data gets a response even if some of the nodes are down. Partition Tolerance: a partition indicates a communication break between two nodes.
+
+Partition tolerance means the system continues to operate despite network partitions.
+
+CAP theorem states that one of the three properties must be sacrificed to support 2 of the 3 properties as shown in Figure 6-1.
+
+Figure 6-1
+
+![Image](output/image_000068_0c2d22681b78834084919f6fa6a5bfb35c4267e7f4611bca46efafafdfc14693.png)
+
+Nowadays, key-value stores are classified based on the two CAP characteristics they support:
+
+CP (consistency and partition tolerance) systems: a CP key-value store supports consistency and partition tolerance while sacrificing availability.
+
+AP (availability and partition tolerance) systems: an AP key-value store supports availability and partition tolerance while sacrificing consistency.
+
+CA (consistency and availability) systems: a CA key-value store supports consistency and availability while sacrificing partition tolerance. Since network failure is unavoidable, a distributed system must tolerate network partition. Thus, a CA system cannot exist in realworld applications. What you read above is mostly the definition part. To make it easier to understand, let us take a look at some concrete examples. In distributed systems, data is usually replicated multiple times. Assume data are replicated on three replica nodes, n1, n2 and n3 as shown in Figure 62.
+
+## Ideal situation
+
+In the ideal world, network partition never occurs. Data written to n1 is automatically replicated to n2 and n3. Both consistency and availability are achieved.
+
+![Image](output/image_000069_1f319d60cded3571ca279f49e8bd797b4bd0fc923ab514a39bbc56185fa3567f.png)
+
+## Real-world distributed systems
+
+In a distributed system, partitions cannot be avoided, and when a partition occurs, we must choose between consistency and availability. In Figure 6-3, n3 goes down and cannot communicate with n1 and n2. If clients write data to n1 or n2, data cannot be propagated to n3. If data is written to n3 but not propagated to n1 and n2 yet, n1 and n2 would have stale data.
+
+![Image](output/image_000070_446f55d6e8a379eaf1f8f015b9eaf480394a719fdd4cf6b3db5739bee998ce99.png)
+
+## Figure 6-3
+
+If we choose consistency over availability (CP system), we must block all write operations to n1 and n2 to avoid data inconsistency among these three servers, which makes the system unavailable. Bank systems usually have extremely high consistent requirements. For example, it is crucial for a bank system to display the most up-to-date balance info. If inconsistency occurs due to a network partition, the bank system returns an error before the inconsistency is resolved.
+
+However, if we choose availability over consistency (AP system), the system keeps accepting reads, even though it might return stale data. For writes, n1 and n2 will keep accepting writes,
+
+and data will be synced to n3 when the network partition is resolved.
+
+Choosing the right CAP guarantees that fit your use case is an important step in building a distributed key-value store. You can discuss this with your interviewer and design the system accordingly.
+
+## System components
+
+In this section, we will discuss the following core components and techniques used to build a key-value store:
+
+- Data partition
+- Data replication
+- Consistency
+- Inconsistency resolution
+- Handling failures
+- System architecture diagram
+- Write path
+- Read path
+
+The content below is largely based on three popular key-value store systems: Dynamo [4], Cassandra [5], and BigTable [6].
+
+## Data partition
+
+For large applications, it is infeasible to fit the complete data set in a single server. The simplest way to accomplish this is to split the data into smaller partitions and store them in multiple servers. There are two challenges while partitioning the data: · Distribute data across multiple servers evenly. · Minimize data movement when nodes are added or removed. Consistent hashing discussed in Chapter 5 is a great technique to solve these problems. Let us revisit how consistent hashing works at a high-level. · First, servers are placed on a hash ring. In Figure 6-4, eight servers, represented by s0, s1, …, s7, are placed on the hash ring. · Next, a key is hashed onto the same ring, and it is stored on the first server encountered while moving in the clockwise direction. For instance, key0 is stored in s1 using this logic.
+
+![Image](output/image_000071_68c36f73d72b7f05a74fa693a5f844c4945bdd2b1685ee70c3bb762ee076995a.png)
+
+Using consistent hashing to partition data has the following advantages: Automatic scaling: servers could be added and removed automatically depending on the load.
+
+Heterogeneity: the number of virtual nodes for a server is proportional to the server capacity. For example, servers with higher capacity are assigned with more virtual nodes.
+
+## Data replication
+
+To achieve high availability and reliability, data must be replicated asynchronously over N servers, where N is a configurable parameter. These N servers are chosen using the following logic: after a key is mapped to a position on the hash ring, walk clockwise from that position and choose the first N servers on the ring to store data copies. In Figure 6-5 (N = 3), key0 is replicated at s1, s2, and s3.
+
+![Image](output/image_000072_4d6f297e6cf75e7a38e7185cf4369407052948a800cc65565e4c77e7100721b6.png)
+
+With virtual nodes, the first N nodes on the ring may be owned by fewer than N physical servers. To avoid this issue, we only choose unique servers while performing the clockwise walk logic. Nodes in the same data center often fail at the same time due to power outages, network issues, natural disasters, etc. For better reliability, replicas are placed in distinct data centers, and data centers are connected through high-speed networks.
+
+## Consistency
+
+Since data is replicated at multiple nodes, it must be synchronized across replicas. Quorum consensus can guarantee consistency for both read and write operations. Let us establish a few definitions first. N = The number of replicas W = A write quorum of size W. For a write operation to be considered as successful, write operation must be acknowledged from W replicas. R = A read quorum of size R. For a read operation to be considered as successful, read operation must wait for responses from at least R replicas. Consider the following example shown in Figure 6-6 with N = 3.
+
+![Image](output/image_000073_143e4626ba16409a29d155a686b002b6e88e7a21284d2af8bfd9bd8c5fe826f3.png)
+
+Figure 6-6 (ACK = acknowledgement)
+
+W = 1 does not mean data is written on one server. For instance, with the configuration in Figure 6-6, data is replicated at s0, s1, and s2. W = 1 means that the coordinator must receive at least one acknowledgment before the write operation is considered as successful. For instance, if we get an acknowledgment from s1, we no longer need to wait for acknowledgements from s0 and s2. A coordinator acts as a proxy between the client and the nodes. The configuration of W, R and N is a typical tradeoff between latency and consistency. If W = 1 or R = 1, an operation is returned quickly because a coordinator only needs to wait for a response from any of the replicas. If W or R &gt; 1, the system offers better consistency; however, the query will be slower because the coordinator must wait for the response from the slowest replica. If W + R &gt; N, strong consistency is guaranteed because there must be at least one overlapping node that has the latest data to ensure consistency. How to configure N, W, and R to fit our use cases? Here are some of the possible setups: If R = 1 and W = N, the system is optimized for a fast read. If W = 1 and R = N, the system is optimized for fast write. If W + R &gt; N, strong consistency is guaranteed (Usually N = 3, W = R = 2). If W + R &lt;= N, strong consistency is not guaranteed. Depending on the requirement, we can tune the values of W, R, N to achieve the desired level of consistency.
+
+## Consistency models
+
+Consistency model is other important factor to consider when designing a key-value store. A consistency model defines the degree of data consistency, and a wide spectrum of possible consistency models exist: · Strong consistency: any read operation returns a value corresponding to the result of the most updated write data item. A client never sees out-of-date data. · Weak consistency: subsequent read operations may not see the most updated value. · Eventual consistency: this is a specific form of weak consistency. Given enough time, all updates are propagated, and all replicas are consistent. Strong consistency is usually achieved by forcing a replica not to accept new reads/writes until every replica has agreed on current write. This approach is not ideal for highly available systems because it could block new operations. Dynamo and Cassandra adopt eventual consistency, which is our recommended consistency model for our key-value store. From concurrent writes, eventual consistency allows inconsistent values to enter the system and force the client to read the values to reconcile. The next section explains how reconciliation
+
+works with versioning.
+
+## Inconsistency resolution: versioning
+
+Replication gives high availability but causes inconsistencies among replicas. Versioning and vector locks are used to solve inconsistency problems. Versioning means treating each data modification as a new immutable version of data. Before we talk about versioning, let us use an example to explain how inconsistency happens: As shown in Figure 6-7, both replica nodes n1 and n2 have the same value. Let us call this value the original value. Server 1 and server 2 get the same value for get("name") operation.
+
+![Image](output/image_000074_5d922b831fa13a57dd9e6a6012dc513ac7b18cce569cc05be53b6576a300032d.png)
+
+Next, server 1 changes the name to "johnSanFrancisco", and server 2 changes the name to "johnNewYork" as shown in Figure 6-8. These two changes are performed simultaneously. Now, we have conflicting values, called versions v1 and v2.
+
+Figure 6-8
+
+![Image](output/image_000075_43bf6dca5ee794def2aa2aad852a8620be17bdcbfa0e03f01bf26fbdfeed9706.png)
+
+In this example, the original value could be ignored because the modifications were based on it. However, there is no clear way to resolve the conflict of the last two versions. To resolve this issue, we need a versioning system that can detect conflicts and reconcile conflicts. A vector clock is a common technique to solve this problem. Let us examine how vector clocks work.
+
+A vector clock is a [server, version] pair associated with a data item. It can be used to check if one version precedes, succeeds, or in conflict with others. Assume a vector clock is represented by D([S1, v1], [S2, v2], …, [Sn, vn]), where D is a data item, v1 is a version counter, and s1 is a server number, etc. If data item D is written to server Si, the system must perform one of the following tasks. · Increment vi if [Si, vi] exists. · Otherwise, create a new entry [Si, 1]. The above abstract logic is explained with a concrete example as shown in Figure 6-9.
+
+![Image](output/image_000076_f86851ce00206db774c097c0c625c30954d068d3101a41204ed5a55e38f99122.png)
+
+Figure 6-9 (source: [4])
+
+1. A client writes a data item D1 to the system, and the write is handled by server Sx, which now has the vector clock D1[(Sx, 1)].
+2. Another client reads the latest D1, updates it to D2, and writes it back. D2 descends from D1 so it overwrites D1. Assume the write is handled by the same server Sx, which now has vector clock D2([Sx, 2]).
+3. Another client reads the latest D2, updates it to D3, and writes it back. Assume the write is handled by server Sy, which now has vector clock D3([Sx, 2], [Sy, 1])).
+4. Another client reads the latest D2, updates it to D4, and writes it back. Assume the write
+
+is handled by server Sz, which now has D4([Sx, 2], [Sz, 1])). 5. When another client reads D3 and D4, it discovers a conflict, which is caused by data item D2 being modified by both Sy and Sz. The conflict is resolved by the client and updated data is sent to the server. Assume the write is handled by Sx, which now has D5([Sx, 3], [Sy, 1], [Sz, 1]). We will explain how to detect conflict shortly. Using vector clocks, it is easy to tell that a version X is an ancestor (i.e. no conflict) of version Y if the version counters for each participant in the vector clock of Y is greater than or equal to the ones in version X. For example, the vector clock D([s0, 1], [s1, 1])] is an ancestor of D([s0, 1], [s1, 2]). Therefore, no conflict is recorded. Similarly, you can tell that a version X is a sibling (i.e., a conflict exists) of Y if there is any participant in Y's vector clock who has a counter that is less than its corresponding counter in X. For example, the following two vector clocks indicate there is a conflict: D([s0, 1], [s1, 2]) and D([s0, 2], [s1, 1]). Even though vector clocks can resolve conflicts, there are two notable downsides. First, vector clocks add complexity to the client because it needs to implement conflict resolution logic. Second, the [server: version] pairs in the vector clock could grow rapidly. To fix this problem, we set a threshold for the length, and if it exceeds the limit, the oldest pairs are removed. This can lead to inefficiencies in reconciliation because the descendant relationship cannot be determined accurately. However, based on Dynamo paper [4], Amazon has not yet encountered this problem in production; therefore, it is probably an acceptable solution for
+
+most companies.
+
+## Handling failures
+
+As with any large system at scale, failures are not only inevitable but common. Handling failure scenarios is very important. In this section, we first introduce techniques to detect failures. Then, we go over common failure resolution strategies.
+
+## Failure detection
+
+In a distributed system, it is insufficient to believe that a server is down because another server says so. Usually, it requires at least two independent sources of information to mark a server down. As shown in Figure 6-10, all-to-all multicasting is a straightforward solution. However, this is inefficient when many servers are in the system.
+
+Member ID
+
+s0's membership list
+
+Heartbeat counter Time
+
+0
+
+10232
+
+12:00:01
+
+1
+
+10224
+
+12:00:10
+
+2
+
+9908
+
+11:58:02
+
+3
+
+10237
+
+12:00:20
+
+4
+
+10234
+
+12:00:34
+
+As shown in Figure 6-11: Figure 6-11
+
+![Image](output/image_000077_0bc4ce1bd96ea22ddc5ce1d3819c70cfc4779aa5a1981fffe2b790c72e1b4514.png)
+
+Figure 6-10
+
+A better solution is to use decentralized failure detection methods like gossip protocol. Gossip protocol works as follows: · Each node maintains a node membership list, which contains member IDs and heartbeat counters. · Each node periodically increments its heartbeat counter. · Each node periodically sends heartbeats to a set of random nodes, which in turn propagate to another set of nodes. · Once nodes receive heartbeats, membership list is updated to the latest info. · If the heartbeat has not increased for more than predefined periods, the member is considered as offline.
+
+so detected s2 is down S1
+
+s5
+
+s2
+
+X
+
+s4
+
+S3
+
+· Node s0 maintains a node membership list shown on the left side. · Node s0 notices that node s2's (member ID = 2) heartbeat counter has not increased for a long time. · Node s0 sends heartbeats that include s2's info to a set of random nodes. Once other nodes confirm that s2's heartbeat counter has not been updated for a long time, node s2 is marked down, and this information is propagated to other nodes.
+
+## Handling temporary failures
+
+After failures have been detected through the gossip protocol, the system needs to deploy certain mechanisms to ensure availability. In the strict quorum approach, read and write operations could be blocked as illustrated in the quorum consensus section. A technique called "sloppy quorum" [4] is used to improve availability. Instead of enforcing the quorum requirement, the system chooses the first W healthy servers for writes and first R healthy servers for reads on the hash ring. Offline servers are ignored. If a server is unavailable due to network or server failures, another server will process requests temporarily. When the down server is up, changes will be pushed back to achieve data consistency. This process is called hinted handoff. Since s2 is unavailable in Figure 612, reads and writes will be handled by s3 temporarily. When s2 comes back online, s3 will hand the data back to s2.
+
+![Image](output/image_000078_26e143e64e8a89685c7c99369b5f307e299c35407cfd9a0c296d6fce45e1dd3e.png)
+
+## Handling permanent failures
+
+Hinted handoff is used to handle temporary failures. What if a replica is permanently unavailable? To handle such a situation, we implement an anti-entropy protocol to keep replicas in sync. Anti-entropy involves comparing each piece of data on replicas and updating each replica to the newest version. A Merkle tree is used for inconsistency detection and minimizing the amount of data transferred. Quoted from Wikipedia [7]: "A hash tree or Merkle tree is a tree in which every non-leaf node is labeled with the hash of the labels or values (in case of leaves) of its child nodes. Hash trees allow efficient and secure verification of the contents of large data structures". Assuming key space is from 1 to 12, the following steps show how to build a Merkle tree. Highlighted boxes indicate inconsistency. Step 1: Divide key space into buckets (4 in our example) as shown in Figure 6-13. A bucket is used as the root level node to maintain a limited depth of the tree.
+
+server1 server 2
+
+![Image](output/image_000079_fae953bff8c42b8ab171e30f117ff8f763f63a36d5e66541bbb5a51f829a7d21.png)
+
+Figure 6-13
+
+Step 2: Once the buckets are created, hash each key in a bucket using a uniform hashing method (Figure 6-14).
+
+server1
+
+![Image](output/image_000080_2da279d68c52d94b30d7e6805827ab9f786735def8a4615545c1006f585a5a90.png)
+
+Figure 6-14
+
+Step 3: Create a single hash node per bucket (Figure 6-15).
+
+server 1
+
+server 2
+
+![Image](output/image_000081_ef961c425746ee3b061dbe0bc7e384dab728589b2f0ff3141cef63e94527e42f.png)
+
+Step 4: Build the tree upwards till root by calculating hashes of children (Figure 6-16). Figure 6-15
+
+![Image](output/image_000082_3eaf792b747e656972ae2712d387a9d1e0c628c798ddb1bc9cfb08f62096b0ae.png)
+
+To compare two Merkle trees, start by comparing the root hashes. If root hashes match, both servers have the same data. If root hashes disagree, then the left child hashes are compared followed by right child hashes. You can traverse the tree to find which buckets are not synchronized and synchronize those buckets only. Using Merkle trees, the amount of data needed to be synchronized is proportional to the differences between the two replicas, and not the amount of data they contain. In real-world systems, the bucket size is quite big. For instance, a possible configuration is one million buckets per one billion keys, so each bucket only contains 1000 keys. Figure 6-16
+
+## Handling data center outage
+
+Data center outage could happen due to power outage, network outage, natural disaster, etc. To build a system capable of handling data center outage, it is important to replicate data across multiple data centers. Even if a data center is completely offline, users can still access data through the other data centers.
+
+## System architecture diagram
+
+Now that we have discussed different technical considerations in designing a key-value store, we can shift our focus on the architecture diagram, shown in Figure 6-17.
+
+![Image](output/image_000083_4369ef59d7cbf2981cda339816ff577a961494081299cc815a197d7baadcdd0a.png)
+
+Main features of the architecture are listed as follows: · Clients communicate with the key-value store through simple APIs: get(key) and put(key, value). · A coordinator is a node that acts as a proxy between the client and the key-value store. · Nodes are distributed on a ring using consistent hashing. · The system is completely decentralized so adding and moving nodes can be automatic. · Data is replicated at multiple nodes. · There is no single point of failure as every node has the same set of responsibilities. As the design is decentralized, each node performs many tasks as presented in Figure 6-18.
+
+![Image](output/image_000084_4629fafb9a7f17c41dd8a76b85eca378f1c4aa9e7741a4b6e63e6008dbb87b13.png)
+
+## Write path
+
+Figure 6-19 explains what happens after a write request is directed to a specific node. Please note the proposed designs for write/read paths are primary based on the architecture of Cassandra [8].
+
+![Image](output/image_000085_ff583c536817fe03c4caa0b8f8b780d2cdf5833b1519fe852e3120de6c1e83ef.png)
+
+Figure 6-19
+
+1. The write request is persisted on a commit log file.
+2. Data is saved in the memory cache.
+
+Figure 6-18
+
+3. When the memory cache is full or reaches a predefined threshold, data is flushed to SSTable [9] on disk. Note: A sorted-string table (SSTable) is a sorted list of &lt;key, value&gt; pairs. For readers interested in learning more about SStable, refer to the reference material [9].
+
+## Read path
+
+After a read request is directed to a specific node, it first checks if data is in the memory cache. If so, the data is returned to the client as shown in Figure 6-20.
+
+Figure 6-20
+
+![Image](output/image_000086_cbf2f9f5759ec1df0b02392654363fd84c8a09f21a13ef465daba175ec04a4b0.png)
+
+If the data is not in memory, it will be retrieved from the disk instead. We need an efficient way to find out which SSTable contains the key. Bloom filter [10] is commonly used to solve this problem. The read path is shown in Figure 6-21 when data is not in memory.
+
+Figure 6-21
+
+![Image](output/image_000087_556df9ce0e7427a1742a819c87040839999d507aff4510f03e6798df05da9ac6.png)
+
+1. The system first checks if data is in memory. If not, go to step 2.
+
+2. If data is not in memory, the system checks the bloom filter.
+
+3. The bloom filter is used to figure out which SSTables might contain the key. 4. SSTables return the result of the data set.
+
+5. The result of the data set is returned to the client.
+
+## Summary
+
+This chapter covers many concepts and techniques. To refresh your memory, the following table summarizes features and corresponding techniques used for a distributed key-value store.
+
+Table 6-2
+
+| Goal/Problems               | Technique                                                |
+|-----------------------------|----------------------------------------------------------|
+| Ability to store big data   | Use consistent hashing to spread the load across servers |
+| High availability reads     | Data replication Multi-data center setup                 |
+| Highly available writes     | Versioning and conflict resolution with vector clocks    |
+| Dataset partition           | Consistent Hashing                                       |
+| Incremental scalability     | Consistent Hashing                                       |
+| Heterogeneity               | Consistent Hashing                                       |
+| Tunable consistency         | Quorum consensus                                         |
+| Handling temporary failures | Sloppy quorum and hinted handoff                         |
+| Handling permanent failures | Merkle tree                                              |
+| Handling data center outage | Cross-data center replication                            |
+
+## Reference materials
+
+[1] Amazon DynamoDB: https://aws.amazon.com/dynamodb/ [2] memcached: https://memcached.org/ [3] Redis: https://redis.io/ [4] Dynamo: Amazon's Highly Available Key-value Store: https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf [5] Cassandra: https://cassandra.apache.org/ [6] Bigtable: A Distributed Storage System for Structured Data: https://static.googleusercontent.com/media/research.google.com/en//archive/bigtableosdi06.pdf [7] Merkle tree: https://en.wikipedia.org/wiki/Merkle\_tree [8] Cassandra architecture: https://cassandra.apache.org/doc/latest/architecture/ [9] SStable: https://www.igvita.com/2012/02/06/sstable-and-log-structured-storage-leveldb/ [10] Bloom filter https://en.wikipedia.org/wiki/Bloom\_filter
+
+## CHAPTER 7: DESIGN A UNIQUE ID GENERATOR IN DISTRIBUTED SYSTEMS
+
+In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the auto\_increment attribute in a traditional database. However, auto\_increment does not work in a distributed environment because a single database server is not large enough and generating unique IDs across multiple databases with minimal delay is challenging. Here are a few examples of unique IDs:
+
+![Image](output/image_000088_d95acf38cf3937f474299e3eb42a5c695e6e6acf31241d925dbd08af2522ef31.png)
+
+Figure 7-1
+
+## Step 1 - Understand the problem and establish design scope

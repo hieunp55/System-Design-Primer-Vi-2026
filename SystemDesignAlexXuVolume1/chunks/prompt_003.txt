@@ -1,0 +1,749 @@
+Bạn là chuyên gia dịch thuật kỹ thuật Anh → Việt, chuyên tài liệu kỹ thuật/công nghệ, có kinh nghiệm dịch như biên dịch viên bản ngữ chuyên nghiệp. Nhiệm vụ: dịch TOÀN BỘ nội dung Markdown dưới đây sang tiếng Việt, không bỏ sót bất kỳ phần nào. Đây là MỘT PHẦN (chunk) của một tài liệu lớn hơn, hãy dịch độc lập đoạn này, không thêm lời mở đầu/kết luận về việc đây chỉ là một phần.
+
+QUY TẮC BẮT BUỘC — VI PHẠM LÀ SAI:
+
+1. XÁC ĐỊNH LOẠI TÀI LIỆU TRƯỚC KHI DỊCH
+   - Tự phân tích nội dung để xác định loại tài liệu (kỹ thuật/lập trình, tài chính, bảo hiểm, pháp lý, marketing, học thuật, vận hành, sản phẩm...).
+   - Chọn văn phong và thuật ngữ CHUẨN NGÀNH tương ứng trong tiếng Việt, nhất quán xuyên suốt.
+
+2. VĂN PHONG — MƯỢT NHƯ NGƯỜI DỊCH, KHÔNG GIẢM CHÍNH XÁC
+   - Dịch mượt, tự nhiên, đúng ngữ pháp tiếng Việt — như biên dịch viên bản ngữ dịch tay, KHÔNG dịch máy móc kiểu word-by-word.
+   - Được phép đảo cấu trúc câu, tách/gộp câu cho tự nhiên, miễn giữ nguyên 100% ý nghĩa, thông tin, logic, số liệu gốc.
+   - Khi "mượt mà" và "chính xác" xung đột → LUÔN ưu tiên chính xác.
+
+3. DỊCH ĐẦY ĐỦ 100%
+   - Không tóm tắt, không rút gọn, không lược bỏ đoạn/câu/mục/bullet nào.
+   - Số lượng heading, đoạn văn, bảng, code block ở output PHẢI khớp 1:1 với input.
+   - Đoạn dài dịch hết, không cắt ngắn.
+
+4. GIỮ NGUYÊN THUẬT NGỮ TIẾNG ANH
+   - Thuật ngữ chuyên ngành (tên công nghệ, framework, pattern, tên hàm/biến, acronym...) giữ nguyên tiếng Anh, không dịch, không phiên âm.
+   - Ngay sau lần xuất hiện ĐẦU TIÊN của mỗi thuật ngữ, thêm chú thích ngắn trong ngoặc giải thích nghĩa bằng tiếng Việt.
+   - Các lần xuất hiện sau KHÔNG cần chú thích lại.
+
+5. GIỮ NGUYÊN FORMAT — RẤT QUAN TRỌNG
+   - VỀ ẢNH (làm trước khi dịch): ĐẾM chính xác số lượng thẻ ảnh dạng ![...](...) trong đoạn gốc bên dưới. Output PHẢI có ĐÚNG số lượng thẻ ảnh đó, không được thiếu một cái nào — kể cả ảnh không có caption, không rõ ngữ cảnh, hay trông như ảnh trang trí/lặp lại. Copy nguyên URL 100%, không sửa, không rút gọn, không thay bằng mô tả text.
+   - Giữ cấp độ heading (#, ##, ###...), giữ đúng số lượng heading.
+   - Giữ cấu trúc bảng (số cột, số hàng, alignment, header row).
+   - Giữ code block (```lang ... ```) — KHÔNG dịch code; comment được dịch tại chỗ; **được phép reformat code, tự động xuống dòng/indent chuẩn, không giữ nguyên code 1 dòng; không đổi logic/cú pháp**.
+   - Giữ blockquote, callout/note/warning (>, [!NOTE], [!WARNING]...).
+   - Giữ list, nested list, checkbox (- [ ]).
+   - Giữ nguyên link thường ([text](url)) — chỉ dịch phần text hiển thị, TUYỆT ĐỐI giữ nguyên URL.
+   - TRƯỚC KHI TRẢ KẾT QUẢ: tự đếm lại số heading, số ảnh, số dòng ``` giữa bản gốc và bản dịch (KHÔNG tính fence 4 backtick ngoài cùng), nếu lệch phải sửa lại cho khớp.
+
+6. GIẢI THÍCH ẨN DỤ / KHÁI NIỆM KHÓ
+   - Với ẩn dụ, thành ngữ, khái niệm trừu tượng khó hiểu với người Việt, thêm khối giải thích riêng ngay sau đoạn đó:
+     > 💡 **Giải thích thêm:** [giải thích dễ hiểu, đủ chuyên sâu, có ví dụ thực tế]
+     > Nguồn tham khảo: [link cụ thể để kiểm chứng]
+   - CHỈ đưa link nếu chắc chắn tồn tại và đúng nội dung — không bịa link.
+   - Không tìm được nguồn tin cậy → ghi rõ: "(Không có nguồn trích dẫn xác thực — cần tự kiểm chứng thêm)".
+
+7. CHỐNG HALLUCINATION (BẮT BUỘC)
+   - Không tự thêm thông tin/số liệu/ví dụ/kết luận KHÔNG có trong bản gốc — trừ phần giải thích ẩn dụ ở mục 6 (phải gắn nhãn rõ là phần bổ sung).
+   - Câu gốc mơ hồ → dịch sát nghĩa nhất, nếu không chắc ghi chú: "[CẦN KIỂM CHỨNG: câu gốc mơ hồ]".
+   - Không tự sửa/thêm/bớt logic kỹ thuật gốc. Không bịa trích dẫn/số liệu/link vô căn cứ.
+   - Không tự tóm tắt các đoạn dài thành ý chính rồi diễn giải lại — phải dịch từng câu.
+
+8. OUTPUT
+   - Trả về DUY NHẤT nội dung Markdown đã dịch, bọc trong MỘT khối code ngoài cùng dùng đúng 4 dấu backtick: dòng đầu là ````markdown, dòng cuối là ````.
+   - Lý do: bên trong có thể chứa code block 3 backtick (```json ... ```). Fence ngoài PHẢI dài hơn fence trong, nếu không khối ngoài sẽ bị đóng sớm.
+   - CẤM dùng 3 backtick cho fence ngoài cùng. Các code block bên trong giữ nguyên 3 backtick như bản gốc.
+   - Nếu bản gốc có fence từ 4 backtick trở lên, fence ngoài dùng nhiều hơn fence dài nhất bên trong ít nhất 1 backtick.
+   - Toàn bộ kết quả nằm trong MỘT khối duy nhất: không đóng/mở lại giữa chừng, không có chữ nào ngoài khối.
+   - Không đổi tiêu đề gốc trừ khi cần dịch tiêu đề.
+
+--- NỘI DUNG GỐC CẦN DỊCH (một phần của tài liệu) ---
+
+Asking clarification questions is the first step to tackle any system design interview question. Here is an example of candidate-interviewer interaction: Candidate: What are the characteristics of unique IDs? Interviewer: IDs must be unique and sortable. Candidate: For each new record, does ID increment by 1? Interviewer: The ID increments by time but not necessarily only increments by 1. IDs created in the evening are larger than those created in the morning on the same day. Candidate: Do IDs only contain numerical values? Interviewer: Yes, that is correct. Candidate: What is the ID length requirement? Interviewer: IDs should fit into 64-bit. Candidate: What is the scale of the system? Interviewer: The system should be able to generate 10,000 IDs per second. Above are some of the sample questions that you can ask your interviewer. It is important to understand the requirements and clarify ambiguities. For this interview question, the requirements are listed as follows: · IDs must be unique. · IDs are numerical values only. · IDs fit into 64-bit. · IDs are ordered by date. · Ability to generate over 10,000 unique IDs per second.
+
+## Step 2 - Propose high-level design and get buy-in
+
+Multiple options can be used to generate unique IDs in distributed systems. The options we considered are: · Multi-master replication · Universally unique identifier (UUID) · Ticket server · Twitter snowflake approach
+
+Let us look at each of them, how they work, and the pros/cons of each option.
+
+## Multi-master replication
+
+As shown in Figure 7-2, the first approach is multi-master replication.
+
+![Image](output/image_000089_03c412c7bfa8d16e5e3ae87dadf3857a0f5ab510054904b101e8d175d61e8f35.png)
+
+Figure 7-2
+
+This approach uses the databases' auto\_increment feature. Instead of increasing the next ID by 1, we increase it by k, where k is the number of database servers in use. As illustrated in Figure 7-2, next ID to be generated is equal to the previous ID in the same server plus 2. This solves some scalability issues because IDs can scale with the number of database servers. However, this strategy has some major drawbacks: · Hard to scale with multiple data centers · IDs do not go up with time across multiple servers.
+
+A UUID is another easy way to obtain unique IDs. UUID is a 128-bit number used to identify information in computer systems. UUID has a very low probability of getting collusion. Quoted from Wikipedia, "after generating 1 billion UUIDs every second for approximately 100 years would the probability of creating a single duplicate reach 50%" [1]. Here is an example of UUID: 09c93e62-50b4-468d-bf8a-c07e1040bfb2. UUIDs can be generated independently without coordination between servers. Figure 7-3 presents the
+
+· It does not scale well when a server is added or removed. UUID UUIDs design.
+
+![Image](output/image_000090_e5e668060f25c71ea2e0cc0694fb4d275049e349a915589763152e55594a55a1.png)
+
+Figure 7-3
+
+In this design, each web server contains an ID generator, and a web server is responsible for generating IDs independently. Pros: · Generating UUID is simple. No coordination between servers is needed so there will not be any synchronization issues. · The system is easy to scale because each web server is responsible for generating IDs they consume. ID generator can easily scale with web servers. Cons: · IDs are 128 bits long, but our requirement is 64 bits. · IDs do not go up with time. · IDs could be non-numeric.
+
+## Ticket Server
+
+Ticket servers are another interesting way to generate unique IDs. Flicker developed ticket servers to generate distributed primary keys [2]. It is worth mentioning how the system works.
+
+![Image](output/image_000091_0c4e63627d17503c4843f67ccabf0ac4ff858d4224cff87489fba5619faf5578.png)
+
+Figure 7-4
+
+The idea is to use a centralized auto\_increment feature in a single database server (Ticket Server). To learn more about this, refer to flicker's engineering blog article [2]. Pros: · Numeric IDs. · It is easy to implement, and it works for small to medium-scale applications.
+
+Cons:
+
+· Single point of failure. Single ticket server means if the ticket server goes down, all systems that depend on it will face issues. To avoid a single point of failure, we can set up multiple ticket servers. However, this will introduce new challenges such as data synchronization.
+
+## Twitter snowflake approach
+
+Approaches mentioned above give us some ideas about how different ID generation systems work. However, none of them meet our specific requirements; thus, we need another approach. Twitter's unique ID generation system called "snowflake" [3] is inspiring and can satisfy our requirements. Divide and conquer is our friend. Instead of generating an ID directly, we divide an ID into different sections. Figure 7-5 shows the layout of a 64-bit ID.
+
+1 bit
+
+41 bits
+
+5 bits
+
+5 bits
+
+12 bits
+
+| 0   | timestamp   | datacenter ID   | machine ID   | sequence number   |
+|-----|-------------|-----------------|--------------|-------------------|
+
+Figure 7-5
+
+Each section is explained below. · Sign bit: 1 bit. It will always be 0. This is reserved for future uses. It can potentially be used to distinguish between signed and unsigned numbers. · Timestamp: 41 bits. Milliseconds since the epoch or custom epoch. We use Twitter snowflake default epoch 1288834974657, equivalent to Nov 04, 2010, 01:42:54 UTC. · Datacenter ID: 5 bits, which gives us 2 ^ 5 = 32 datacenters. · Machine ID: 5 bits, which gives us 2 ^ 5 = 32 machines per datacenter. · Sequence number: 12 bits. For every ID generated on that machine/process, the sequence number is incremented by 1. The number is reset to 0 every millisecond.
+
+## Step 3 - Design deep dive
+
+In the high-level design, we discussed various options to design a unique ID generator in distributed systems. We settle on an approach that is based on the Twitter snowflake ID generator. Let us dive deep into the design. To refresh our memory, the design diagram is relisted below.
+
+Figure 7-6
+
+|   1 bit | 41 bits   | 5 bits                   | 5 bits   | 12 bits         |
+|---------|-----------|--------------------------|----------|-----------------|
+|       0 | timestamp | datacenter ID machine ID |          | sequence number |
+
+Datacenter IDs and machine IDs are chosen at the startup time, generally fixed once the system is up running. Any changes in datacenter IDs and machine IDs require careful review since an accidental change in those values can lead to ID conflicts. Timestamp and sequence numbers are generated when the ID generator is running.
+
+## Timestamp
+
+The most important 41 bits make up the timestamp section. As timestamps grow with time, IDs are sortable by time. Figure 7-7 shows an example of how binary representation is converted to UTC. You can also convert UTC back to binary representation using a similar method.
+
+Figure 7-7
+
+![Image](output/image_000092_d3ef6aabdfe31520f4f76235aa71a71b147ef6dd39bb97082ce49f72f14efca6.png)
+
+The maximum timestamp that can be represented in 41 bits is 2 ^ 41 - 1 = 2199023255551 milliseconds (ms), which gives us: ~ 69 years = 2199023255551 ms / 1000 seconds / 365 days / 24 hours/ 3600 seconds. This means the ID generator will work for 69 years and having a custom epoch time close to today's date delays the overflow time. After 69 years, we will need a new epoch time or adopt other techniques to migrate IDs.
+
+## Sequence number
+
+Sequence number is 12 bits, which give us 2 ^ 12 = 4096 combinations. This field is 0 unless more than one ID is generated in a millisecond on the same server. In theory, a machine can support a maximum of 4096 new IDs per millisecond.
+
+## Step 4 - Wrap up
+
+In this chapter, we discussed different approaches to design a unique ID generator: multimaster replication, UUID, ticket server, and Twitter snowflake-like unique ID generator. We settle on snowflake as it supports all our use cases and is scalable in a distributed environment. If there is extra time at the end of the interview, here are a few additional talking points: · Clock synchronization. In our design, we assume ID generation servers have the same clock. This assumption might not be true when a server is running on multiple cores. The same challenge exists in multi-machine scenarios. Solutions to clock synchronization are out of the scope of this book; however, it is important to understand the problem exists. Network Time Protocol is the most popular solution to this problem. For interested readers, refer to the reference material [4]. · Section length tuning. For example, fewer sequence numbers but more timestamp bits are effective for low concurrency and long-term applications. · High availability. Since an ID generator is a mission-critical system, it must be highly available.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Universally unique identifier: https://en.wikipedia.org/wiki/Universally\_unique\_identifier [2] Ticket Servers: Distributed Unique Primary Keys on the Cheap: https://code.flickr.net/2010/02/08/ticket-servers-distributed-unique-primary-keys-on-thecheap/ [3] Announcing Snowflake: https://blog.twitter.com/engineering/en\_us/a/2010/announcingsnowflake.html [4] Network time protocol: https://en.wikipedia.org/wiki/Network\_Time\_Protocol
+
+## CHAPTER 8: DESIGN A URL SHORTENER
+
+In this chapter, we will tackle an interesting and classic system design interview question: designing a URL shortening service like tinyurl.
+
+## Step 1 - Understand the problem and establish design scope
+
+System design interview questions are intentionally left open-ended. To design a well-crafted system, it is critical to ask clarification questions. Candidate: Can you give an example of how a URL shortener work? Interviewer: Assume URL https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long is the original URL. Your service creates an alias with shorter length: https://tinyurl.com/ y7keocwj. If you click the alias, it redirects you to the original URL. Candidate: What is the traffic volume? Interviewer: 100 million URLs are generated per day. Candidate: How long is the shortened URL? Interviewer: As short as possible. Candidate: What characters are allowed in the shortened URL? Interviewer: Shortened URL can be a combination of numbers (0-9) and characters (a-z, AZ). Candidate: Can shortened URLs be deleted or updated? Interviewer: For simplicity, let us assume shortened URLs cannot be deleted or updated. Here are the basic use cases: 1.URL shortening: given a long URL =&gt; return a much shorter URL 2.URL redirecting: given a shorter URL =&gt; redirect to the original URL
+
+3.High availability, scalability, and fault tolerance considerations Back of the envelope estimation · Write operation: 100 million URLs are generated per day. · Write operation per second: 100 million / 24 /3600 = 1160 · Read operation: Assuming ratio of read operation to write operation is 10:1, read operation per second: 1160 * 10 = 11,600 · Assuming the URL shortener service will run for 10 years, this means we must support 100 million * 365 * 10 = 365 billion records. · Assume average URL length is 100. · Storage requirement over 10 years: 365 billion * 100 bytes * 10 years = 365 TB It is important for you to walk through the assumptions and calculations with your interviewer so that both of you are on the same page.
+
+## Step 2 - Propose high-level design and get buy-in
+
+In this section, we discuss the API endpoints, URL redirecting, and URL shortening flows.
+
+## API Endpoints
+
+API endpoints facilitate the communication between clients and servers. We will design the APIs REST-style. If you are unfamiliar with restful API, you can consult external materials, such as the one in the reference material [1]. A URL shortener primary needs two API endpoints. 1.URL shortening. To create a new short URL, a client sends a POST request, which contains one parameter: the original long URL. The API looks like this:
+
+## POST api/v1/data/shorten
+
+· request parameter: {longUrl: longURLString} · return shortURL
+
+2.URL redirecting. To redirect a short URL to the corresponding long URL, a client sends a GET request. The API looks like this:
+
+## GET api/v1/shortUrl
+
+· Return longURL for HTTP redirection
+
+## URL redirecting
+
+Figure 8-1 shows what happens when you enter a tinyurl onto the browser. Once the server receives a tinyurl request, it changes the short URL to the long URL with 301 redirect.
+
+Figure 8-1
+
+![Image](output/image_000093_8799f20935f955aeb441c47330d948f52ec4b5762c3863ed0cd6ec6761f370e6.png)
+
+The detailed communication between clients and servers is shown in Figure 8-2.
+
+![Image](output/image_000094_cdf2b8e72869dabc2988b21b14de7a920f631dedcd03110db44cd25356970c92.png)
+
+Figure 8-2
+
+One thing worth discussing here is 301 redirect vs 302 redirect. 301 redirect. A 301 redirect shows that the requested URL is "permanently" moved to the long URL. Since it is permanently redirected, the browser caches the response, and subsequent requests for the same URL will not be sent to the URL shortening service. Instead, requests are redirected to the long URL server directly. 302 redirect. A 302 redirect means that the URL is "temporarily" moved to the long URL, meaning that subsequent requests for the same URL will be sent to the URL shortening service first. Then, they are redirected to the long URL server. Each redirection method has its pros and cons. If the priority is to reduce the server load, using 301 redirect makes sense as only the first request of the same URL is sent to URL shortening servers. However, if analytics is important, 302 redirect is a better choice as it can track click rate and source of the click more easily. The most intuitive way to implement URL redirecting is to use hash tables. Assuming the hash table stores &lt;shortURL, longURL&gt; pairs, URL redirecting can be implemented by the following: · Get longURL: longURL = hashTable.get(shortURL) · Once you get the longURL, perform the URL redirect.
+
+## URL shortening
+
+Let us assume the short URL looks like this: www.tinyurl.com/{hashValue}. To support the URL shortening use case, we must find a hash function fx that maps a long URL to the hashValue, as shown in Figure 8-3.
+
+![Image](output/image_000095_0e25ab00b89e8e0ee81a211aa9022ef946eacc2656c88298eb56a403651a74b0.png)
+
+The hash function must satisfy the following requirements: · Each longURL must be hashed to one hashValue. · Each hashValue can be mapped back to the longURL.
+
+Detailed design for the hash function is discussed in deep dive.
+
+## Step 3 - Design deep dive
+
+Up until now, we have discussed the high-level design of URL shortening and URL redirecting. In this section, we dive deep into the following: data model, hash function, URL shortening and URL redirecting.
+
+## Data model
+
+In the high-level design, everything is stored in a hash table. This is a good starting point; however, this approach is not feasible for real-world systems as memory resources are limited and expensive. A better option is to store &lt;shortURL, longURL&gt; mapping in a relational database. Figure 8-4 shows a simple database table design. The simplified version of the table contains 3 columns: id, shortURL, longURL.
+
+![Image](output/image_000096_539fdaabf9b315c478a8b4d027a6cb25ada837cba9847055ef75522d605a12fa.png)
+
+## Hash function
+
+Hash function is used to hash a long URL to a short URL, also known as hashValue.
+
+## Hash value length
+
+The hashValue consists of characters from [0-9, a-z, A-Z], containing 10 + 26 + 26 = 62 possible characters. To figure out the length of hashValue, find the smallest n such that 62^n ≥ 365 billion. The system must support up to 365 billion URLs based on the back of the envelope estimation. Table 8-1 shows the length of hashValue and the corresponding maximal number of URLs it can support.
+
+|   N | Maximal number of URLs                   |
+|-----|------------------------------------------|
+|   1 | 62^1 = 62                                |
+|   2 | 62^2 = 3,844                             |
+|   3 | 62^3 = 238,328                           |
+|   4 | 62^4 = 14,776,336                        |
+|   5 | 62^5 = 916,132,832                       |
+|   6 | 62^6 =56,800,235,584                     |
+|   7 | 62^7 = 3,521,614,606,208 = ~3.5 trillion |
+
+## Table 8-1
+
+When n = 7, 62 ^ n = ~3.5 trillion, 3.5 trillion is more than enough to hold 365 billion URLs, so the length of hashValue is 7. We will explore two types of hash functions for a URL shortener. The first one is "hash + collision resolution", and the second one is "base 62 conversion." Let us look at them one by one.
+
+## Hash + collision resolution
+
+To shorten a long URL, we should implement a hash function that hashes a long URL to a 7character string. A straightforward solution is to use well-known hash functions like CRC32, MD5, or SHA-1. The following table compares the hash results after applying different hash functions on this URL: https://en.wikipedia.org/wiki/Systems\_design.
+
+| Hash function   | Hash value (Hexadecimal)                 |
+|-----------------|------------------------------------------|
+| CRC32           | 5cb54054                                 |
+| MD5             | 5a62509a84df9ee03fe1230b9df8b84e         |
+| SHA-1           | 0eeae7916c06853901d9ccbefbfcaf4de57ed85b |
+
+Table 8-2
+
+As shown in Table 8-2, even the shortest hash value (from CRC32) is too long (more than 7 characters). How can we make it shorter? The first approach is to collect the first 7 characters of a hash value; however, this method can lead to hash collisions. To resolve hash collisions, we can recursively append a new predefined string until no more collision is discovered. This process is explained in Figure 8- This method can eliminate collision; however, it is expensive to query the database to check if a shortURL exists for every request. A technique called bloom filters [2] can improve performance. A bloom filter is a space-efficient probabilistic technique to test if an element is a member of a set. Refer to the reference material [2] for more details. Figure 8-5
+
+![Image](output/image_000097_263c14e0bcb72b79155b1d0a33f4e39566b815ec22639a2c9aa658dde61062a8.png)
+
+## Base 62 conversion
+
+Base conversion is another approach commonly used for URL shorteners. Base conversion helps to convert the same number between its different number representation systems. Base 62 conversion is used as there are 62 possible characters for hashValue. Let us use an example to explain how the conversion works: convert 11157 10 to base 62 representation (11157 10 represents 11157 in a base 10 system). · From its name, base 62 is a way of using 62 characters for encoding. The mappings are: 0-0, ..., 9-9, 10-a, 11-b, ..., 35-z, 36-A, ..., 61-Z, where 'a' stands for 10, 'Z' stands for 61, etc. · 11157 10 = 2 x 62 2 + 55 x 62 1 + 59 x 62 0 = [2, 55, 59] -&gt; [2, T, X] in base 62 representation. Figure 8-6 shows the conversation process.
+
+Figure 8-6
+
+|    |       |   Remainder | Representation in base 62   |
+|----|-------|-------------|-----------------------------|
+| 62 | 11157 |          59 | X                           |
+| 62 | 179   |          55 | T                           |
+|    | 62 2  |           2 | 2                           |
+
+- Thus, the short URL is https://tinyurl.com /2TX
+
+## Comparison of the two approaches
+
+Table 8-3 shows the differences of the two approaches.
+
+Table 8-3
+
+| Hash + collision resolution                                                                   | Base 62 conversion                                                                                                           |
+|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Fixed short URL length.                                                                       | The short URL length is not fixed. It goes up with the ID.                                                                   |
+| It does not need a unique ID generator.                                                       | This option depends on a unique ID generator.                                                                                |
+| Collision is possible and must be resolved.                                                   | Collision is impossible because ID is unique.                                                                                |
+| It is impossible to figure out the next available short URL because it does not depend on ID. | It is easy to figure out the next available short URL if ID increments by 1 for a new entry. This can be a security concern. |
+
+## URL shortening deep dive
+
+As one of the core pieces of the system, we want the URL shortening flow to be logically simple and functional. Base 62 conversion is used in our design. We build the following diagram (Figure 8-7) to demonstrate the flow.
+
+Figure 8-7
+
+![Image](output/image_000098_4957a96b7ec6601a524139d7cb3e87c268026940cd3ff8689dcffb408d1b18e5.png)
+
+1. longURL is the input.
+2. The system checks if the longURL is in the database.
+3. If it is, it means the longURL was converted to shortURL before. In this case, fetch the shortURL from the database and return it to the client.
+4. If not, the longURL is new. A new unique ID (primary key) Is generated by the unique ID generator.
+5. Convert the ID to shortURL with base 62 conversion.
+6. Create a new database row with the ID, shortURL, and longURL.
+
+To make the flow easier to understand, let us look at a concrete example.
+
+- Assuming the input longURL is: https://en.wikipedia.org/wiki/Systems\_design
+- Unique ID generator returns ID: 2009215674938.
+- Convert the ID to shortURL using the base 62 conversion. ID (2009215674938) is converted to "zn9edcu".
+- Save ID, shortURL, and longURL to the database as shown in Table 8-4.
+
+Table 8-4
+
+|            id | shortURL   | longURL                                      |
+|---------------|------------|----------------------------------------------|
+| 2009215674938 | zn9edcu    | https://en.wikipedia.org/wiki/Systems_design |
+
+The distributed unique ID generator is worth mentioning. Its primary function is to generate globally unique IDs, which are used for creating shortURLs. In a highly distributed environment, implementing a unique ID generator is challenging. Luckily, we have already discussed a few solutions in "Chapter 7: Design A Unique ID Generator in Distributed Systems". You can refer back to it to refresh your memory.
+
+## URL redirecting deep dive
+
+Figure 8-8 shows the detailed design of the URL redirecting. As there are more reads than writes, &lt;shortURL, longURL&gt; mapping is stored in a cache to improve performance.
+
+![Image](output/image_000099_895986642f63439e774ac8ce99fd09e7ecf176de8b67dae59334c0bc1f682412.png)
+
+Figure 8-8
+
+The flow of URL redirecting is summarized as follows: 1. A user clicks a short URL link: https://tinyurl.com/zn9edcu 2. The load balancer forwards the request to web servers. 3. If a shortURL is already in the cache, return the longURL directly. 4. If a shortURL is not in the cache, fetch the longURL from the database. If it is not in the database, it is likely a user entered an invalid shortURL.
+
+5. The longURL is returned to the user.
+
+## Step 4 - Wrap up
+
+In this chapter, we talked about the API design, data model, hash function, URL shortening, and URL redirecting. If there is extra time at the end of the interview, here are a few additional talking points. · Rate limiter: A potential security problem we could face is that malicious users send an overwhelmingly large number of URL shortening requests. Rate limiter helps to filter out requests based on IP address or other filtering rules. If you want to refresh your memory about rate limiting, refer to "Chapter 4: Design a rate limiter". · Web server scaling: Since the web tier is stateless, it is easy to scale the web tier by adding or removing web servers. · Database scaling: Database replication and sharding are common techniques. · Analytics: Data is increasingly important for business success. Integrating an analytics solution to the URL shortener could help to answer important questions like how many people click on a link? When do they click the link? etc. · Availability, consistency, and reliability. These concepts are at the core of any large system's success. We discussed them in detail in Chapter 1, please refresh your memory on these topics. Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] A RESTful Tutorial: https://www.restapitutorial.com/index.html [2] Bloom filter: https://en.wikipedia.org/wiki/Bloom\_filter
+
+## CHAPTER 9: DESIGN A WEB CRAWLER
+
+In this chapter, we focus on web crawler design: an interesting and classic system design interview question. A web crawler is known as a robot or spider. It is widely used by search engines to discover new or updated content on the web. Content can be a web page, an image, a video, a PDF file, etc. A web crawler starts by collecting a few web pages and then follows links on those pages to collect new content. Figure 9-1 shows a visual example of the crawl process.
+
+![Image](output/image_000100_84abcffdfef993eae7588a4847ebb39e26cd7fe51cfed11a7b66553c17df8dca.png)
+
+A crawler is used for many purposes: · Search engine indexing: This is the most common use case. A crawler collects web pages to create a local index for search engines. For example, Googlebot is the web crawler behind the Google search engine. · Web archiving: This is the process of collecting information from the web to preserve data for future uses. For instance, many national libraries run crawlers to archive web sites. Notable examples are the US Library of Congress [1] and the EU web archive [2]. · Web mining: The explosive growth of the web presents an unprecedented opportunity for data mining. Web mining helps to discover useful knowledge from the internet. For example, top financial firms use crawlers to download shareholder meetings and annual reports to learn key company initiatives. · Web monitoring. The crawlers help to monitor copyright and trademark infringements over the Internet. For example, Digimarc [3] utilizes crawlers to discover pirated works and reports.
+
+The complexity of developing a web crawler depends on the scale we intend to support. It could be either a small school project, which takes only a few hours to complete or a gigantic project that requires continuous improvement from a dedicated engineering team. Thus, we will explore the scale and features to support below.
+
+## Step 1 - Understand the problem and establish design scope
+
+The basic algorithm of a web crawler is simple:
+
+1. Given a set of URLs, download all the web pages addressed by the URLs.
+2. Extract URLs from these web pages
+3. Add new URLs to the list of URLs to be downloaded. Repeat these 3 steps.
+
+Does a web crawler work truly as simple as this basic algorithm? Not exactly. Designing a vastly scalable web crawler is an extremely complex task. It is unlikely for anyone to design a massive web crawler within the interview duration. Before jumping into the design, we must ask questions to understand the requirements and establish design scope: Candidate: What is the main purpose of the crawler? Is it used for search engine indexing, data mining, or something else? Interviewer: Search engine indexing. Candidate: How many web pages does the web crawler collect per month? Interviewer: 1 billion pages. Candidate: What content types are included? HTML only or other content types such as PDFs and images as well? Interviewer: HTML only. Candidate: Shall we consider newly added or edited web pages? Interviewer: Yes, we should consider the newly added or edited web pages. Candidate: Do we need to store HTML pages crawled from the web? Interviewer: Yes, up to 5 years Candidate: How do we handle web pages with duplicate content? Interviewer: Pages with duplicate content should be ignored. Above are some of the sample questions that you can ask your interviewer. It is important to understand the requirements and clarify ambiguities. Even if you are asked to design a straightforward product like a web crawler, you and your interviewer might not have the same assumptions. Beside functionalities to clarify with your interviewer, it is also important to note down the following characteristics of a good web crawler: · Scalability: The web is very large. There are billions of web pages out there. Web crawling should be extremely efficient using parallelization. · Robustness: The web is full of traps. Bad HTML, unresponsive servers, crashes, malicious links, etc. are all common. The crawler must handle all those edge cases. · Politeness: The crawler should not make too many requests to a website within a short time interval. · Extensibility: The system is flexible so that minimal changes are needed to support new content types. For example, if we want to crawl image files in the future, we should not need to redesign the entire system.
+
+## Back of the envelope estimation
+
+The following estimations are based on many assumptions, and it is important to communicate with the interviewer to be on the same page. · Assume 1 billion web pages are downloaded every month.
+
+· QPS: 1,000,000,000 / 30 days / 24 hours / 3600 seconds = ~400 pages per second. · Peak QPS = 2 * QPS = 800 · Assume the average web page size is 500k. · 1-billion-page x 500k = 500 TB storage per month. If you are unclear about digital storage units, go through "Power of 2" section in Chapter 2 again. · Assuming data are stored for five years, 500 TB * 12 months * 5 years = 30 PB. A 30 PB storage is needed to store five-year content.
+
+## Step 2 - Propose high-level design and get buy-in
+
+Once the requirements are clear, we move on to the high-level design. Inspired by previous studies on web crawling [4] [5], we propose a high-level design as shown in Figure 9-2.
+
+![Image](output/image_000101_9ed010d9a85ca77660c8ea4243f6f3a725068e14677851c0ccac206e7c879e9a.png)
+
+First, we explore each design component to understand their functionalities. Then, we
+
+examine the crawler workflow step-by-step. Figure 9-2
+
+## Seed URLs
+
+A web crawler uses seed URLs as a starting point for the crawl process. For example, to crawl all web pages from a university's website, an intuitive way to select seed URLs is to use the university's domain name. To crawl the entire web, we need to be creative in selecting seed URLs. A good seed URL serves as a good starting point that a crawler can utilize to traverse as many links as possible. The general strategy is to divide the entire URL space into smaller ones. The first proposed approach is based on locality as different countries may have different popular websites. Another way is to choose seed URLs based on topics; for example, we can divide URL space into shopping, sports, healthcare, etc. Seed URL selection is an open-ended question. You are not expected to give the perfect answer. Just think out loud.
+
+## URL Frontier
+
+Most modern web crawlers split the crawl state into two: to be downloaded and already downloaded. The component that stores URLs to be downloaded is called the URL Frontier. You can refer to this as a First-in-First-out (FIFO) queue. For detailed information about the URL Frontier, refer to the deep dive.
+
+## HTML Downloader
+
+The HTML downloader downloads web pages from the internet. Those URLs are provided by the URL Frontier.
+
+## DNS Resolver
+
+To download a web page, a URL must be translated into an IP address. The HTML Downloader calls the DNS Resolver to get the corresponding IP address for the URL. For instance, URL www.wikipedia.org is converted to IP address 198.35.26.96 as of 3/5/2019.
+
+## Content Parser
+
+After a web page is downloaded, it must be parsed and validated because malformed web pages could provoke problems and waste storage space. Implementing a content parser in a crawl server will slow down the crawling process. Thus, the content parser is a separate component.
+
+## Content Seen?
+
+Online research [6] reveals that 29% of the web pages are duplicated contents, which may cause the same content to be stored multiple times. We introduce the "Content Seen?" data structure to eliminate data redundancy and shorten processing time. It helps to detect new content previously stored in the system. To compare two HTML documents, we can compare them character by character. However, this method is slow and time-consuming, especially when billions of web pages are involved. An efficient way to accomplish this task is to compare the hash values of the two web pages [7].
+
+## Content Storage
+
+It is a storage system for storing HTML content. The choice of storage system depends on factors such as data type, data size, access frequency, life span, etc. Both disk and memory are used. · Most of the content is stored on disk because the data set is too big to fit in memory.
+
+- Popular content is kept in memory to reduce latency.
+
+## URL Extractor
+
+URL Extractor parses and extracts links from HTML pages. Figure 9-3 shows an example of a link extraction process. Relative paths are converted to absolute URLs by adding the "https://en.wikipedia.org" prefix.
+
+Figure 9-3
+
+![Image](output/image_000102_b18e4a07f3cedcb44f19125f64e1cd1dfcfa25554378265bc7fa457163fce0aa.png)
+
+## URL Filter
+
+The URL filter excludes certain content types, file extensions, error links and URLs in "blacklisted" sites.
+
+## URL Seen?
+
+"URL Seen?" is a data structure that keeps track of URLs that are visited before or already in the Frontier. "URL Seen?" helps to avoid adding the same URL multiple times as this can increase server load and cause potential infinite loops.
+
+Bloom filter and hash table are common techniques to implement the "URL Seen?" component. We will not cover the detailed implementation of the bloom filter and hash table here. For more information, refer to the reference materials [4] [8].
+
+## URL Storage
+
+URL Storage stores already visited URLs.
+
+So far, we have discussed every system component. Next, we put them together to explain the workflow.
+
+## Web crawler workflow
+
+To better explain the workflow step-by-step, sequence numbers are added in the design diagram as shown in Figure 9-4.
+
+![Image](output/image_000103_918daeab33d285f9b7d5b7daba2577a8ffa18f2460e1ca2252e1c9f899ef4940.png)
+
+Figure 9-4
+
+Step 1: Add seed URLs to the URL Frontier Step 2: HTML Downloader fetches a list of URLs from URL Frontier. Step 3: HTML Downloader gets IP addresses of URLs from DNS resolver and starts downloading. Step 4: Content Parser parses HTML pages and checks if pages are malformed. Step 5: After content is parsed and validated, it is passed to the "Content Seen?" component. Step 6: "Content Seen" component checks if a HTML page is already in the storage. · If it is in the storage, this means the same content in a different URL has already been processed. In this case, the HTML page is discarded. · If it is not in the storage, the system has not processed the same content before. The content is passed to Link Extractor. Step 7: Link extractor extracts links from HTML pages. Step 8: Extracted links are passed to the URL filter. Step 9: After links are filtered, they are passed to the "URL Seen?" component. Step 10: "URL Seen" component checks if a URL is already in the storage, if yes, it is processed before, and nothing needs to be done. Step 11: If a URL has not been processed before, it is added to the URL Frontier.
+
+## Step 3 - Design deep dive
+
+Up until now, we have discussed the high-level design. Next, we will discuss the most
+
+important building components and techniques in depth: · Depth-first search (DFS) vs Breadth-first search (BFS) · URL frontier · HTML Downloader · Robustness · Extensibility
+
+- Detect and avoid problematic content
+
+## DFS vs BFS
+
+You can think of the web as a directed graph where web pages serve as nodes and hyperlinks (URLs) as edges. The crawl process can be seen as traversing a directed graph from one web page to others. Two common graph traversal algorithms are DFS and BFS. However, DFS is usually not a good choice because the depth of DFS can be very deep. BFS is commonly used by web crawlers and is implemented by a first-in-first-out (FIFO) queue. In a FIFO queue, URLs are dequeued in the order they are enqueued. However, this implementation has two problems: · Most links from the same web page are linked back to the same host. In Figure 9-5, all the links in wikipedia.com are internal links, making the crawler busy processing URLs from the same host (wikipedia.com). When the crawler tries to download web pages in
+
+- parallel, Wikipedia servers will be flooded with requests. This is considered as "impolite".
+
+![Image](output/image_000104_f3b684904d9ed32a304b53d689cfc2cfabc6924ca093e1559d88d44286cd772b.png)
+
+Figure 9-5
+
+· Standard BFS does not take the priority of a URL into consideration. The web is large and not every page has the same level of quality and importance. Therefore, we may want to prioritize URLs according to their page ranks, web traffic, update frequency, etc.
+
+## URL frontier
+
+URL frontier helps to address these problems. A URL frontier is a data structure that stores URLs to be downloaded. The URL frontier is an important component to ensure politeness, URL prioritization, and freshness. A few noteworthy papers on URL frontier are mentioned in the reference materials [5] [9]. The findings from these papers are as follows:
+
+## Politeness
+
+Generally, a web crawler should avoid sending too many requests to the same hosting server within a short period. Sending too many requests is considered as "impolite" or even treated as denial-of-service (DOS) attack. For example, without any constraint, the crawler can send thousands of requests every second to the same website. This can overwhelm the web servers. The general idea of enforcing politeness is to download one page at a time from the same host. A delay can be added between two download tasks. The politeness constraint is implemented by maintain a mapping from website hostnames to download (worker) threads. Each downloader thread has a separate FIFO queue and only downloads URLs obtained from that queue. Figure 9-6 shows the design that manages politeness.
+
+![Image](output/image_000105_c2ec54bae21f6bed17f4d15dff9688a0139df0f0fd2ea4da7ab1e509b6554fce.png)
+
+· Queue router: It ensures that each queue (b1, b2, … bn) only contains URLs from the same host. · Mapping table: It maps each host to a queue.
+
+| Host          | Queue   |
+|---------------|---------|
+| wikipedia.com | b1      |
+| apple.com     | b2      |
+| nike.com      | bn      |
+
+## Table 9-1
+
+· FIFO queues b1, b2 to bn: Each queue contains URLs from the same host. · Queue selector: Each worker thread is mapped to a FIFO queue, and it only downloads URLs from that queue. The queue selection logic is done by the Queue selector.
+
+- Worker thread 1 to N. A worker thread downloads web pages one by one from the same host. A delay can be added between two download tasks.
+
+## Priority
+
+A random post from a discussion forum about Apple products carries very different weight than posts on the Apple home page. Even though they both have the "Apple" keyword, it is sensible for a crawler to crawl the Apple home page first. We prioritize URLs based on usefulness, which can be measured by PageRank [10], website traffic, update frequency, etc. "Prioritizer" is the component that handles URL prioritization. Refer to the reference materials [5] [10] for in-depth information about this concept. Figure 9-7 shows the design that manages URL priority.
+
+![Image](output/image_000106_191bb22cb930e7234af964abede2df2e5737e7032258a5a40924b95ca20bd60a.png)
+
+- Prioritizer: It takes URLs as input and computes the priorities.
+- Queue f1 to fn: Each queue has an assigned priority. Queues with high priority are selected with higher probability.
+- Queue selector: Randomly choose a queue with a bias towards queues with higher priority.
+
+Figure 9-8 presents the URL frontier design, and it contains two modules:
+
+- Front queues: manage prioritization
+- Back queues: manage politeness
+
+## Freshness
+
+Web pages are constantly being added, deleted, and edited. A web crawler must periodically recrawl downloaded pages to keep our data set fresh. Recrawl all the URLs is time-
+
+consuming and resource intensive. Few strategies to optimize freshness are listed as follows:
+
+![Image](output/image_000107_c1ddff84e4b2f7fc0196419d9a0c62edbe40d80368bb960b797621ae4916befe.png)
+
+· Recrawl based on web pages' update history. · Prioritize URLs and recrawl important pages first and more frequently.
+
+## Storage for URL Frontier
+
+In real-world crawl for search engines, the number of URLs in the frontier could be hundreds of millions [4]. Putting everything in memory is neither durable nor scalable. Keeping everything in the disk is undesirable neither because the disk is slow; and it can easily become a bottleneck for the crawl. We adopted a hybrid approach. The majority of URLs are stored on disk, so the storage space is not a problem. To reduce the cost of reading from the disk and writing to the disk, we maintain buffers in memory for enqueue/dequeue operations. Data in the buffer is periodically written to the disk.
+
+## HTML Downloader
+
+The HTML Downloader downloads web pages from the internet using the HTTP protocol. Before discussing the HTML Downloader, we look at Robots Exclusion Protocol first.
+
+## Robots.txt
+
+Robots.txt, called Robots Exclusion Protocol, is a standard used by websites to communicate with crawlers. It specifies what pages crawlers are allowed to download. Before attempting to crawl a web site, a crawler should check its corresponding robots.txt first and follow its rules. To avoid repeat downloads of robots.txt file, we cache the results of the file. The file is downloaded and saved to cache periodically. Here is a piece of robots.txt file taken from https://www.amazon.com/robots.txt. Some of the directories like creatorhub are disallowed for Google bot. User-agent: Googlebot Disallow: /creatorhub/* Disallow: /rss/people/*/reviews Disallow: /gp/pdp/rss/*/reviews Disallow: /gp/cdp/member-reviews/ Disallow: /gp/aw/cr/ Besides robots.txt, performance optimization is another important concept we will cover for
+
+the HTML downloader.
+
+## Performance optimization
+
+Below is a list of performance optimizations for HTML downloader.
+
+## 1. Distributed crawl
+
+To achieve high performance, crawl jobs are distributed into multiple servers, and each server runs multiple threads. The URL space is partitioned into smaller pieces; so, each downloader is responsible for a subset of the URLs. Figure 9-9 shows an example of a distributed crawl.
+
+![Image](output/image_000108_fc0bba2ba2f00619d93f731dbaa35ca96f8618e89f6a52704ae62fe77db9b3d4.png)
+
+2. Cache DNS Resolver
+
+DNS Resolver is a bottleneck for crawlers because DNS requests might take time due to the synchronous nature of many DNS interfaces. DNS response time ranges from 10ms to 200ms. Once a request to DNS is carried out by a crawler thread, other threads are blocked until the first request is completed. Maintaining our DNS cache to avoid calling DNS frequently is an effective technique for speed optimization. Our DNS cache keeps the domain name to IP address mapping and is updated periodically by cron jobs.
+
+## 3. Locality
+
+Distribute crawl servers geographically. When crawl servers are closer to website hosts, crawlers experience faster download time. Design locality applies to most of the system components: crawl servers, cache, queue, storage, etc.
+
+## 4. Short timeout
+
+Some web servers respond slowly or may not respond at all. To avoid long wait time, a maximal wait time is specified. If a host does not respond within a predefined time, the crawler will stop the job and crawl some other pages.
+
+## Robustness
+
+Besides performance optimization, robustness is also an important consideration. We present
+
+a few approaches to improve the system robustness: · Consistent hashing: This helps to distribute loads among downloaders. A new downloader server can be added or removed using consistent hashing. Refer to Chapter 5: Design consistent hashing for more details. · Save crawl states and data: To guard against failures, crawl states and data are written to a storage system. A disrupted crawl can be restarted easily by loading saved states and data.
+
+- Exception handling: Errors are inevitable and common in a large-scale system. The
+
+crawler must handle exceptions gracefully without crashing the system.
+
+- Data validation: This is an important measure to prevent system errors.
+
+## Extensibility
+
+As almost every system evolves, one of the design goals is to make the system flexible enough to support new content types. The crawler can be extended by plugging in new modules. Figure 9-10 shows how to add new modules.
+
+![Image](output/image_000109_778a4691a654cfcf2ae99911a60cda1962e78438de8890ef7218124c9c4607de.png)
+
+· PNG Downloader module is plugged-in to download PNG files. · Web Monitor module is added to monitor the web and prevent copyright and trademark infringements. Figure 9-10
+
+## Detect and avoid problematic content
+
+This section discusses the detection and prevention of redundant, meaningless, or harmful content.
+
+## 1. Redundant content
+
+As discussed previously, nearly 30% of the web pages are duplicates. Hashes or checksums help to detect duplication [11].
+
+2. Spider traps
+
+A spider trap is a web page that causes a crawler in an infinite loop. For instance, an infinite deep directory structure is listed as follows: www.spidertrapexample.com/foo/bar/foo/bar/foo/bar/… Such spider traps can be avoided by setting a maximal length for URLs. However, no onesize-fits-all solution exists to detect spider traps. Websites containing spider traps are easy to identify due to an unusually large number of web pages discovered on such websites. It is hard to develop automatic algorithms to avoid spider traps; however, a user can manually verify and identify a spider trap, and either exclude those websites from the crawler or apply some customized URL filters.
+
+3. Data noise
+
+Some of the contents have little or no value, such as advertisements, code snippets, spam URLs, etc. Those contents are not useful for crawlers and should be excluded if possible.
+
+## Step 4 - Wrap up
+
+In this chapter, we first discussed the characteristics of a good crawler: scalability, politeness, extensibility, and robustness. Then, we proposed a design and discussed key components. Building a scalable web crawler is not a trivial task because the web is enormously large and full of traps. Even though we have covered many topics, we still miss many relevant talking points: · Server-side rendering: Numerous websites use scripts like JavaScript, AJAX, etc to generate links on the fly. If we download and parse web pages directly, we will not be able to retrieve dynamically generated links. To solve this problem, we perform server-side rendering (also called dynamic rendering) first before parsing a page [12]. · Filter out unwanted pages: With finite storage capacity and crawl resources, an anti-spam component is beneficial in filtering out low quality and spam pages [13] [14]. · Database replication and sharding: Techniques like replication and sharding are used to improve the data layer availability, scalability, and reliability. · Horizontal scaling: For large scale crawl, hundreds or even thousands of servers are needed to perform download tasks. The key is to keep servers stateless. · Availability, consistency, and reliability: These concepts are at the core of any large system's success. We discussed these concepts in detail in Chapter 1. Refresh your memory on these topics. · Analytics: Collecting and analyzing data are important parts of any system because data is key ingredient for fine-tuning.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] US Library of Congress: https://www.loc.gov/websites/ [2] EU Web Archive: http://data.europa.eu/webarchive [3] Digimarc: https://www.digimarc.com/products/digimarc-services/piracy-intelligence [4] Heydon A., Najork M. Mercator: A scalable, extensible web crawler World Wide Web, 2 (4) (1999), pp. 219-229 [5] By Christopher Olston, Marc Najork: Web Crawling. http://infolab.stanford.edu/~olston/publications/crawling\_survey.pdf [6] 29% Of Sites Face Duplicate Content Issues: https://tinyurl.com/y6tmh55y [7] Rabin M.O., et al. Fingerprinting by random polynomials Center for Research in Computing Techn., Aiken Computation Laboratory, Univ. (1981) [8] B. H. Bloom, "Space/time trade-offs in hash coding with allowable errors," Communications of the ACM, vol. 13, no. 7, pp. 422-426, 1970. [9] Donald J. Patterson, Web Crawling: https://www.ics.uci.edu/~lopes/teaching/cs221W12/slides/Lecture05.pdf [10] L. Page, S. Brin, R. Motwani, and T. Winograd, "The PageRank citation ranking: Bringing order to the web," Technical Report, Stanford University, 1998. [11] Burton Bloom. Space/time trade-offs in hash coding with allowable errors. Communications of the ACM, 13(7), pages 422--426, July 1970. [12] Google Dynamic Rendering: https://developers.google.com/search/docs/guides/dynamic-rendering [13] T. Urvoy, T. Lavergne, and P. Filoche, "Tracking web spam with hidden style similarity," in Proceedings of the 2nd International Workshop on Adversarial Information Retrieval on the Web, 2006. [14] H.-T. Lee, D. Leonard, X. Wang, and D. Loguinov, "IRLbot: Scaling to 6 billion pages and beyond," in Proceedings of the 17th International World Wide Web Conference, 2008.
+
+## CHAPTER 10: DESIGN A NOTIFICATION SYSTEM
+
+A notification system has already become a very popular feature for many applications in recent years. A notification alerts a user with important information like breaking news, product updates, events, offerings, etc. It has become an indispensable part of our daily life. In this chapter, you are asked to design a notification system.
+
+A notification is more than just mobile push notification. Three types of notification formats are: mobile push notification, SMS message, and Email. Figure 10-1 shows an example of each of these notifications.
+
+Figure 10-1
+
+![Image](output/image_000110_92e87718283dd83f2c15cd2c450de6431eed77383e49d732c26a474647ac4c76.png)
+
+## Step 1 - Understand the problem and establish design scope
+
+Building a scalable system that sends out millions of notifications a day is not an easy task. It requires a deep understanding of the notification ecosystem. The interview question is purposely designed to be open-ended and ambiguous, and it is your responsibility to ask questions to clarify the requirements. Candidate: What types of notifications does the system support? Interviewer: Push notification, SMS message, and email. Candidate: Is it a real-time system? Interviewer: Let us say it is a soft real-time system. We want a user to receive notifications as soon as possible. However, if the system is under a high workload, a slight delay is acceptable. Candidate: What are the supported devices? Interviewer: iOS devices, android devices, and laptop/desktop. Candidate: What triggers notifications? Interviewer: Notifications can be triggered by client applications. They can also be scheduled on the server-side. Candidate: Will users be able to opt-out? Interviewer: Yes, users who choose to opt-out will no longer receive notifications. Candidate: How many notifications are sent out each day? Interviewer: 10 million mobile push notifications, 1 million SMS messages, and 5 million emails.
+
+## Step 2 - Propose high-level design and get buy-in
+
+This section shows the high-level design that supports various notification types: iOS push
+
+notification, Android push notification, SMS message, and Email. It is structured as follows: · Different types of notifications · Contact info gathering flow
+
+- Notification sending/receiving flow
+
+## Different types of notifications
+
+We start by looking at how each notification type works at a high level.
+
+## iOS push notification
+
+![Image](output/image_000111_0b7d1ff6a3a6f1d47eb13f34d39972641adc0c108f13ef96f0a454cf9b139011.png)
+
+Figure 10-2
+
+We primary need three components to send an iOS push notification: · Provider. A provider builds and sends notification requests to Apple Push Notification Service (APNS). To construct a push notification, the provider provides the following data: · Device token: This is a unique identifier used for sending push notifications. · Payload: This is a JSON dictionary that contains a notification's payload. Here is an example: { "aps" : { "alert" : { "title" : "Game Request", "body" : "Bob wants to play chess", "action-loc-key" : "PLAY" } "badge": 5 } }
+
+· APNS: This is a remote service provided by Apple to propagate push notifications to iOS devices.
+
+· iOS Device: It is the end client, which receives push notifications. Android push notification
+
+Android adopts a similar notification flow. Instead of using APNs, Firebase Cloud Messaging (FCM) is commonly used to send push notifications to android devices.
+
+![Image](output/image_000112_6a903a7a2eedf36e8a35614e2cff60b8dc1f4ab40e1cc89166113f4570200d07.png)
+
+## SMS message
+
+For SMS messages, third party SMS services like Twilio [1], Nexmo [2], and many others are commonly used. Most of them are commercial services.
+
+![Image](output/image_000113_028c9789ade7593eb5520012ea5545878ceb0c38af7b395ebf9d589a0939da83.png)
+
+## Email
+
+Although companies can set up their own email servers, many of them opt for commercial email services. Sendgrid [3] and Mailchimp [4] are among the most popular email services, which offer a better delivery rate and data analytics.
+
+![Image](output/image_000114_8601ae4390d6cfcc5b22ce39d2acdcfd3bb7f6e3348b1ca7c3539335d991a85e.png)
+
+Figure 10-6 shows the design after including all the third-party services.
+
+![Image](output/image_000115_5eada585347eec12bf651bccfdca3b441fa580278af1a26ae4298aac66a5f834.png)
+
+## Contact info gathering flow
+
+To send notifications, we need to gather mobile device tokens, phone numbers, or email addresses. As shown in Figure 10-7, when a user installs our app or signs up for the first time, API servers collect user contact info and store it in the database.
+
+Figure 10-7
+
+![Image](output/image_000116_eea3aef707b18706f2350612f1549438e5b38f795444c965696bccf77bf66747.png)
+
+Figure 10-8 shows simplified database tables to store contact info. Email addresses and phone numbers are stored in the user table, whereas device tokens are stored in the device table. A
+
+user can have multiple devices, indicating that a push notification can be sent to all the user devices.
+
+Figure 10-8
+
+![Image](output/image_000117_ba07b4f4a234bb4fead9f6c1998bdbf459ae6409eb7e25ff440612be18114d8d.png)
+
+## Notification sending/receiving flow
+
+We will first present the initial design; then, propose some optimizations.
+
+## High-level design
+
+Figure 10-9 shows the design, and each system component is explained below.
+
+Figure10-9
+
+![Image](output/image_000118_d862b6000d6d4cf0bca929b8c5267efd6fe8923c2bbce2c45f3ac3649d85f75f.png)
+
+Service 1 to N: A service can be a micro-service, a cron job, or a distributed system that triggers notification sending events. For example, a billing service sends emails to remind customers of their due payment or a shopping website tells customers that their packages will be delivered tomorrow via SMS messages.
+
+Notification system: The notification system is the centerpiece of sending/receiving notifications. Starting with something simple, only one notification server is used. It provides APIs for services 1 to N, and builds notification payloads for third party services. Third-party services: Third party services are responsible for delivering notifications to users. While integrating with third-party services, we need to pay extra attention to extensibility. Good extensibility means a flexible system that can easily plugging or unplugging of a third-party service. Another important consideration is that a third-party service might be unavailable in new markets or in the future. For instance, FCM is unavailable in China. Thus, alternative third-party services such as Jpush, PushY, etc are used there. iOS, Android, SMS, Email: Users receive notifications on their devices. Three problems are identified in this design: · Single point of failure (SPOF): A single notification server means SPOF. · Hard to scale: The notification system handles everything related to push notifications in one server. It is challenging to scale databases, caches, and different notification processing components independently. · Performance bottleneck: Processing and sending notifications can be resource intensive. For example, constructing HTML pages and waiting for responses from third party services could take time. Handling everything in one system can result in the system overload, especially during peak hours.
+
+## High-level design (improved)
+
+After enumerating challenges in the initial design, we improve the design as listed below: · Move the database and cache out of the notification server. · Add more notification servers and set up automatic horizontal scaling. · Introduce message queues to decouple the system components. Figure 10-10 shows the improved high-level design.
+
+![Image](output/image_000119_f99b152fe6317eb2b1f366d452ced8073c9b2c3db9b7652274549237077330dc.png)
+
+Figure 10-10
+
+The best way to go through the above diagram is from left to right: Service 1 to N: They represent different services that send notifications via APIs provided by notification servers. Notification servers: They provide the following functionalities: · Provide APIs for services to send notifications. Those APIs are only accessible internally or by verified clients to prevent spams. · Carry out basic validations to verify emails, phone numbers, etc. · Query the database or cache to fetch data needed to render a notification. · Put notification data to message queues for parallel processing. Here is an example of the API to send an email: POST https://api.example.com/v/sms/send
+
+## Request body
+
+```
+{ "to": [ { "user_id":123456 } 1, "from": { "email": "from_address@example.com" }, "subject": "Hello, World!", "content": [ { "type": "text/plain", "value":"Hello, World!" } ] }
+```
+
+Cache: User info, device info, notification templates are cached.
+
+DB: It stores data about user, notification, settings, etc.
+
+Message queues: They remove dependencies between components. Message queues serve as buffers when high volumes of notifications are to be sent out. Each notification type is assigned with a distinct message queue so an outage in one third-party service will not affect other notification types.
+
+Workers: Workers are a list of servers that pull notification events from message queues and send them to the corresponding third-party services.
+
+Third-party services: Already explained in the initial design.
+
+iOS, Android, SMS, Email: Already explained in the initial design.
+
+Next, let us examine how every component works together to send a notification:
+
+1. A service calls APIs provided by notification servers to send notifications.
+2. Notification servers fetch metadata such as user info, device token, and notification setting from the cache or database.
+3. A notification event is sent to the corresponding queue for processing. For instance, an iOS push notification event is sent to the iOS PN queue.
+4. Workers pull notification events from message queues.
+5. Workers send notifications to third party services.
+6. Third-party services send notifications to user devices.
+
+## Step 3 - Design deep dive
+
+In the high-level design, we discussed different types of notifications, contact info gathering
+
+flow, and notification sending/receiving flow. We will explore the following in deep dive: · Reliability. · Additional component and considerations: notification template, notification settings, rate limiting, retry mechanism, security in push notifications, monitor queued notifications
+
+and event tracking.
+
+- Updated design.
+
+## Reliability
+
+We must answer a few important reliability questions when designing a notification system in distributed environments.
+
+## How to prevent data loss?
+
+One of the most important requirements in a notification system is that it cannot lose data. Notifications can usually be delayed or re-ordered, but never lost. To satisfy this requirement, the notification system persists notification data in a database and implements a retry mechanism. The notification log database is included for data persistence, as shown in Figure 10-11.
+
+![Image](output/image_000120_ebfdd963451076e5926b42968066210293155d0ef686f2d3fd877a64508e6df4.png)
+
+## Will recipients receive a notification exactly once?
+
+The short answer is no. Although notification is delivered exactly once most of the time, the distributed nature could result in duplicate notifications. To reduce the duplication occurrence, we introduce a dedupe mechanism and handle each failure case carefully. Here is a simple dedupe logic: When a notification event first arrives, we check if it is seen before by checking the event ID. If it is seen before, it is discarded. Otherwise, we will send out the notification. For interested readers to explore why we cannot have exactly once delivery, refer to the reference material [5].
+
+## Additional components and considerations
+
+We have discussed how to collect user contact info, send, and receive a notification. A notification system is a lot more than that. Here we discuss additional components including template reusing, notification settings, event tracking, system monitoring, rate limiting, etc.
+
+## Notification template
+
+A large notification system sends out millions of notifications per day, and many of these notifications follow a similar format. Notification templates are introduced to avoid building every notification from scratch. A notification template is a preformatted notification to create your unique notification by customizing parameters, styling, tracking links, etc. Here is an example template of push notifications. BODY: You dreamed of it. We dared it. [ITEM NAME] is back - only until [DATE]. CTA: Order Now. Or, Save My [ITEM NAME] The benefits of using notification templates include maintaining a consistent format, reducing
+
+the margin error, and saving time. Notification setting Users generally receive way too many notifications daily and they can easily feel overwhelmed. Thus, many websites and apps give users fine-grained control over notification settings. This information is stored in the notification setting table, with the following fields: user\_id bigInt channel varchar # push notification, email or SMS opt\_in boolean # opt-in to receive notification Before any notification is sent to a user, we first check if a user is opted-in to receive this type of notification. Rate limiting To avoid overwhelming users with too many notifications, we can limit the number of notifications a user can receive. This is important because receivers could turn off notifications completely if we send too often. Retry mechanism When a third-party service fails to send a notification, the notification will be added to the message queue for retrying. If the problem persists, an alert will be sent out to developers. Security in push notifications For iOS or Android apps, appKey and appSecret are used to secure push notification APIs [6]. Only authenticated or verified clients are allowed to send push notifications using our APIs. Interested users should refer to the reference material [6]. Monitor queued notifications A key metric to monitor is the total number of queued notifications. If the number is large,
+
+the notification events are not processed fast enough by workers. To avoid delay in the notification delivery, more workers are needed. Figure 10-12 (credit to [7]) shows an example of queued messages to be processed.
+
+## Events tracking

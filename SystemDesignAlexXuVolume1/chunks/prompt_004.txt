@@ -1,0 +1,704 @@
+Bạn là chuyên gia dịch thuật kỹ thuật Anh → Việt, chuyên tài liệu kỹ thuật/công nghệ, có kinh nghiệm dịch như biên dịch viên bản ngữ chuyên nghiệp. Nhiệm vụ: dịch TOÀN BỘ nội dung Markdown dưới đây sang tiếng Việt, không bỏ sót bất kỳ phần nào. Đây là MỘT PHẦN (chunk) của một tài liệu lớn hơn, hãy dịch độc lập đoạn này, không thêm lời mở đầu/kết luận về việc đây chỉ là một phần.
+
+QUY TẮC BẮT BUỘC — VI PHẠM LÀ SAI:
+
+1. XÁC ĐỊNH LOẠI TÀI LIỆU TRƯỚC KHI DỊCH
+   - Tự phân tích nội dung để xác định loại tài liệu (kỹ thuật/lập trình, tài chính, bảo hiểm, pháp lý, marketing, học thuật, vận hành, sản phẩm...).
+   - Chọn văn phong và thuật ngữ CHUẨN NGÀNH tương ứng trong tiếng Việt, nhất quán xuyên suốt.
+
+2. VĂN PHONG — MƯỢT NHƯ NGƯỜI DỊCH, KHÔNG GIẢM CHÍNH XÁC
+   - Dịch mượt, tự nhiên, đúng ngữ pháp tiếng Việt — như biên dịch viên bản ngữ dịch tay, KHÔNG dịch máy móc kiểu word-by-word.
+   - Được phép đảo cấu trúc câu, tách/gộp câu cho tự nhiên, miễn giữ nguyên 100% ý nghĩa, thông tin, logic, số liệu gốc.
+   - Khi "mượt mà" và "chính xác" xung đột → LUÔN ưu tiên chính xác.
+
+3. DỊCH ĐẦY ĐỦ 100%
+   - Không tóm tắt, không rút gọn, không lược bỏ đoạn/câu/mục/bullet nào.
+   - Số lượng heading, đoạn văn, bảng, code block ở output PHẢI khớp 1:1 với input.
+   - Đoạn dài dịch hết, không cắt ngắn.
+
+4. GIỮ NGUYÊN THUẬT NGỮ TIẾNG ANH
+   - Thuật ngữ chuyên ngành (tên công nghệ, framework, pattern, tên hàm/biến, acronym...) giữ nguyên tiếng Anh, không dịch, không phiên âm.
+   - Ngay sau lần xuất hiện ĐẦU TIÊN của mỗi thuật ngữ, thêm chú thích ngắn trong ngoặc giải thích nghĩa bằng tiếng Việt.
+   - Các lần xuất hiện sau KHÔNG cần chú thích lại.
+
+5. GIỮ NGUYÊN FORMAT — RẤT QUAN TRỌNG
+   - VỀ ẢNH (làm trước khi dịch): ĐẾM chính xác số lượng thẻ ảnh dạng ![...](...) trong đoạn gốc bên dưới. Output PHẢI có ĐÚNG số lượng thẻ ảnh đó, không được thiếu một cái nào — kể cả ảnh không có caption, không rõ ngữ cảnh, hay trông như ảnh trang trí/lặp lại. Copy nguyên URL 100%, không sửa, không rút gọn, không thay bằng mô tả text.
+   - Giữ cấp độ heading (#, ##, ###...), giữ đúng số lượng heading.
+   - Giữ cấu trúc bảng (số cột, số hàng, alignment, header row).
+   - Giữ code block (```lang ... ```) — KHÔNG dịch code; comment được dịch tại chỗ; **được phép reformat code, tự động xuống dòng/indent chuẩn, không giữ nguyên code 1 dòng; không đổi logic/cú pháp**.
+   - Giữ blockquote, callout/note/warning (>, [!NOTE], [!WARNING]...).
+   - Giữ list, nested list, checkbox (- [ ]).
+   - Giữ nguyên link thường ([text](url)) — chỉ dịch phần text hiển thị, TUYỆT ĐỐI giữ nguyên URL.
+   - TRƯỚC KHI TRẢ KẾT QUẢ: tự đếm lại số heading, số ảnh, số dòng ``` giữa bản gốc và bản dịch (KHÔNG tính fence 4 backtick ngoài cùng), nếu lệch phải sửa lại cho khớp.
+
+6. GIẢI THÍCH ẨN DỤ / KHÁI NIỆM KHÓ
+   - Với ẩn dụ, thành ngữ, khái niệm trừu tượng khó hiểu với người Việt, thêm khối giải thích riêng ngay sau đoạn đó:
+     > 💡 **Giải thích thêm:** [giải thích dễ hiểu, đủ chuyên sâu, có ví dụ thực tế]
+     > Nguồn tham khảo: [link cụ thể để kiểm chứng]
+   - CHỈ đưa link nếu chắc chắn tồn tại và đúng nội dung — không bịa link.
+   - Không tìm được nguồn tin cậy → ghi rõ: "(Không có nguồn trích dẫn xác thực — cần tự kiểm chứng thêm)".
+
+7. CHỐNG HALLUCINATION (BẮT BUỘC)
+   - Không tự thêm thông tin/số liệu/ví dụ/kết luận KHÔNG có trong bản gốc — trừ phần giải thích ẩn dụ ở mục 6 (phải gắn nhãn rõ là phần bổ sung).
+   - Câu gốc mơ hồ → dịch sát nghĩa nhất, nếu không chắc ghi chú: "[CẦN KIỂM CHỨNG: câu gốc mơ hồ]".
+   - Không tự sửa/thêm/bớt logic kỹ thuật gốc. Không bịa trích dẫn/số liệu/link vô căn cứ.
+   - Không tự tóm tắt các đoạn dài thành ý chính rồi diễn giải lại — phải dịch từng câu.
+
+8. OUTPUT
+   - Trả về DUY NHẤT nội dung Markdown đã dịch, bọc trong MỘT khối code ngoài cùng dùng đúng 4 dấu backtick: dòng đầu là ````markdown, dòng cuối là ````.
+   - Lý do: bên trong có thể chứa code block 3 backtick (```json ... ```). Fence ngoài PHẢI dài hơn fence trong, nếu không khối ngoài sẽ bị đóng sớm.
+   - CẤM dùng 3 backtick cho fence ngoài cùng. Các code block bên trong giữ nguyên 3 backtick như bản gốc.
+   - Nếu bản gốc có fence từ 4 backtick trở lên, fence ngoài dùng nhiều hơn fence dài nhất bên trong ít nhất 1 backtick.
+   - Toàn bộ kết quả nằm trong MỘT khối duy nhất: không đóng/mở lại giữa chừng, không có chữ nào ngoài khối.
+   - Không đổi tiêu đề gốc trừ khi cần dịch tiêu đề.
+
+--- NỘI DUNG GỐC CẦN DỊCH (một phần của tài liệu) ---
+
+Notification metrics, such as open rate, click rate, and engagement are important in understanding customer behaviors. Analytics service implements events tracking. Integration between the notification system and the analytics service is usually required. Figure 10-13 shows an example of events that might be tracked for analytics purposes.
+
+![Image](output/image_000121_8ee6e6f8e8a3a739dde291d20153c2a375c70a82c3ad1463cce05b284fc2d233.png)
+
+## Updated design
+
+Putting everything together, Figure 10-14 shows the updated notification system design.
+
+![Image](output/image_000122_9f35fe57a51138af5ad67eac44278642412a689bf05c0be1079ac33d30119b3a.png)
+
+Figure 10-12
+
+![Image](output/image_000123_8d50e4d444370c36a9575f4cdd619fc66908ce639f8433edfb90d0b72b6ac33a.png)
+
+Figure 10-14
+
+In this design, many new components are added in comparison with the previous design. · The notification servers are equipped with two more critical features: authentication and rate-limiting. · We also add a retry mechanism to handle notification failures. If the system fails to send notifications, they are put back in the messaging queue and the workers will retry for a predefined number of times. · Furthermore, notification templates provide a consistent and efficient notification creation process. · Finally, monitoring and tracking systems are added for system health checks and future improvements.
+
+## Step 4 - Wrap up
+
+Notifications are indispensable because they keep us posted with important information. It could be a push notification about your favorite movie on Netflix, an email about discounts on new products, or a message about your online shopping payment confirmation. In this chapter, we described the design of a scalable notification system that supports multiple notification formats: push notification, SMS message, and email. We adopted message queues to decouple system components. Besides the high-level design, we dug deep into more components and optimizations. · Reliability: We proposed a robust retry mechanism to minimize the failure rate. · Security: AppKey/appSecret pair is used to ensure only verified clients can send notifications. · Tracking and monitoring: These are implemented in any stage of a notification flow to capture important stats. · Respect user settings: Users may opt-out of receiving notifications. Our system checks user settings first before sending notifications. · Rate limiting: Users will appreciate a frequency capping on the number of notifications they receive.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Twilio SMS: https://www.twilio.com/sms [2] Nexmo SMS: https://www.nexmo.com/products/sms [3] Sendgrid: https://sendgrid.com/ [4] Mailchimp: https://mailchimp.com/ [5] You Cannot Have Exactly-Once Delivery: https://bravenewgeek.com/you-cannot-haveexactly-once-delivery/ [6] Security in Push Notifications: https://cloud.ibm.com/docs/services/mobilepush? topic=mobile-pushnotification-security-in-push-notifications [7] RadditMQ: https://bit.ly/2sotIa6
+
+## CHAPTER 11: DESIGN A NEWS FEED SYSTEM
+
+In this chapter, you are asked to design a news feed system. What is news feed? According to the Facebook help page, "News feed is the constantly updating list of stories in the middle of your home page. News Feed includes status updates, photos, videos, links, app activity, and likes from people, pages, and groups that you follow on Facebook" [1]. This is a popular interview question. Similar questions commonly asked are: design Facebook news feed, Instagram feed, Twitter timeline, etc.
+
+Figure 11-1 (source : https://bit.ly/2Vv9JCm)
+
+![Image](output/image_000124_cf8aed63a4304b933668c40ea2ba4cd5186ed3bc4d1558811db9fc2f254afb93.png)
+
+## Step 1 - Understand the problem and establish design scope
+
+The first set of clarification questions are to understand what the interviewer has in mind when she asks you to design a news feed system. At the very least, you should figure out what features to support. Here is an example of candidate-interviewer interaction: Candidate: Is this a mobile app? Or a web app? Or both? Interviewer: Both Candidate: What are the important features? Interview: A user can publish a post and see her friends' posts on the news feed page. Candidate: Is the news feed sorted by reverse chronological order or any particular order such as topic scores? For instance, posts from your close friends have higher scores. Interviewer: To keep things simple, let us assume the feed is sorted by reverse chronological order. Candidate: How many friends can a user have? Interviewer: 5000 Candidate: What is the traffic volume? Interviewer: 10 million DAU Candidate: Can feed contain images, videos, or just text? Interviewer: It can contain media files, including both images and videos. Now you have gathered the requirements, we focus on designing the system.
+
+## Step 2 - Propose high-level design and get buy-in
+
+The design is divided into two flows: feed publishing and news feed building. and database. A post is populated to her friends' news feed. · Newsfeed building: for simplicity, let us assume the news feed is built by aggregating
+
+· Feed publishing: when a user publishes a post, corresponding data is written into cache friends' posts in reverse chronological order. Newsfeed APIs The news feed APIs are the primary ways for clients to communicate with servers. Those APIs are HTTP based that allow clients to perform actions, which include posting a status, retrieving news feed, adding friends, etc. We discuss two most important APIs: feed publishing API and news feed retrieval API. Feed publishing API To publish a post, a HTTP POST request will be sent to the server. The API is shown below: POST /v1/me/feed Params: · content: content is the text of the post. · auth\_token: it is used to authenticate API requests. Newsfeed retrieval API The API to retrieve news feed is shown below: GET /v1/me/feed Params: · auth\_token: it is used to authenticate API requests. Feed publishing
+
+Figure 11-2 shows the high-level design of the feed publishing flow.
+
+![Image](output/image_000125_f284d07bcbaf6df45b19d269597a7634d211bdee685d8ec6a95f7caf3d5a162f.png)
+
+· User: a user can view news feeds on a browser or mobile app. A user makes a post with Figure 11-2
+
+· Load balancer: distribute traffic to web servers. · Web servers: web servers redirect traffic to different internal services. · Post service: persist post in the database and cache. · Fanout service: push new content to friends' news feed. Newsfeed data is stored in the cache for fast retrieval. · Notification service: inform friends that new content is available and send out push
+
+content "Hello" through API: /v1/me/feed?content=Hello&amp;auth\_token={auth\_token} notifications.
+
+## Newsfeed building
+
+In this section, we discuss how news feed is built behind the scenes. Figure 11-3 shows the high-level design:
+
+![Image](output/image_000126_819cd659d354dff92ed42e13446c3d87f26524248ab02e644487b8bf649d46db.png)
+
+Figure 11-3
+
+· User: a user sends a request to retrieve her news feed. The request looks like this: / v1/me/feed. · Load balancer: load balancer redirects traffic to web servers. · Web servers: web servers route requests to newsfeed service. · Newsfeed service: news feed service fetches news feed from the cache. · Newsfeed cache: store news feed IDs needed to render the news feed.
+
+## Step 3 - Design deep dive
+
+The high-level design briefly covered two flows: feed publishing and news feed building. Here, we discuss those topics in more depth.
+
+## Feed publishing deep dive
+
+Figure 11-4 outlines the detailed design for feed publishing. We have discussed most of components in high-level design, and we will focus on two components: web servers and fanout service.
+
+Figure 11-4
+
+![Image](output/image_000127_5ef1c22359c2ebfc5fadde7d6b7f78f04d990700978c956336328f129004bb66.png)
+
+## Web servers
+
+Besides communicating with clients, web servers enforce authentication and rate-limiting.
+
+Only users signed in with valid auth\_token are allowed to make posts. The system limits the number of posts a user can make within a certain period, vital to prevent spam and abusive content. Fanout service Fanout is the process of delivering a post to all friends. Two types of fanout models are: fanout on write (also called push model) and fanout on read (also called pull model). Both models have pros and cons. We explain their workflows and explore the best approach to support our system. Fanout on write. With this approach, news feed is pre-computed during write time. A new post is delivered to friends' cache immediately after it is published. Pros: · The news feed is generated in real-time and can be pushed to friends immediately. · Fetching news feed is fast because the news feed is pre-computed during write time. Cons: · If a user has many friends, fetching the friend list and generating news feeds for all of them are slow and time consuming. It is called hotkey problem. · For inactive users or those rarely log in, pre-computing news feeds waste computing resources. Fanout on read. The news feed is generated during read time. This is an on-demand model. Recent posts are pulled when a user loads her home page. Pros: · For inactive users or those who rarely log in, fanout on read works better because it will not waste computing resources on them. · Data is not pushed to friends so there is no hotkey problem. Cons: · Fetching the news feed is slow as the news feed is not pre-computed. We adopt a hybrid approach to get benefits of both approaches and avoid pitfalls in them. Since fetching the news feed fast is crucial, we use a push model for the majority of users. For celebrities or users who have many friends/followers, we let followers pull news content on-demand to avoid system overload. Consistent hashing is a useful technique to mitigate the hotkey problem as it helps to distribute requests/data more evenly. Let us take a close look at the fanout service as shown in Figure 11-5.
+
+![Image](output/image_000128_5ba9c8d3eb8abf0ea5afc16bd680e28eda20221838a0bdf33afed6281ee91a22.png)
+
+The fanout service works as follows: Figure 11-5
+
+1. Fetch friend IDs from the graph database. Graph databases are suited for managing
+
+friend relationship and friend recommendations. Interested readers wishing to learn more about this concept should refer to the reference material [2]. 2. Get friends info from the user cache. The system then filters out friends based on user settings. For example, if you mute someone, her posts will not show up on your news feed even though you are still friends. Another reason why posts may not show is that a user could selectively share information with specific friends or hide it from other people. 3. Send friends list and new post ID to the message queue. 4. Fanout workers fetch data from the message queue and store news feed data in the news feed cache. You can think of the news feed cache as a &lt;post\_id, user\_id&gt; mapping table. Whenever a new post is made, it will be appended to the news feed table as shown in Figure 11-6. The memory consumption can become very large if we store the entire user and post objects in the cache. Thus, only IDs are stored. To keep the memory size small, we set a configurable limit. The chance of a user scrolling through thousands of posts in news feed is slim. Most users are only interested in the latest content, so the cache miss rate is low. 5. Store &lt;post\_id, user\_id &gt; in news feed cache. Figure 11-6 shows an example of what the news feed looks like in cache.
+
+| post_id   | user_id   |
+|-----------|-----------|
+| post_id   | uirerd    |
+| post_id   | ui rerd   |
+| p! tsod   | u!red     |
+| pi tsd    | uirerd    |
+| post_id   | uirerd    |
+| pi tsod   | user_id   |
+| pi tsod   |           |
+
+## Figure 11-6
+
+## Newsfeed retrieval deep dive
+
+Figure 11-7 illustrates the detailed design for news feed retrieval.
+
+Figure 11-7
+
+![Image](output/image_000129_d9a861782c7ae8648107957746d5f45c9da2077e4d581d37fddf20afa0e1d721.png)
+
+As shown in Figure 11-7, media content (images, videos, etc.) are stored in CDN for fast retrieval. Let us look at how a client retrieves news feed.
+
+1. A user sends a request to retrieve her news feed. The request looks like this: /v1/me/feed 2. The load balancer redistributes requests to web servers. 3. Web servers call the news feed service to fetch news feeds. 4. News feed service gets a list post IDs from the news feed cache. 5. A user's news feed is more than just a list of feed IDs. It contains username, profile picture, post content, post image, etc. Thus, the news feed service fetches the complete user and post objects from caches (user cache and post cache) to construct the fully hydrated news feed.
+
+6. The fully hydrated news feed is returned in JSON format back to the client for rendering.
+
+## Cache architecture
+
+Cache is extremely important for a news feed system. We divide the cache tier into 5 layers as shown in Figure 11-8.
+
+![Image](output/image_000130_3c9ded48c8b31b8cbc5c534fca8a9948547bba75f5c5ce899148222c19173a44.png)
+
+· News Feed: It stores IDs of news feeds. · Content: It stores every post data. Popular content is stored in hot cache. · Social Graph: It stores user relationship data. · Action: It stores info about whether a user liked a post, replied a post, or took other actions on a post. · Counters: It stores counters for like, reply, follower, following, etc.
+
+## Step 4 - Wrap up
+
+In this chapter, we designed a news feed system. Our design contains two flows: feed publishing and news feed retrieval. Like any system design interview questions, there is no perfect way to design a system. Every company has its unique constraints, and you must design a system to fit those constraints. Understanding the tradeoffs of your design and technology choices are important. If there are a few minutes left, you can talk about scalability issues. To avoid duplicated discussion, only high-level talking points are listed below. Scaling the database: · Vertical scaling vs Horizontal scaling · SQL vs NoSQL · Master-slave replication · Read replicas · Consistency models · Database sharding Other talking points: · Keep web tier stateless · Cache data as much as you can · Support multiple data centers · Lose couple components with message queues · Monitor key metrics. For instance, QPS during peak hours and latency while users refreshing their news feed are interesting to monitor. Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] How News Feed Works: https://www.facebook.com/help/327131014036297/ [2] Friend of Friend recommendations Neo4j and SQL Sever: http://geekswithblogs.net/brendonpage/archive/2015/10/26/friend-of-friend-
+
+[recommendations-with-neo4j.aspx](http://geekswithblogs.net/brendonpage/archive/2015/10/26/friend-of-friend-recommendations-with-neo4j.aspx)
+
+## CHAPTER 12: DESIGN A CHAT SYSTEM
+
+In this chapter we explore the design of a chat system. Almost everyone uses a chat app. Figure 12-1 shows some of the most popular apps in the marketplace.
+
+Figure 12-1
+
+![Image](output/image_000131_22949cfade4d0b636ce50bfbf0a8a15b5cb9b0df387f19f10d0223e02ae9f635.png)
+
+A chat app performs different functions for different people. It is extremely important to nail down the exact requirements. For example, you do not want to design a system that focuses on group chat when the interviewer has one-on-one chat in mind. It is important to explore the feature requirements.
+
+## Step 1 - Understand the problem and establish design scope
+
+It is vital to agree on the type of chat app to design. In the marketplace, there are one-on-one chat apps like Facebook Messenger, WeChat, and WhatsApp, office chat apps that focus on group chat like Slack, or game chat apps, like Discord, that focus on large group interaction and low voice chat latency. The first set of clarification questions should nail down what the interviewer has in mind exactly when she asks you to design a chat system. At the very least, figure out if you should focus on a one-on-one chat or group chat app. Some questions you might ask are as follows: Candidate: What kind of chat app shall we design? 1 on 1 or group based? Interviewer: It should support both 1 on 1 and group chat. Candidate: Is this a mobile app? Or a web app? Or both? Interviewer: Both. Candidate: What is the scale of this app? A startup app or massive scale? Interviewer: It should support 50 million daily active users (DAU). Candidate: For group chat, what is the group member limit? Interviewer: A maximum of 100 people Candidate: What features are important for the chat app? Can it support attachment? Interviewer: 1 on 1 chat, group chat, online indicator. The system only supports text messages. Candidate: Is there a message size limit? Interviewer: Yes, text length should be less than 100,000 characters long. Candidate: Is end-to-end encryption required? Interviewer: Not required for now but we will discuss that if time allows. Candidate: How long shall we store the chat history? Interviewer: Forever. In the chapter, we focus on designing a chat app like Facebook messenger, with an emphasis on the following features: · A one-on-one chat with low delivery latency · Small group chat (max of 100 people) · Online presence · Multiple device support. The same account can be logged in to multiple accounts at the same time. · Push notifications It is also important to agree on the design scale. We will design a system that supports 50
+
+million DAU.
+
+## Step 2 - Propose high-level design and get buy-in
+
+To develop a high-quality design, we should have a basic knowledge of how clients and servers communicate. In a chat system, clients can be either mobile applications or web applications. Clients do not communicate directly with each other. Instead, each client connects to a chat service, which supports all the features mentioned above. Let us focus on fundamental operations. The chat service must support the following functions: · Receive messages from other clients. · Find the right recipients for each message and relay the message to the recipients. · If a recipient is not online, hold the messages for that recipient on the server until she is online. Figure 12-2 shows the relationships between clients (sender and receiver) and the chat service.
+
+![Image](output/image_000132_bdc1ccc6a2b71a5a9e999c42de88a522ce30e770a7d910372c093eaaa1e57b95.png)
+
+Figure 12-2
+
+When a client intends to start a chat, it connects the chats service using one or more network protocols. For a chat service, the choice of network protocols is important. Let us discuss this with the interviewer. Requests are initiated by the client for most client/server applications. This is also true for the sender side of a chat application. In Figure 12-2, when the sender sends a message to the receiver via the chat service, it uses the time-tested HTTP protocol, which is the most common web protocol. In this scenario, the client opens a HTTP connection with the chat service and sends the message, informing the service to send the message to the receiver. The keep-alive is efficient for this because the keep-alive header allows a client to maintain a persistent connection with the chat service. It also reduces the number of TCP handshakes. HTTP is a fine option on the sender side, and many popular chat applications such as Facebook [1] used HTTP initially to send messages. However, the receiver side is a bit more complicated. Since HTTP is client-initiated, it is not trivial to send messages from the server. Over the years, many techniques are used to simulate a server-initiated connection: polling, long polling, and WebSocket. Those are important techniques widely used in system design interviews so let us examine each of them.
+
+## Polling
+
+As shown in Figure 12-3, polling is a technique that the client periodically asks the server if there are messages available. Depending on polling frequency, polling could be costly. It could consume precious server resources to answer a question that offers no as an answer most of the time.
+
+![Image](output/image_000133_f837530f94d7b76d2b83ded340c121fc068afe26b3eefe021cbe7ae63fd01cdc.png)
+
+## Long polling
+
+Because polling could be inefficient, the next progression is long polling (Figure 12-4).
+
+Figure 12-4
+
+![Image](output/image_000134_e39f52e08cfbd214a15b3bc66f47c4e392bf7e07c591fed5d5e138dd56e12c54.png)
+
+In long polling, a client holds the connection open until there are actually new messages available or a timeout threshold has been reached. Once the client receives new messages, it immediately sends another request to the server, restarting the process. Long polling has a
+
+· Sender and receiver may not connect to the same chat server. HTTP based servers are usually stateless. If you use round robin for load balancing, the server that receives the message might not have a long-polling connection with the client who receives the
+
+few drawbacks: message. · A server has no good way to tell if a client is disconnected.
+
+· It is inefficient. If a user does not chat much, long polling still makes periodic connections after timeouts.
+
+## WebSocket
+
+WebSocket is the most common solution for sending asynchronous updates from server to client. Figure 12-5 shows how it works.
+
+![Image](output/image_000135_183c126ac54fc878b786b444f71101ccb2fedcfe2d29d2872fd6115655140241.png)
+
+## Figure 12-5
+
+WebSocket connection is initiated by the client. It is bi-directional and persistent. It starts its life as a HTTP connection and could be "upgraded" via some well-defined handshake to a WebSocket connection. Through this persistent connection, a server could send updates to a client. WebSocket connections generally work even if a firewall is in place. This is because they use port 80 or 443 which are also used by HTTP/HTTPS connections. Earlier we said that on the sender side HTTP is a fine protocol to use, but since WebSocket is bidirectional, there is no strong technical reason not to use it also for sending. Figure 12-6 shows how WebSockets (ws) is used for both sender and receiver sides.
+
+![Image](output/image_000136_9148b807ba37046efe079fc584db15ecf2fa5ceacabeb16c106a1c3e948a7683.png)
+
+Figure 12-6
+
+By using WebSocket for both sending and receiving, it simplifies the design and makes implementation on both client and server more straightforward. Since WebSocket connections are persistent, efficient connection management is critical on the server-side.
+
+## High-level design
+
+Just now we mentioned that WebSocket was chosen as the main communication protocol between the client and server for its bidirectional communication, it is important to note that everything else does not have to be WebSocket. In fact, most features (sign up, login, user profile, etc) of a chat application could use the traditional request/response method over HTTP. Let us drill in a bit and look at the high-level components of the system. As shown in Figure 12-7, the chat system is broken down into three major categories: stateless services, stateful services, and third-party integration.
+
+![Image](output/image_000137_d35738337f28f2b3c23c89f76af1b44d188d04351ef61d86c00431f33ade237f.png)
+
+## Stateless Services
+
+Stateless services are traditional public-facing request/response services, used to manage the login, signup, user profile, etc. These are common features among many websites and apps. Stateless services sit behind a load balancer whose job is to route requests to the correct services based on the request paths. These services can be monolithic or individual microservices. We do not need to build many of these stateless services by ourselves as there are services in the market that can be integrated easily. The one service that we will discuss more in deep dive is the service discovery. Its primary job is to give the client a list of DNS host names of chat servers that the client could connect to.
+
+## Stateful Service
+
+The only stateful service is the chat service. The service is stateful because each client maintains a persistent network connection to a chat server. In this service, a client normally does not switch to another chat server as long as the server is still available. The service discovery coordinates closely with the chat service to avoid server overloading. We will go into detail in deep dive.
+
+## Third-party integration
+
+For a chat app, push notification is the most important third-party integration. It is a way to inform users when new messages have arrived, even when the app is not running. Proper integration of push notification is crucial. Refer to Chapter 10 Design a notification system for more information.
+
+## Scalability
+
+On a small scale, all services listed above could fit in one server. Even at the scale we design for, it is in theory possible to fit all user connections in one modern cloud server. The number of concurrent connections that a server can handle will most likely be the limiting factor. In our scenario, at 1M concurrent users, assuming each user connection needs 10K of memory on the server (this is a very rough figure and very dependent on the language choice), it only needs about 10GB of memory to hold all the connections on one box. If we propose a design where everything fits in one server, this may raise a big red flag in the interviewer's mind. No technologist would design such a scale in a single server. Single server design is a deal breaker due to many factors. The single point of failure is the biggest among them. However, it is perfectly fine to start with a single server design. Just make sure the interviewer knows this is a starting point. Putting everything we mentioned together, Figure 12-8 shows the adjusted high-level design.
+
+Figure 12-8
+
+![Image](output/image_000138_620eea424b07aec907869392deeab4b9fa944f99e3dc9130d8f19f8a221a6ed2.png)
+
+In Figure 12-8, the client maintains a persistent WebSocket connection to a chat server for real-time messaging.
+
+- Chat servers facilitate message sending/receiving.
+- Presence servers manage online/offline status.
+- API servers handle everything including user login, signup, change profile, etc.
+- Notification servers send push notifications.
+- Finally, the key-value store is used to store chat history. When an offline user comes online, she will see all her previous chat history.
+
+## Storage
+
+At this point, we have servers ready, services up running and third-party integrations complete. Deep down the technical stack is the data layer. Data layer usually requires some effort to get it correct. An important decision we must make is to decide on the right type of database to use: relational databases or NoSQL databases? To make an informed decision, we will examine the data types and read/write patterns. Two types of data exist in a typical chat system. The first is generic data, such as user profile, setting, user friends list. These data are stored in robust and reliable relational databases. Replication and sharding are common techniques to satisfy availability and scalability requirements. The second is unique to chat systems: chat history data. It is important to understand the read/write pattern. · The amount of data is enormous for chat systems. A previous study [2] reveals that Facebook messenger and Whatsapp process 60 billion messages a day. · Only recent chats are accessed frequently. Users do not usually look up for old chats. · Although very recent chat history is viewed in most cases, users might use features that require random access of data, such as search, view your mentions, jump to specific messages, etc. These cases should be supported by the data access layer. · The read to write ratio is about 1:1 for 1 on 1 chat apps. Selecting the correct storage system that supports all of our use cases is crucial. We recommend key-value stores for the following reasons: · Key-value stores allow easy horizontal scaling. · Key-value stores provide very low latency to access data. · Relational databases do not handle long tail [3] of data well. When the indexes grow large, random access is expensive. · Key-value stores are adopted by other proven reliable chat applications. For example, both Facebook messenger and Discord use key-value stores. Facebook messenger uses HBase [4], and Discord uses Cassandra [5]. Data models Just now, we talked about using key-value stores as our storage layer. The most important data is message data. Let us take a close look. Message table for 1 on 1 chat Figure 12-9 shows the message table for 1 on 1 chat. The primary key is message\_id, which helps to decide message sequence. We cannot rely on created\_at to decide the message sequence because two messages can be created at the same time.
+
+Figure 12-9
+
+![Image](output/image_000139_3f2ec334a72f873bf07789526bf6b3364df8b635876116150ee4063eea43d6d0.png)
+
+## Message table for group chat
+
+Figure 12-10 shows the message table for group chat. The composite primary key is (channel\_id, message\_id). Channel and group represent the same meaning here. channel\_id is the partition key because all queries in a group chat operate in a channel.
+
+Figure 12-10
+
+![Image](output/image_000140_7f059da0b6882e1513819fd887e0b0f719c1a4bf4f74f3f181808990b267ed11.png)
+
+How to generate message\_id is an interesting topic worth exploring. Message\_id carries the responsibility of ensuring the order of messages. To ascertain the order of messages, message\_id must satisfy the following two requirements: · IDs must be unique. · IDs should be sortable by time, meaning new rows have higher IDs than old ones. How can we achieve those two guarantees? The first idea that comes to mind is the "auto\_increment" keyword in MySql. However, NoSQL databases usually do not provide such a feature. The second approach is to use a global 64-bit sequence number generator like Snowflake [6]. This is discussed in "Chapter 7: Design a unique ID generator in a distributed system". The final approach is to use local sequence number generator. Local means IDs are only unique within a group. The reason why local IDs work is that maintaining message sequence within one-on-one channel or a group channel is sufficient. This approach is easier to implement in comparison to the global ID implementation.
+
+## Step 3 - Design deep dive
+
+In a system design interview, usually you are expected to dive deep into some of the components in the high-level design. For the chat system, service discovery, messaging flows, and online/offline indicators worth deeper exploration.
+
+## Service discovery
+
+The primary role of service discovery is to recommend the best chat server for a client based on the criteria like geographical location, server capacity, etc. Apache Zookeeper [7] is a popular open-source solution for service discovery. It registers all the available chat servers and picks the best chat server for a client based on predefined criteria.
+
+Figure 12-11 shows how service discovery (Zookeeper) works.
+
+![Image](output/image_000141_a7d519e8dd3303287113b6ea798022312726d278e4dd73d8642fef50038305fe.png)
+
+Figure 12-11
+
+1. User A tries to log in to the app. 2. The load balancer sends the login request to API servers. 3. After the backend authenticates the user, service discovery finds the best chat server for User A. In this example, server 2 is chosen and the server info is returned back to User A.
+
+4. User A connects to chat server 2 through WebSocket.
+
+## Message flows
+
+It is interesting to understand the end-to-end flow of a chat system. In this section, we will explore 1 on 1 chat flow, message synchronization across multiple devices and group chat flow.
+
+## 1 on 1 chat flow
+
+Figure 12-12 explains what happens when User A sends a message to User B.
+
+Figure 12-12
+
+![Image](output/image_000142_d7434b76e1231f9e3b8a2412dd39efaf73a990211c88c45167f64ff51db83ee4.png)
+
+1. User A sends a chat message to Chat server 1.
+2. Chat server 1 obtains a message ID from the ID generator.
+3. Chat server 1 sends the message to the message sync queue.
+4. The message is stored in a key-value store.
+- 5.a. If User B is online, the message is forwarded to Chat server 2 where User B is connected.
+- 5.b. If User B is offline, a push notification is sent from push notification (PN) servers.
+6. Chat server 2 forwards the message to User B. There is a persistent WebSocket connection between User B and Chat server 2.
+
+## Message synchronization across multiple devices
+
+Many users have multiple devices. We will explain how to sync messages across multiple devices. Figure 12-13 shows an example of message synchronization.
+
+Figure 12-13
+
+![Image](output/image_000143_f19cd64d771a686b30f102fcb36fb7e50fa8b2b6a1ca33da1ceb8cb56db9804f.png)
+
+In Figure 12-13, user A has two devices: a phone and a laptop. When User A logs in to the chat app with her phone, it establishes a WebSocket connection with Chat server 1. Similarly, there is a connection between the laptop and Chat server 1.
+
+Each device maintains a variable called cur\_max\_message\_id, which keeps track of the latest message ID on the device. Messages that satisfy the following two conditions are considered as news messages:
+
+- The recipient ID is equal to the currently logged-in user ID.
+- Message ID in the key-value store is larger than cur\_max\_message\_id .
+
+With distinct cur\_max\_message\_id on each device, message synchronization is easy as each device can get new messages from the KV store.
+
+## Small group chat flow
+
+In comparison to the one-on-one chat, the logic of group chat is more complicated. Figures 12-14 and 12-15 explain the flow.
+
+![Image](output/image_000144_9a599b5a57a61bfd36acd64608e87023fa3abf28c029cb5796559f667dce1ee0.png)
+
+Figure 12-14
+
+Figure 12-14 explains what happens when User A sends a message in a group chat. Assume there are 3 members in the group (User A, User B and user C). First, the message from User A is copied to each group member's message sync queue: one for User B and the second for User C. You can think of the message sync queue as an inbox for a recipient. This design choice is good for small group chat because:
+
+· it simplifies message sync flow as each client only needs to check its own inbox to get new messages. · when the group number is small, storing a copy in each recipient's inbox is not too expensive. WeChat uses a similar approach, and it limits a group to 500 members [8]. However, for groups with a lot of users, storing a message copy for each member is not acceptable.
+
+On the recipient side, a recipient can receive messages from multiple users. Each recipient has an inbox (message sync queue) which contains messages from different senders. Figure 12-15 illustrates the design.
+
+Figure 12-15
+
+![Image](output/image_000145_2bea11ee6483fb660b06b8e356a83635002c2df8029dbadfbd84f796a1749c33.png)
+
+## Online presence
+
+An online presence indicator is an essential feature of many chat applications. Usually, you can see a green dot next to a user's profile picture or username. This section explains what happens behind the scenes.
+
+In the high-level design, presence servers are responsible for managing online status and communicating with clients through WebSocket. There are a few flows that will trigger online status change. Let us examine each of them.
+
+## User login
+
+The user login flow is explained in the "Service Discovery" section. After a WebSocket connection is built between the client and the real-time service, user A's online status and last\_active\_at timestamp are saved in the KV store. Presence indicator shows the user is online after she logs in.
+
+User A: {status: online, last\_active\_at: timestamp
+
+![Image](output/image_000146_38adef40b1a4b5bf05fe59d9b827adb4c5e6e2244a989b549233c61b8e84decc.png)
+
+Figure 12-16
+
+## User logout
+
+When a user logs out, it goes through the user logout flow as shown in Figure 12-17. The online status is changed to offline in the KV store. The presence indicator shows a user is offline.
+
+![Image](output/image_000147_38774a18ad0fc29ddeaba315ad008ac4c8ef69d2c27dd214bccd20cf557acb55.png)
+
+User A: {status:offline}
+
+## User disconnection
+
+We all wish our internet connection is consistent and reliable. However, that is not always the case; thus, we must address this issue in our design. When a user disconnects from the internet, the persistent connection between the client and server is lost. A naive way to handle user disconnection is to mark the user as offline and change the status to online when the connection re-establishes. However, this approach has a major flaw. It is common for users to disconnect and reconnect to the internet frequently in a short time. For example, network connections can be on and off while a user goes through a tunnel. Updating online status on every disconnect/reconnect would make the presence indicator change too often, resulting in poor user experience. We introduce a heartbeat mechanism to solve this problem. Periodically, an online client sends a heartbeat event to presence servers. If presence servers receive a heartbeat event within a certain time, say x seconds from the client, a user is considered as online. Otherwise, it is offline. In Figure 12-18, the client sends a heartbeat event to the server every 5 seconds. After sending 3 heartbeat events, the client is disconnected and does not reconnect within x = 30 seconds (This number is arbitrarily chosen to demonstrate the logic). The online status is changed to offline.
+
+Figure 12-17
+
+Figure 12-18
+
+![Image](output/image_000148_fd1568d7f3c8cce38539f489f573107bff0c1526fe8fbab7398cf4661216dce2.png)
+
+## Online status fanout
+
+How do user A's friends know about the status changes? Figure 12-19 explains how it works. Presence servers use a publish-subscribe model, in which each friend pair maintains a channel. When User A's online status changes, it publishes the event to three channels, channel A-B, A-C, and A-D. Those three channels are subscribed by User B, C, and D, respectively. Thus, it is easy for friends to get online status updates. The communication between clients and servers is through real-time WebSocket.
+
+Figure12-19
+
+![Image](output/image_000149_26abb256d4b878773dba94ef252cf5c063be8a79e77de3cc424606a64013e6b4.png)
+
+The above design is effective for a small user group. For instance, WeChat uses a similar approach because its user group is capped to 500. For larger groups, informing all members about online status is expensive and time consuming. Assume a group has 100,000 members. Each status change will generate 100,000 events. To solve the performance bottleneck, a possible solution is to fetch online status only when a user enters a group or manually refreshes the friend list.
+
+## Step 4 - Wrap up
+
+In this chapter, we presented a chat system architecture that supports both 1-to-1 chat and small group chat. WebSocket is used for real-time communication between the client and server. The chat system contains the following components: chat servers for real-time messaging, presence servers for managing online presence, push notification servers for sending push notifications, key-value stores for chat history persistence and API servers for other functionalities. If you have extra time at the end of the interview, here are additional talking points: · Extend the chat app to support media files such as photos and videos. Media files are significantly larger than text in size. Compression, cloud storage, and thumbnails are interesting topics to talk about. · End-to-end encryption. Whatsapp supports end-to-end encryption for messages. Only the sender and the recipient can read messages. Interested readers should refer to the article in the reference materials [9]. · Caching messages on the client-side is effective to reduce the data transfer between the client and server. · Improve load time. Slack built a geographically distributed network to cache users' data, channels, etc. for better load time [10]. · Error handling. · The chat server error. There might be hundreds of thousands, or even more persistent connections to a chat server. If a chat server goes offline, service discovery (Zookeeper) will provide a new chat server for clients to establish new connections with. · Message resent mechanism. Retry and queueing are common techniques for resending messages. Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Erlang at Facebook: https://www.erlangfactory.com/upload/presentations/31/EugeneLetuchy-ErlangatFacebook.pdf [2] Messenger and WhatsApp process 60 billion messages a day: https://www.theverge.com/2016/4/12/11415198/facebook-messenger-whatsapp-numbermessages-vs-sms-f8-2016 [3] Long tail: https://en.wikipedia.org/wiki/Long\_tail [4] The Underlying Technology of Messages: https://www.facebook.com/notes/facebookengineering/the-underlying-technology-of-messages/454991608919/ [5] How Discord Stores Billions of Messages: https://blog.discordapp.com/how-discordstores-billions-of-messages-7fa6ec7ee4c7 [6] Announcing Snowflake: https://blog.twitter.com/engineering/en\_us/a/2010/announcingsnowflake.html [7] Apache ZooKeeper: https://zookeeper.apache.org/ [8] From nothing: the evolution of WeChat background system (Article in Chinese): https://www.infoq.cn/article/the-road-of-the-growth-weixin-background [9] End-to-end encryption: https://faq.whatsapp.com/en/android/28030015/ [10] Flannel: An Application-Level Edge Cache to Make Slack Scale: https://slack.engineering/flannel-an-application-level-edge-cache-to-make-slack-scaleb8a6400e2f6b
+
+## CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE SYSTEM
+
+When searching on Google or shopping at Amazon, as you type in the search box, one or more matches for the search term are presented to you. This feature is referred to as autocomplete, typeahead, search-as-you-type, or incremental search. Figure 13-1 presents an example of a Google search showing a list of autocompleted results when "dinner" is typed into the search box. Search autocomplete is an important feature of many products. This leads us to the interview question: design a search autocomplete system, also called "design top k" or "design top k most searched queries".
+
+![Image](output/image_000150_60ea9fc954f147f940c9abf96cab7d4038e8b238f7135d5c5b42a3bd45377e61.png)
+
+Google
+
+![Image](output/image_000151_3bfb5b75e8bcdff5bc744165d3954f5b91e26b3a30a12af6980abba2d49134ac.png)
+
+Figure 13-1
+
+## Step 1 - Understand the problem and establish design scope
+
+The first step to tackle any system design interview question is to ask enough questions to clarify requirements. Here is an example of candidate-interviewer interaction: Candidate: Is the matching only supported at the beginning of a search query or in the middle as well? Interviewer: Only at the beginning of a search query. Candidate: How many autocomplete suggestions should the system return? Interviewer: 5 Candidate: How does the system know which 5 suggestions to return? Interviewer: This is determined by popularity, decided by the historical query frequency. Candidate: Does the system support spell check? Interviewer: No, spell check or autocorrect is not supported. Candidate: Are search queries in English? Interviewer: Yes. If time allows at the end, we can discuss multi-language support. Candidate: Do we allow capitalization and special characters? Interviewer: No, we assume all search queries have lowercase alphabetic characters. Candidate: How many users use the product?
+
+Interviewer: 10 million DAU. Requirements Here is a summary of the requirements: · Fast response time: As a user types a search query, autocomplete suggestions must show up fast enough. An article about Facebook's autocomplete system [1] reveals that the system needs to return results within 100 milliseconds. Otherwise it will cause stuttering. · Relevant: Autocomplete suggestions should be relevant to the search term. · Sorted: Results returned by the system must be sorted by popularity or other ranking models. · Scalable: The system can handle high traffic volume. · Highly available: The system should remain available and accessible when part of the system is offline, slows down, or experiences unexpected network errors. Back of the envelope estimation for autocomplete suggestions. On average, 20 requests are sent for each search query. For
+
+· Assume 10 million daily active users (DAU). · An average person performs 10 searches per day. · 20 bytes of data per query string: · Assume we use ASCII character encoding. 1 character = 1 byte · Assume a query contains 4 words, and each word contains 5 characters on average. · That is 4 x 5 = 20 bytes per query. · For every character entered into the search box, a client sends a request to the backend example, the following 6 requests are sent to the backend by the time you finish typing "dinner". search?q=d search?q=di search?q=din search?q=dinn search?q=dinne search?q=dinner · ~24,000 query per second (QPS) = 10,000,000 users * 10 queries / day * 20 characters / 24 hours / 3600 seconds. · Peak QPS = QPS * 2 = ~48,000 · Assume 20% of the daily queries are new. 10 million * 10 queries / day * 20 byte per query * 20% = 0.4 GB. This means 0.4GB of new data is added to storage daily.
+
+## Step 2 - Propose high-level design and get buy-in
+
+At the high-level, the system is broken down into two: · Data gathering service: It gathers user input queries and aggregates them in real-time. Real-time processing is not practical for large data sets; however, it is a good starting point. We will explore a more realistic solution in deep dive. · Query service: Given a search query or prefix, return 5 most frequently searched terms.
+
+## Data gathering service
+
+Let us use a simplified example to see how data gathering service works. Assume we have a frequency table that stores the query string and its frequency as shown in Figure 13-2. In the beginning, the frequency table is empty. Later, users enter queries "twitch", "twitter", "twitter," and "twillo" sequentially. Figure 13-2 shows how the frequency table is updated.
+
+query: twitch query: twitter query: twitter query: twillo
+
+Query Frequency Query Frequency Query Frequency
+
+## Query service
+
+Assume we have a frequency table as shown in Table 13-1. It has two fields. · Query: it stores the query string. · Frequency: it represents the number of times a query has been searched.
+
+twitch
+
+1
+
+twitch
+
+1
+
+twitter
+
+1
+
+Figure 13-2
+
+Query Frequency Query Frequency
+
+twitch
+
+1
+
+twitter
+
+2
+
+twitch
+
+1
+
+twitter
+
+2
+
+twillo
+
+1
+
+| Query          |   Frequency |
+|----------------|-------------|
+| Twitter        |          35 |
+| twitch         |          29 |
+| twilight       |          25 |
+| twin peak      |          21 |
+| twitch prime   |          18 |
+| twitter search |          14 |
+| twillo         |          10 |
+| twin peak sf   |           8 |
+
+## Table 13-1
+
+When a user types "tw" in the search box, the following top 5 searched queries are displayed (Figure 13-3), assuming the frequency table is based on Table 13-1.
+
+![Image](output/image_000152_4e2d2643e055b73b52c13114df013194488707836fd134d2fb8c210716b3eeea.png)
+
+## Figure 13-3
+
+To get top 5 frequently searched queries, execute the following SQL query:
+
+## SELECT *FROM frequency\_table WHERE query Like `prefix% ORDERBYfrequencyDESC LIMIT 5 Figure 13-4
+
+This is an acceptable solution when the data set is small. When it is large, accessing the database becomes a bottleneck. We will explore optimizations in deep dive.
+
+## Step 3 - Design deep dive
+
+In the high-level design, we discussed data gathering service and query service. The high-
+
+level design is not optimal, but it serves as a good starting point. In this section, we will dive deep into a few components and explore optimizations as follows: · Trie data structure · Data gathering service · Query service · Scale the storage
+
+· Trie operations Trie data structure
+
+Relational databases are used for storage in the high-level design. However, fetching the top 5 search queries from a relational database is inefficient. The data structure trie (prefix tree) is used to overcome the problem. As trie data structure is crucial for the system, we will dedicate significant time to design a customized trie. Please note that some of the ideas are from articles [2] and [3]. Understanding the basic trie data structure is essential for this interview question. However, this is more of a data structure question than a system design question. Besides, many online materials explain this concept. In this chapter, we will only discuss an overview of the trie data structure and focus on how to optimize the basic trie to improve response time. Trie (pronounced "try") is a tree-like data structure that can compactly store strings. The name comes from the word retrieval, which indicates it is designed for string retrieval operations. The main idea of trie consists of the following: · A trie is a tree-like data structure. · The root represents an empty string. · Each node stores a character and has 26 children, one for each possible character. To save space, we do not draw empty links. · Each tree node represents a single word or a prefix string. Figure 13-5 shows a trie with search queries "tree", "try", "true", "toy", "wish", "win".
+
+Search queries are highlighted with a thicker border.
+
+Figure 13-5
+
+![Image](output/image_000153_5ca16ccdb481a3efd19bcd91913c0c59816650424d0b84d6d8f8292f1ebff1f0.png)
+
+Basic trie data structure stores characters in nodes. To support sorting by frequency, frequency info needs to be included in nodes. Assume we have the following frequency table.
+
+Table13-2
+
+| Query   |   Frequency |
+|---------|-------------|
+| tree    |          10 |
+| try     |          29 |
+| true    |          35 |
+| toy     |          14 |
+| wish    |          25 |
+| win     |          50 |
+
+After adding frequency info to nodes, updated trie data structure is shown in Figure 13-6.
+
+![Image](output/image_000154_acc76aa07ff2d98c122f634c3f22eb6fe9d2584dca5b480dd24c20b6293a81de.png)
+
+Figure 13-6
+
+How does autocomplete work with trie? Before diving into the algorithm, let us define some
+
+terms. · p: length of a prefix · n: total number of nodes in a trie · c: number of children of a given node Steps to get top k most searched queries are listed below: 1. Find the prefix. Time complexity: O(p). 2. Traverse the subtree from the prefix node to get all valid children. A child is valid if it can form a valid query string. Time complexity: O(c) 3. Sort the children and get top k. Time complexity: O(clogc) Let us use an example as shown in Figure 13-7 to explain the algorithm. Assume k equals to 2 and a user types "tr" in the search box. The algorithm works as follows: · Step 1: Find the prefix node "tr". · Step 2: Traverse the subtree to get all valid children. In this case, nodes [tree: 10], [true: 35], [try: 29] are valid. · Step 3: Sort the children and get top 2. [true: 35] and [try: 29] are the top 2 queries with
+
+prefix "tr".
+
+![Image](output/image_000155_b21c9a9f1f567093396d351bba631d5a50015cd847a2fa4b355fbac1202a49cd.png)
+
+The time complexity of this algorithm is the sum of time spent on each step mentioned above:
+
+## O(p) + O(c) + O(clogc)
+
+The above algorithm is straightforward. However, it is too slow because we need to traverse the entire trie to get top k results in the worst-case scenario. Below are two optimizations:
+
+1. Limit the max length of a prefix
+2. Cache top search queries at each node
+
+Let us look at these optimizations one by one.
+
+## Limit the max length of a prefix
+
+Users rarely type a long search query into the search box. Thus, it is safe to say p is a small integer number, say 50. If we limit the length of a prefix, the time complexity for "Find the prefix" can be reduced from O(p) to O(small constant), aka O(1).
+
+## Cache top search queries at each node
+
+To avoid traversing the whole trie, we store top k most frequently used queries at each node. Since 5 to 10 autocomplete suggestions are enough for users, k is a relatively small number. In our specific case, only the top 5 search queries are cached. By caching top search queries at every node, we significantly reduce the time complexity to retrieve the top 5 queries. However, this design requires a lot of space to store top queries at every node. Trading space for time is well worth it as fast response time is very important. Figure 13-8 shows the updated trie data structure. Top 5 queries are stored on each node. For example, the node with prefix "be" stores the following: [best: 35, bet: 29, bee: 20, be: 15, beer: 10].
+
+Figure 13-8
+
+![Image](output/image_000156_2acd7b14d312d29b665668a35d670add9b56cad645ddb2fb2357c5bdaf00da3a.png)
+
+Let us revisit the time complexity of the algorithm after applying those two optimizations: 1. Find the prefix node. Time complexity: O(1) 2. Return top k. Since top k queries are cached, the time complexity for this step is O(1). As the time complexity for each of the steps is reduced to O(1), our algorithm takes only
+
+O(1) to fetch top k queries.
+
+## Data gathering service
+
+In our previous design, whenever a user types a search query, data is updated in real-time. This approach is not practical for the following two reasons:
+
+· Users may enter billions of queries per day. Updating the trie on every query significantly slows down the query service. · Top suggestions may not change much once the trie is built. Thus, it is unnecessary to update the trie frequently. To design a scalable data gathering service, we examine where data comes from and how data is used. Real-time applications like Twitter require up to date autocomplete suggestions. However, autocomplete suggestions for many Google keywords might not change much on a daily basis. Despite the differences in use cases, the underlying foundation for data gathering service remains the same because data used to build the trie is usually from analytics or logging services.
+
+Figure 13-9 shows the redesigned data gathering service. Each component is examined one by one.
+
+Figure 13-9
+
+![Image](output/image_000157_9ba8d54dd71a21dd6996d1723bbc8da9699fcdec6e2e09d51078de4647608260.png)
+
+Analytics Logs. It stores raw data about search queries. Logs are append-only and are not indexed. Table 13-3 shows an example of the log file.
+
+| query   | time               |
+|---------|--------------------|
+| tree    | 2019-10-0122:01:01 |
+| try     | 2019-10-0122:01:05 |
+| tree    | 2019-10-0122:01:30 |
+| toy     | 2019-10-0122:02:22 |
+| tree    | 2019-10-0222:02:42 |
+| try     | 2019-10-0322:03:03 |
+
+Table 13-3
+
+Aggregators. The size of analytics logs is usually very large, and data is not in the right format. We need to aggregate data so it can be easily processed by our system. Depending on the use case, we may aggregate data differently. For real-time applications such as Twitter, we aggregate data in a shorter time interval as real-time results are important. On the other hand, aggregating data less frequently, say once per week, might be good enough for many use cases. During an interview session, verify whether real-time results are important. We assume trie is rebuilt weekly.
+
+## Aggregated Data.
+
+Table 13-4 shows an example of aggregated weekly data. "time" field represents the start time of a week. "frequency" field is the sum of the occurrences for the corresponding query in that week.
+
+| query   | Time       |   frequency |
+|---------|------------|-------------|
+| tree    | 2019-10-01 |       12000 |
+| tree    | 2019-10-08 |       15000 |
+| tree    | 2019-10-15 |        9000 |
+| toy     | 2019-10-01 |        8500 |
+| toy     | 2019-10-08 |        6256 |
+| toy     | 2019-10-15 |        8866 |
+
+Table 13-4
+
+Workers. Workers are a set of servers that perform asynchronous jobs at regular intervals. They build the trie data structure and store it in Trie DB. Trie Cache. Trie Cache is a distributed cache system that keeps trie in memory for fast read. It takes a weekly snapshot of the DB. Trie DB. Trie DB is the persistent storage. Two options are available to store the data: 1. Document store: Since a new trie is built weekly, we can periodically take a snapshot of it, serialize it, and store the serialized data in the database. Document stores like MongoDB [4] are good fits for serialized data. 2. Key-value store: A trie can be represented in a hash table form [4] by applying the following logic: · Every prefix in the trie is mapped to a key in a hash table. · Data on each trie node is mapped to a value in a hash table. Figure 13-10 shows the mapping between the trie and hash table.
+
+Figure 13-10
+
+![Image](output/image_000158_1a62ad077b2f9eac1e8a5bd3ae895d82159a55c176b448141397d6f6fbbb4175.png)
+
+In Figure 13-10, each trie node on the left is mapped to the &lt;key, value&gt; pair on the right. If you are unclear how key-value stores work, refer to Chapter 6: Design a key-value store.
+
+## Query service
+
+In the high-level design, query service calls the database directly to fetch the top 5 results. Figure 13-11 shows the improved design as previous design is inefficient.
+
+![Image](output/image_000159_e95df90a436ef68cfd71eae9bd53709d4c00636f7c774dfca19989cf769ffc10.png)
+
+Figure 13-11
+
+1. A search query is sent to the load balancer. 2. The load balancer routes the request to API servers. 3. API servers get trie data from Trie Cache and construct autocomplete suggestions for the client. 4. In case the data is not in Trie Cache, we replenish data back to the cache. This way, all subsequent requests for the same prefix are returned from the cache. A cache miss can happen when a cache server is out of memory or offline. Query service requires lightning-fast speed. We propose the following optimizations: · AJAX request. For web applications, browsers usually send AJAX requests to fetch autocomplete results. The main benefit of AJAX is that sending/receiving a request/response does not refresh the whole web page. · Browser caching. For many applications, autocomplete search suggestions may not cache to allow subsequent requests to get results from the cache directly. Google search engine uses the same cache mechanism. Figure 13-12 shows the response header when
+2. change much within a short time. Thus, autocomplete suggestions can be saved in browser you type "system design interview" on the Google search engine. As you can see, Google
+
+caches the results in the browser for 1 hour. Please note: "private" in cache-control means results are intended for a single user and must not be cached by a shared cache. "maxage=3600" means the cache is valid for 3600 seconds, aka, an hour.
+
+Figure 13-12
+
+![Image](output/image_000160_0ec1324371a37c3640f2cf62a06fbcbac84ddb98b7752df58c77051b8d9e71c9.png)
+
+· Data sampling: For a large-scale system, logging every search query requires a lot of processing power and storage. Data sampling is important. For instance, only 1 out of every N requests is logged by the system.
+
+## Trie operations
+
+Trie is a core component of the autocomplete system. Let us look at how trie operations
+
+(create, update, and delete) work. Create Trie is created by workers using aggregated data. The source of data is from Analytics Log/DB. Update There are two ways to update the trie. Option 1: Update the trie weekly. Once a new trie is created, the new trie replaces the old one. Option 2: Update individual trie node directly. We try to avoid this operation because it is slow. However, if the size of the trie is small, it is an acceptable solution. When we update a trie node, its ancestors all the way up to the root must be updated because ancestors store top queries of children. Figure 13-13 shows an example of how the update operation works. On the left side, the search query "beer" has the original value 10. On the right side, it is updated to 30. As you can see, the node and its ancestors have the "beer" value updated to 30.
+
+![Image](output/image_000161_1f5bbdee8916ddc33c74b7230f5e143aa8d0b2c46b91d99f56196e454ecafdf7.png)
+
+## Delete
+
+We have to remove hateful, violent, sexually explicit, or dangerous autocomplete suggestions. We add a filter layer (Figure 13-14) in front of the Trie Cache to filter out unwanted suggestions. Having a filter layer gives us the flexibility of removing results based on different filter rules. Unwanted suggestions are removed physically from the database asynchronically so the correct data set will be used to build trie in the next update cycle.
+
+![Image](output/image_000162_3c72d2d3a5422ab030f097f8d611a1601fdb539e30d4e4d14e7c548a3d84119f.png)
+
+## Scale the storage
+
+Now that we have developed a system to bring autocomplete queries to users, it is time to solve the scalability issue when the trie grows too large to fit in one server. Since English is the only supported language, a naive way to shard is based on the first character. Here are some examples. · If we need two servers for storage, we can store queries starting with 'a' to 'm' on the first server, and 'n' to 'z' on the second server. · If we need three servers, we can split queries into 'a' to 'i', 'j' to 'r' and 's' to 'z'.
+
+Following this logic, we can split queries up to 26 servers because there are 26 alphabetic characters in English. Let us define sharding based on the first character as first level sharding. To store data beyond 26 servers, we can shard on the second or even at the third level. For example, data queries that start with 'a' can be split into 4 servers: 'aa-ag', 'ahan', 'ao-au', and 'av-az'. At the first glance this approach seems reasonable, until you realize that there are a lot more
+
+words that start with the letter 'c' than 'x'. This creates uneven distribution.
+
+Figure 13-13
+
+To mitigate the data imbalance problem, we analyze historical data distribution pattern and apply smarter sharding logic as shown in Figure 13-15. The shard map manager maintains a lookup database for identifying where rows should be stored. For example, if there are a similar number of historical queries for 's' and for 'u', 'v', 'w', 'x', 'y' and 'z' combined, we can maintain two shards: one for 's' and one for 'u' to 'z'.
+
+![Image](output/image_000163_d0733871ade2c7df00f2f4bb586304dd25df138ddc70a4a45d84e3e75b210960.png)
+
+## Step 4 - Wrap up
+
+After you finish the deep dive, your interviewer might ask you some follow up questions. Interviewer: How do you extend your design to support multiple languages? To support other non-English queries, we store Unicode characters in trie nodes. If you are not familiar with Unicode, here is the definition: "an encoding standard covers all the characters for all the writing systems of the world, modern and ancient" [5]. Interviewer: What if top search queries in one country are different from others? In this case, we might build different tries for different countries. To improve the response time, we can store tries in CDNs. Interviewer: How can we support the trending (real-time) search queries? Assuming a news event breaks out, a search query suddenly becomes popular. Our original design will not work because: · Offline workers are not scheduled to update the trie yet because this is scheduled to run on weekly basis. · Even if it is scheduled, it takes too long to build the trie. Building a real-time search autocomplete is complicated and is beyond the scope of this book so we will only give a few ideas: · Reduce the working data set by sharding. · Change the ranking model and assign more weight to recent search queries. · Data may come as streams, so we do not have access to all the data at once. Streaming data means data is generated continuously. Stream processing requires a different set of systems: Apache Hadoop MapReduce [6], Apache Spark Streaming [7], Apache Storm [8], Apache Kafka [9], etc. Because all those topics require specific domain knowledge, we are not going into detail here.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials

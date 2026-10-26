@@ -1,0 +1,605 @@
+Bạn là chuyên gia dịch thuật kỹ thuật Anh → Việt, chuyên tài liệu kỹ thuật/công nghệ, có kinh nghiệm dịch như biên dịch viên bản ngữ chuyên nghiệp. Nhiệm vụ: dịch TOÀN BỘ nội dung Markdown dưới đây sang tiếng Việt, không bỏ sót bất kỳ phần nào. Đây là MỘT PHẦN (chunk) của một tài liệu lớn hơn, hãy dịch độc lập đoạn này, không thêm lời mở đầu/kết luận về việc đây chỉ là một phần.
+
+QUY TẮC BẮT BUỘC — VI PHẠM LÀ SAI:
+
+1. XÁC ĐỊNH LOẠI TÀI LIỆU TRƯỚC KHI DỊCH
+   - Tự phân tích nội dung để xác định loại tài liệu (kỹ thuật/lập trình, tài chính, bảo hiểm, pháp lý, marketing, học thuật, vận hành, sản phẩm...).
+   - Chọn văn phong và thuật ngữ CHUẨN NGÀNH tương ứng trong tiếng Việt, nhất quán xuyên suốt.
+
+2. VĂN PHONG — MƯỢT NHƯ NGƯỜI DỊCH, KHÔNG GIẢM CHÍNH XÁC
+   - Dịch mượt, tự nhiên, đúng ngữ pháp tiếng Việt — như biên dịch viên bản ngữ dịch tay, KHÔNG dịch máy móc kiểu word-by-word.
+   - Được phép đảo cấu trúc câu, tách/gộp câu cho tự nhiên, miễn giữ nguyên 100% ý nghĩa, thông tin, logic, số liệu gốc.
+   - Khi "mượt mà" và "chính xác" xung đột → LUÔN ưu tiên chính xác.
+
+3. DỊCH ĐẦY ĐỦ 100%
+   - Không tóm tắt, không rút gọn, không lược bỏ đoạn/câu/mục/bullet nào.
+   - Số lượng heading, đoạn văn, bảng, code block ở output PHẢI khớp 1:1 với input.
+   - Đoạn dài dịch hết, không cắt ngắn.
+
+4. GIỮ NGUYÊN THUẬT NGỮ TIẾNG ANH
+   - Thuật ngữ chuyên ngành (tên công nghệ, framework, pattern, tên hàm/biến, acronym...) giữ nguyên tiếng Anh, không dịch, không phiên âm.
+   - Ngay sau lần xuất hiện ĐẦU TIÊN của mỗi thuật ngữ, thêm chú thích ngắn trong ngoặc giải thích nghĩa bằng tiếng Việt.
+   - Các lần xuất hiện sau KHÔNG cần chú thích lại.
+
+5. GIỮ NGUYÊN FORMAT — RẤT QUAN TRỌNG
+   - VỀ ẢNH (làm trước khi dịch): ĐẾM chính xác số lượng thẻ ảnh dạng ![...](...) trong đoạn gốc bên dưới. Output PHẢI có ĐÚNG số lượng thẻ ảnh đó, không được thiếu một cái nào — kể cả ảnh không có caption, không rõ ngữ cảnh, hay trông như ảnh trang trí/lặp lại. Copy nguyên URL 100%, không sửa, không rút gọn, không thay bằng mô tả text.
+   - Giữ cấp độ heading (#, ##, ###...), giữ đúng số lượng heading.
+   - Giữ cấu trúc bảng (số cột, số hàng, alignment, header row).
+   - Giữ code block (```lang ... ```) — KHÔNG dịch code; comment được dịch tại chỗ; **được phép reformat code, tự động xuống dòng/indent chuẩn, không giữ nguyên code 1 dòng; không đổi logic/cú pháp**.
+   - Giữ blockquote, callout/note/warning (>, [!NOTE], [!WARNING]...).
+   - Giữ list, nested list, checkbox (- [ ]).
+   - Giữ nguyên link thường ([text](url)) — chỉ dịch phần text hiển thị, TUYỆT ĐỐI giữ nguyên URL.
+   - TRƯỚC KHI TRẢ KẾT QUẢ: tự đếm lại số heading, số ảnh, số dòng ``` giữa bản gốc và bản dịch (KHÔNG tính fence 4 backtick ngoài cùng), nếu lệch phải sửa lại cho khớp.
+
+6. GIẢI THÍCH ẨN DỤ / KHÁI NIỆM KHÓ
+   - Với ẩn dụ, thành ngữ, khái niệm trừu tượng khó hiểu với người Việt, thêm khối giải thích riêng ngay sau đoạn đó:
+     > 💡 **Giải thích thêm:** [giải thích dễ hiểu, đủ chuyên sâu, có ví dụ thực tế]
+     > Nguồn tham khảo: [link cụ thể để kiểm chứng]
+   - CHỈ đưa link nếu chắc chắn tồn tại và đúng nội dung — không bịa link.
+   - Không tìm được nguồn tin cậy → ghi rõ: "(Không có nguồn trích dẫn xác thực — cần tự kiểm chứng thêm)".
+
+7. CHỐNG HALLUCINATION (BẮT BUỘC)
+   - Không tự thêm thông tin/số liệu/ví dụ/kết luận KHÔNG có trong bản gốc — trừ phần giải thích ẩn dụ ở mục 6 (phải gắn nhãn rõ là phần bổ sung).
+   - Câu gốc mơ hồ → dịch sát nghĩa nhất, nếu không chắc ghi chú: "[CẦN KIỂM CHỨNG: câu gốc mơ hồ]".
+   - Không tự sửa/thêm/bớt logic kỹ thuật gốc. Không bịa trích dẫn/số liệu/link vô căn cứ.
+   - Không tự tóm tắt các đoạn dài thành ý chính rồi diễn giải lại — phải dịch từng câu.
+
+8. OUTPUT
+   - Trả về DUY NHẤT nội dung Markdown đã dịch, bọc trong MỘT khối code ngoài cùng dùng đúng 4 dấu backtick: dòng đầu là ````markdown, dòng cuối là ````.
+   - Lý do: bên trong có thể chứa code block 3 backtick (```json ... ```). Fence ngoài PHẢI dài hơn fence trong, nếu không khối ngoài sẽ bị đóng sớm.
+   - CẤM dùng 3 backtick cho fence ngoài cùng. Các code block bên trong giữ nguyên 3 backtick như bản gốc.
+   - Nếu bản gốc có fence từ 4 backtick trở lên, fence ngoài dùng nhiều hơn fence dài nhất bên trong ít nhất 1 backtick.
+   - Toàn bộ kết quả nằm trong MỘT khối duy nhất: không đóng/mở lại giữa chừng, không có chữ nào ngoài khối.
+   - Không đổi tiêu đề gốc trừ khi cần dịch tiêu đề.
+
+--- NỘI DUNG GỐC CẦN DỊCH (một phần của tài liệu) ---
+
+## SECOND EDITION
+
+## SYSTEM DESIGN INTERVIEW
+
+![Image](output/image_000000_72b74b4df5094c6bae1df9bf81382f6c20bf1e01eeedd972bcd96ba8fa078c24.png)
+
+![Image](output/image_000001_6808653b77a55a4547b5ff725d14f96b7b282905b148695828ea0b8a84d8a311.png)
+
+![Image](output/image_000002_fce727079df95c632d87abff4ee11c61504c1a1263139c7e5ee3fed004154f8c.png)
+
+AN INSIDER'S GUIDE
+
+![Image](output/image_000003_0d4607e80e8dd7938f972397b25fb3adac59a9f25caa8e792367efc8ff8325c3.png)
+
+Alex Xu
+
+![Image](output/image_000004_414cf789d666f1366a175df810ffbe99174b89510c2e22db8208a2c3b0c8b93d.png)
+
+## System Design Interview: An Insider's Guide
+
+All rights reserved. This book or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the publisher except for the use of brief quotations in a book review.
+
+## About the author:
+
+Alex Xu is an experienced software engineer and entrepreneur. Previously, he worked at Twitter, Apple, Zynga and Oracle. He received his M.S. from Carnegie Mellon University. He has a passion for designing and implementing complex systems. Please subscribe to our email list if you want to be notified when new chapters are available: https://bit.ly/3dtIcsE For more information, contact systemdesigninsider@gmail.com
+
+Editor: Paul Solomon Table of Contents System Design Interview: An Insider's Guide FORWARD
+
+CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF USERS
+
+CHAPTER 2: BACK-OF-THE-ENVELOPE ESTIMATION
+
+CHAPTER 3: A FRAMEWORK FOR SYSTEM DESIGN INTERVIEWS
+
+CHAPTER 4: DESIGN A RATE LIMITER
+
+CHAPTER 5: DESIGN CONSISTENT HASHING
+
+CHAPTER 6: DESIGN A KEY-VALUE STORE
+
+CHAPTER 7: DESIGN A UNIQUE ID GENERATOR IN DISTRIBUTED SYSTEMS
+
+CHAPTER 8: DESIGN A URL SHORTENER
+
+CHAPTER 9: DESIGN A WEB CRAWLER
+
+CHAPTER 10: DESIGN A NOTIFICATION SYSTEM
+
+CHAPTER 11: DESIGN A NEWS FEED SYSTEM
+
+CHAPTER 12: DESIGN A CHAT SYSTEM
+
+CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE SYSTEM
+
+CHAPTER 14: DESIGN YOUTUBE
+
+CHAPTER 15: DESIGN GOOGLE DRIVE
+
+CHAPTER 16: THE LEARNING CONTINUES
+
+AFTERWORD
+
+## FORWARD
+
+We are delighted that you have decided to join us in learning the system design interviews. System design interview questions are the most difficult to tackle among all the technical interviews. The questions require the interviewees to design an architecture for a software system, which could be a news feed, Google search, chat system, etc. These questions are intimidating, and there is no certain pattern to follow. The questions are usually very big scoped and vague. The processes are open-ended and unclear without a standard or correct answer. Companies widely adopt system design interviews because the communication and problemsolving skills tested in these interviews are similar to those required by a software engineer's daily work. An interviewee is evaluated based on how she analyzes a vague problem and how she solves the problem step by step. The abilities tested also involve how she explains the idea, discusses with others, and evaluates and optimizes the system. In English, using "she" flows better than "he or she" or jumping between the two. To make reading easier, we use the feminine pronoun throughout this book. No disrespect is intended for male engineers. The system design questions are open-ended. Just like in the real world, there are many differences and variations in the system. The desired outcome is to come up with an architecture to achieve system design goals. The discussions could go in different ways depending on the interviewer. Some interviewers may choose high-level architecture to cover all aspects; whereas some might choose one or more areas to focus on. Typically, system requirements, constraints and bottlenecks should be well understood to shape the direction of both the interviewer and interviewee. The objective of this book is to provide a reliable strategy to approach the system design questions. The right strategy and knowledge are vital to the success of an interview. This book provides solid knowledge in building a scalable system. The more knowledge gained from reading this book, the better you are equipped in solving the system design questions. This book also provides a step by step framework on how to tackle a system design question. It provides many examples to illustrate the systematic approach with detailed steps that you can follow. With constant practice, you will be well-equipped to tackle system design interview questions.
+
+## CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF USERS
+
+Designing a system that supports millions of users is challenging, and it is a journey that requires continuous refinement and endless improvement. In this chapter, we build a system that supports a single user and gradually scale it up to serve millions of users. After reading this chapter, you will master a handful of techniques that will help you to crack the system design interview questions.
+
+## Single server setup
+
+A journey of a thousand miles begins with a single step, and building a complex system is no different. To start with something simple, everything is running on a single server. Figure 1-1 shows the illustration of a single server setup where everything is running on one server: web app, database, cache, etc.
+
+Figure 1-1
+
+![Image](output/image_000005_0ac6ce4d480631d7a95924b098c95b272247f63893ca802f14b9aac400d65463.png)
+
+To understand this setup, it is helpful to investigate the request flow and traffic source. Let us first look at the request flow (Figure 1-2).
+
+Figure 1-2
+
+![Image](output/image_000006_66faacf8e9092aebc903c0195b5bad5fa174eca6040660f07f907f6cacde140b.png)
+
+1. Users access websites through domain names, such as api.mysite.com. Usually, the Domain Name System (DNS) is a paid service provided by 3rd parties and not hosted by our servers.
+2. Internet Protocol (IP) address is returned to the browser or mobile app. In the example, IP address 15.125.23.214 is returned.
+3. Once the IP address is obtained, Hypertext Transfer Protocol (HTTP) [1] requests are sent directly to your web server.
+4. The web server returns HTML pages or JSON response for rendering.
+
+Next, let us examine the traffic source. The traffic to your web server comes from two sources: web application and mobile application.
+
+- Web application: it uses a combination of server-side languages (Java, Python, etc.) to handle business logic, storage, etc., and client-side languages (HTML and JavaScript) for presentation.
+- Mobile application: HTTP protocol is the communication protocol between the mobile app and the web server. JavaScript Object Notation (JSON) is commonly used API response format to transfer data due to its simplicity. An example of the API response in JSON format is shown below:
+
+```
+GET /users/12 - Retrieve user object for id = 12 { "id": 12, "firstName": "John", "lastName": "Smith", "address": { "streetAddress": "21 2nd Street", "city": "New York", "state": "NY", "postalCode": 10021 }, "phoneNumbers": [ "212 555-1234", "646555-4567" 1 {
+```
+
+## Database
+
+With the growth of the user base, one server is not enough, and we need multiple servers: one for web/mobile traffic, the other for the database (Figure 1-3). Separating web/mobile traffic (web tier) and database (data tier) servers allows them to be scaled independently.
+
+![Image](output/image_000007_7535957fafcf51b60f0f53026f2c266eaadfc60d38d075673bb73121bac2b57f.png)
+
+## Which databases to use?
+
+You can choose between a traditional relational database and a non-relational database. Let us examine their differences. Relational databases are also called a relational database management system (RDBMS) or SQL database. The most popular ones are MySQL, Oracle database, PostgreSQL, etc. Relational databases represent and store data in tables and rows. You can perform join operations using SQL across different database tables. Non-Relational databases are also called NoSQL databases. Popular ones are CouchDB, Neo4j, Cassandra, HBase, Amazon DynamoDB, etc. [2]. These databases are grouped into four categories: key-value stores, graph stores, column stores, and document stores. Join operations are generally not supported in non-relational databases. For most developers, relational databases are the best option because they have been around for over 40 years and historically, they have worked well. However, if relational databases are not suitable for your specific use cases, it is critical to explore beyond relational databases. Non-relational databases might be the right choice if: · Your application requires super-low latency. · Your data are unstructured, or you do not have any relational data. · You only need to serialize and deserialize data (JSON, XML, YAML, etc.).
+
+- You need to store a massive amount of data.
+
+Figure 1-3
+
+## Vertical scaling vs horizontal scaling
+
+Vertical scaling, referred to as "scale up", means the process of adding more power (CPU, RAM, etc.) to your servers. Horizontal scaling, referred to as "scale-out", allows you to scale by adding more servers into your pool of resources. When traffic is low, vertical scaling is a great option, and the simplicity of vertical scaling is its main advantage. Unfortunately, it comes with serious limitations. · Vertical scaling has a hard limit. It is impossible to add unlimited CPU and memory to a single server. · Vertical scaling does not have failover and redundancy. If one server goes down, the website/app goes down with it completely. Horizontal scaling is more desirable for large scale applications due to the limitations of vertical scaling. In the previous design, users are connected to the web server directly. Users will unable to access the website if the web server is offline. In another scenario, if many users access the web server simultaneously and it reaches the web server's load limit, users generally experience slower response or fail to connect to the server. A load balancer is the best
+
+technique to address these problems.
+
+## Load balancer
+
+A load balancer evenly distributes incoming traffic among web servers that are defined in a load-balanced set. Figure 1-4 shows how a load balancer works.
+
+Figure 1-4
+
+![Image](output/image_000008_490e8ac32d458d7c4dba946853ada5e71510a5ffe1bd788b28c90dbcc2cff5ba.png)
+
+As shown in Figure 1-4, users connect to the public IP of the load balancer directly. With this setup, web servers are unreachable directly by clients anymore. For better security, private IPs are used for communication between servers. A private IP is an IP address reachable only between servers in the same network; however, it is unreachable over the internet. The load balancer communicates with web servers through private IPs. In Figure 1-4, after a load balancer and a second web server are added, we successfully solved no failover issue and improved the availability of the web tier. Details are explained below: · If server 1 goes offline, all the traffic will be routed to server 2. This prevents the website from going offline. We will also add a new healthy web server to the server pool to balance the load. · If the website traffic grows rapidly, and two servers are not enough to handle the traffic, the load balancer can handle this problem gracefully. You only need to add more servers to the web server pool, and the load balancer automatically starts to send requests to them.
+
+Now the web tier looks good, what about the data tier? The current design has one database, so it does not support failover and redundancy. Database replication is a common technique to address those problems. Let us take a look.
+
+## Database replication
+
+Quoted from Wikipedia: "Database replication can be used in many database management systems, usually with a master/slave relationship between the original (master) and the copies (slaves)" [3]. A master database generally only supports write operations. A slave database gets copies of the data from the master database and only supports read operations. All the data-modifying commands like insert, delete, or update must be sent to the master database. Most applications require a much higher ratio of reads to writes; thus, the number of slave databases in a system is usually larger than the number of master databases. Figure 1-5 shows a master database with multiple slave databases.
+
+![Image](output/image_000009_842680a429c5ed8bc4e2bef11fd5668cead7dad810f653564a2b28cf70c63322.png)
+
+Figure 1-5
+
+Advantages of database replication: · Better performance: In the master-slave model, all writes and updates happen in master nodes; whereas, read operations are distributed across slave nodes. This model improves performance because it allows more queries to be processed in parallel. · Reliability: If one of your database servers is destroyed by a natural disaster, such as a typhoon or an earthquake, data is still preserved. You do not need to worry about data loss because data is replicated across multiple locations. · High availability: By replicating data across different locations, your website remains in
+
+- operation even if a database is offline as you can access data stored in another database
+
+server. In the previous section, we discussed how a load balancer helped to improve system availability. We ask the same question here: what if one of the databases goes offline? The architectural design discussed in Figure 1-5 can handle this case: · If only one slave database is available and it goes offline, read operations will be directed to the master database temporarily. As soon as the issue is found, a new slave database will replace the old one. In case multiple slave databases are available, read operations are redirected to other healthy slave databases. A new database server will replace the old one. · If the master database goes offline, a slave database will be promoted to be the new master. All the database operations will be temporarily executed on the new master database. A new slave database will replace the old one for data replication immediately. In production systems, promoting a new master is more complicated as the data in a slave database might not be up to date. The missing data needs to be updated by running data recovery scripts. Although some other replication methods like multi-masters and circular replication could help, those setups are more complicated; and their discussions are beyond the scope of this book. Interested readers should refer to the listed reference materials [4] [5].
+
+Figure 1-6 shows the system design after adding the load balancer and database replication.
+
+![Image](output/image_000010_218f9e3764eadd365ab6e6279c2b354a0b6ea2f826102ff13a7020aad4d7f9e9.png)
+
+Figure 1-6
+
+Let us take a look at the design: · A user gets the IP address of the load balancer from DNS. · A user connects the load balancer with this IP address. · The HTTP request is routed to either Server 1 or Server 2. · A web server reads user data from a slave database. · A web server routes any data-modifying operations to the master database. This includes write, update, and delete operations. Now, you have a solid understanding of the web and data tiers, it is time to improve the load/response time. This can be done by adding a cache layer and shifting static content (JavaScript/CSS/image/video files) to the content delivery network (CDN).
+
+## Cache
+
+A cache is a temporary storage area that stores the result of expensive responses or frequently accessed data in memory so that subsequent requests are served more quickly. As illustrated in Figure 1-6, every time a new web page loads, one or more database calls are executed to fetch data. The application performance is greatly affected by calling the database repeatedly. The cache can mitigate this problem.
+
+## Cache tier
+
+The cache tier is a temporary data store layer, much faster than the database. The benefits of having a separate cache tier include better system performance, ability to reduce database workloads, and the ability to scale the cache tier independently. Figure 1-7 shows a possible setup of a cache server:
+
+![Image](output/image_000011_cd5dc9404ac6b9339e70d7cd78842155b55170f52bd963fd3126223b1e1e57f1.png)
+
+After receiving a request, a web server first checks if the cache has the available response. If it has, it sends data back to the client. If not, it queries the database, stores the response in cache, and sends it back to the client. This caching strategy is called a read-through cache. Other caching strategies are available depending on the data type, size, and access patterns. A previous study explains how different caching strategies work [6]. Interacting with cache servers is simple because most cache servers provide APIs for common programming languages. The following code snippet shows typical Memcached APIs:
+
+![Image](output/image_000012_856484696062ecf080b073e6b5a0c2ea1d6629dee4bd898ca94a1db704a93613.png)
+
+## Considerations for using cache
+
+Here are a few considerations for using a cache system:
+
+· Decide when to use cache. Consider using cache when data is read frequently but modified infrequently. Since cached data is stored in volatile memory, a cache server is not ideal for persisting data. For instance, if a cache server restarts, all the data in memory is lost. Thus, important data should be saved in persistent data stores. · Expiration policy. It is a good practice to implement an expiration policy. Once cached data is expired, it is removed from the cache. When there is no expiration policy, cached data will be stored in the memory permanently. It is advisable not to make the expiration date too short as this will cause the system to reload data from the database too frequently. Meanwhile, it is advisable not to make the expiration date too long as the data can become stale. · Consistency: This involves keeping the data store and the cache in sync. Inconsistency can happen because data-modifying operations on the data store and cache are not in a
+
+- single transaction. When scaling across multiple regions, maintaining consistency between
+
+the data store and cache is challenging. For further details, refer to the paper titled "Scaling Memcache at Facebook" published by Facebook [7]. · Mitigating failures: A single cache server represents a potential single point of failure (SPOF), defined in Wikipedia as follows: "A single point of failure (SPOF) is a part of a system that, if it fails, will stop the entire system from working" [8]. As a result, multiple cache servers across different data centers are recommended to avoid SPOF. Another recommended approach is to overprovision the required memory by certain percentages. This provides a buffer as the memory usage increases.
+
+![Image](output/image_000013_ea3bb2f90bd202a6198bb205ef034b450374952e7d2aacab038e16c81a0b01f9.png)
+
+Figure 1-8 (source: https://bit.ly/3eGsnyH)
+
+· Eviction Policy: Once the cache is full, any requests to add items to the cache might cause existing items to be removed. This is called cache eviction. Least-recently-used (LRU) is the most popular cache eviction policy. Other eviction policies, such as the Least Frequently Used (LFU) or First in First Out (FIFO), can be adopted to satisfy different use cases.
+
+## Content delivery network (CDN)
+
+A CDN is a network of geographically dispersed servers used to deliver static content. CDN servers cache static content like images, videos, CSS, JavaScript files, etc.
+
+Dynamic content caching is a relatively new concept and beyond the scope of this book. It enables the caching of HTML pages that are based on request path, query strings, cookies, and request headers. Refer to the article mentioned in reference material [9] for more about this. This book focuses on how to use CDN to cache static content.
+
+Here is how CDN works at the high-level: when a user visits a website, a CDN server closest to the user will deliver static content. Intuitively, the further users are from CDN servers, the slower the website loads. For example, if CDN servers are in San Francisco, users in Los Angeles will get content faster than users in Europe. Figure 1-9 is a great example that shows how CDN improves load time.
+
+Figure 1-9 (source: https://bit.ly/2yv7DJK)
+
+![Image](output/image_000014_0c4842602dadb3e7dba481a012b474d054ab602c03c0cae3e80bae062064c510.png)
+
+Figure 1-10 demonstrates the CDN workflow.
+
+Figure 1-10
+
+![Image](output/image_000015_b9033a2c32a85a50af1c15618669ba4cbe5b147742e7b0159cdcad8d1b16fb73.png)
+
+1. User A tries to get image.png by using an image URL. The URL's domain is provided by the CDN provider. The following two image URLs are samples used to demonstrate what image URLs look like on Amazon and Akamai CDNs:
+- https://mysite.cloudfront.net/logo.jpg
+- https://mysite.akamai.com/image-manager/img/logo.jpg
+2. If the CDN server does not have image.png in the cache, the CDN server requests the file from the origin, which can be a web server or online storage like Amazon S3.
+3. The origin returns image.png to the CDN server, which includes optional HTTP header Time-to-Live (TTL) which describes how long the image is cached.
+
+4. The CDN caches the image and returns it to User A. The image remains cached in the CDN until the TTL expires. 5. User B sends a request to get the same image.
+
+6. The image is returned from the cache as long as the TTL has not expired.
+
+## Considerations of using a CDN
+
+· Cost: CDNs are run by third-party providers, and you are charged for data transfers in and out of the CDN. Caching infrequently used assets provides no significant benefits so you should consider moving them out of the CDN. · Setting an appropriate cache expiry: For time-sensitive content, setting a cache expiry time is important. The cache expiry time should neither be too long nor too short. If it is too long, the content might no longer be fresh. If it is too short, it can cause repeat reloading of content from origin servers to the CDN. · CDN fallback: You should consider how your website/application copes with CDN failure. If there is a temporary CDN outage, clients should be able to detect the problem and request resources from the origin. · Invalidating files: You can remove a file from the CDN before it expires by performing one of the following operations: · Invalidate the CDN object using APIs provided by CDN vendors. · Use object versioning to serve a different version of the object. To version an object, you can add a parameter to the URL, such as a version number. For example, version number 2 is added to the query string: image.png?v=2.
+
+Figure 1-11 shows the design after the CDN and cache are added.
+
+![Image](output/image_000016_91852dbd134a3703b806494050043fcb82d58dd0352951eab44defda203a9b5d.png)
+
+1. Static assets (JS, CSS, images, etc.,) are no longer served by web servers. They are fetched from the CDN for better performance.
+2. The database load is lightened by caching data.
+
+## Stateless web tier
+
+Now it is time to consider scaling the web tier horizontally. For this, we need to move state (for instance user session data) out of the web tier. A good practice is to store session data in the persistent storage such as relational database or NoSQL. Each web server in the cluster can access state data from databases. This is called stateless web tier.
+
+## Stateful architecture
+
+A stateful server and stateless server has some key differences. A stateful server remembers
+
+client data (state) from one request to the next. A stateless server keeps no state information.
+
+Figure 1-12 shows an example of a stateful architecture.
+
+Figure 1-12
+
+![Image](output/image_000017_0c1eb9a4fd97b64480763cf98f5409f5911242e04161b424b8523534b8f3e996.png)
+
+In Figure 1-12, user A's session data and profile image are stored in Server 1. To authenticate User A, HTTP requests must be routed to Server 1. If a request is sent to other servers like Server 2, authentication would fail because Server 2 does not contain User A's session data. Similarly, all HTTP requests from User B must be routed to Server 2; all requests from User C must be sent to Server 3.
+
+The issue is that every request from the same client must be routed to the same server. This can be done with sticky sessions in most load balancers [10]; however, this adds the overhead. Adding or removing servers is much more difficult with this approach. It is also challenging to handle server failures.
+
+## Stateless architecture
+
+Figure 1-13 shows the stateless architecture.
+
+Figure 1-13
+
+![Image](output/image_000018_e3a12bf1d62aec2930b897fbeb602ab1a8b70328f3ac0b4aaaadcb404b951d85.png)
+
+In this stateless architecture, HTTP requests from users can be sent to any web servers, which fetch state data from a shared data store. State data is stored in a shared data store and kept out of web servers. A stateless system is simpler, more robust, and scalable.
+
+Figure 1-14 shows the updated design with a stateless web tier.
+
+![Image](output/image_000019_01782083ba47da463e530f0efa99a0a6975ec771e76249c1f9d84a25277192aa.png)
+
+Figure 1-14
+
+In Figure 1-14, we move the session data out of the web tier and store them in the persistent data store. The shared data store could be a relational database, Memcached/Redis, NoSQL, etc. The NoSQL data store is chosen as it is easy to scale. Autoscaling means adding or removing web servers automatically based on the traffic load. After the state data is removed out of web servers, auto-scaling of the web tier is easily achieved by adding or removing servers based on traffic load. Your website grows rapidly and attracts a significant number of users internationally. To improve availability and provide a better user experience across wider geographical areas, supporting multiple data centers is crucial.
+
+## Data centers
+
+Figure 1-15 shows an example setup with two data centers. In normal operation, users are geoDNS-routed, also known as geo-routed, to the closest data center, with a split traffic of x% in US-East and (100 - x)% in US-West. geoDNS is a DNS service that allows domain names to be resolved to IP addresses based on the location of a user.
+
+Figure 1-15
+
+![Image](output/image_000020_88e09684c7a1b0b127a3dbacfede53367139938c347b05d310d85a849fe50359.png)
+
+In the event of any significant data center outage, we direct all traffic to a healthy data center. In Figure 1-16, data center 2 (US-West) is offline, and 100% of the traffic is routed to data center 1 (US-East).
+
+![Image](output/image_000021_cf7478b1e7a217851542adb260ba74fa31422b61e70e16a7b55cab7a29f28b14.png)
+
+Figure 1-16
+
+Several technical challenges must be resolved to achieve multi-data center setup: · Traffic redirection: Effective tools are needed to direct traffic to the correct data center. GeoDNS can be used to direct traffic to the nearest data center depending on where a user is located. · Data synchronization: Users from different regions could use different local databases or caches. In failover cases, traffic might be routed to a data center where data is unavailable. A common strategy is to replicate data across multiple data centers. A previous study shows how Netflix implements asynchronous multi-data center replication [11]. · Test and deployment: With multi-data center setup, it is important to test your website/application at different locations. Automated deployment tools are vital to keep services consistent through all the data centers [11]. To further scale our system, we need to decouple different components of the system so they can be scaled independently. Messaging queue is a key strategy employed by many realworld distributed systems to solve this problem.
+
+## Message queue
+
+A message queue is a durable component, stored in memory, that supports asynchronous communication. It serves as a buffer and distributes asynchronous requests. The basic architecture of a message queue is simple. Input services, called producers/publishers, create messages, and publish them to a message queue. Other services or servers, called consumers/subscribers, connect to the queue, and perform actions defined by the messages. The model is shown in Figure 1-17.
+
+![Image](output/image_000022_740e639ac8b771dd4934e21c0d05a9a3f10437a34e137754742256878a132cd5.png)
+
+## Figure 1-17
+
+Decoupling makes the message queue a preferred architecture for building a scalable and reliable application. With the message queue, the producer can post a message to the queue when the consumer is unavailable to process it. The consumer can read messages from the queue even when the producer is unavailable. Consider the following use case: your application supports photo customization, including cropping, sharpening, blurring, etc. Those customization tasks take time to complete. In Figure 1-18, web servers publish photo processing jobs to the message queue. Photo processing workers pick up jobs from the message queue and asynchronously perform photo customization tasks. The producer and the consumer can be scaled independently. When the size of the queue becomes large, more workers are added to reduce the processing time. However, if the queue is empty most of the time, the number of workers can be reduced.
+
+![Image](output/image_000023_01410e3e85c71702b06f378ba22c5eb9c2eeb285c6854b439de5df01250b7f86.png)
+
+## Logging, metrics, automation
+
+When working with a small website that runs on a few servers, logging, metrics, and automation support are good practices but not a necessity. However, now that your site has grown to serve a large business, investing in those tools is essential. Logging: Monitoring error logs is important because it helps to identify errors and problems in the system. You can monitor error logs at per server level or use tools to aggregate them to a centralized service for easy search and viewing. Metrics: Collecting different types of metrics help us to gain business insights and understand the health status of the system. Some of the following metrics are useful: · Host level metrics: CPU, Memory, disk I/O, etc. · Aggregated level metrics: for example, the performance of the entire database tier, cache tier, etc. · Key business metrics: daily active users, retention, revenue, etc. Automation: When a system gets big and complex, we need to build or leverage automation tools to improve productivity. Continuous integration is a good practice, in which each code check-in is verified through automation, allowing teams to detect problems early. Besides, automating your build, test, deploy process, etc. could improve developer productivity
+
+significantly.
+
+## Adding message queues and different tools
+
+Figure 1-19 shows the updated design. Due to the space constraint, only one data center is shown in the figure. 1. The design includes a message queue, which helps to make the system more loosely coupled and failure resilient.
+
+2. Logging, monitoring, metrics, and automation tools are included.
+
+Figure 1-19
+
+![Image](output/image_000024_93207308da547738657e847641bf0699c13061e1f51155169d4becb212f0df4f.png)
+
+As the data grows every day, your database gets more overloaded. It is time to scale the data tier.
+
+## Database scaling
+
+There are two broad approaches for database scaling: vertical scaling and horizontal scaling.
+
+## Vertical scaling
+
+Vertical scaling, also known as scaling up, is the scaling by adding more power (CPU, RAM, DISK, etc.) to an existing machine. There are some powerful database servers. According to Amazon Relational Database Service (RDS) [12], you can get a database server with 24 TB of RAM. This kind of powerful database server could store and handle lots of data. For example, stackoverflow.com in 2013 had over 10 million monthly unique visitors, but it only had 1 master database [13]. However, vertical scaling comes with some serious drawbacks: · You can add more CPU, RAM, etc. to your database server, but there are hardware limits. If you have a large user base, a single server is not enough. · Greater risk of single point of failures. · The overall cost of vertical scaling is high. Powerful servers are much more expensive.
+
+## Horizontal scaling
+
+Horizontal scaling, also known as sharding, is the practice of adding more servers. Figure 120 compares vertical scaling with horizontal scaling.
+
+![Image](output/image_000025_caf24f7f140142eb4e9ebebc1582f87823b6d4e946372224eefa38d17c8d9547.png)
+
+Figure 1-20
+
+Sharding separates large databases into smaller, more easily managed parts called shards. Each shard shares the same schema, though the actual data on each shard is unique to the shard. Figure 1-21 shows an example of sharded databases. User data is allocated to a database server based on user IDs. Anytime you access data, a hash function is used to find the corresponding shard. In our example, user\_id % 4 is used as the hash function. If the result equals to 0, shard 0 is used to store and fetch data. If the result equals to 1, shard 1 is used. The same logic applies to other shards.
+
+![Image](output/image_000026_8584afd745063ec60b020845af40b59c40aca18ab7c0fc8d64e27e08985ce843.png)
+
+Figure 1-21
+
+Figure 1-22 shows the user table in sharded databases.
+
+![Image](output/image_000027_cf7b55150d37778bbcc039bf24632500fe4896945b8c796dc5a75663a7bcea31.png)
+
+Figure 1-22
+
+The most important factor to consider when implementing a sharding strategy is the choice of the sharding key. Sharding key (known as a partition key) consists of one or more columns that determine how data is distributed. As shown in Figure 1-22, "user\_id" is the sharding key. A sharding key allows you to retrieve and modify data efficiently by routing database queries to the correct database. When choosing a sharding key, one of the most important criteria is to choose a key that can evenly distributed data. Sharding is a great technique to scale the database but it is far from a perfect solution. It introduces complexities and new challenges to the system: Resharding data: Resharding data is needed when 1) a single shard could no longer hold more data due to rapid growth. 2) Certain shards might experience shard exhaustion faster than others due to uneven data distribution. When shard exhaustion happens, it requires updating the sharding function and moving data around. Consistent hashing, which will be discussed in Chapter 5, is a commonly used technique to solve this problem. Celebrity problem: This is also called a hotspot key problem. Excessive access to a specific shard could cause server overload. Imagine data for Katy Perry, Justin Bieber, and Lady Gaga all end up on the same shard. For social applications, that shard will be overwhelmed with read operations. To solve this problem, we may need to allocate a shard for each celebrity. Each shard might even require further partition. Join and de-normalization: Once a database has been sharded across multiple servers, it is hard to perform join operations across database shards. A common workaround is to denormalize the database so that queries can be performed in a single table. In Figure 1-23, we shard databases to support rapidly increasing data traffic. At the same time, some of the non-relational functionalities are moved to a NoSQL data store to reduce the database load. Here is an article that covers many use cases of NoSQL [14].
+
+![Image](output/image_000028_a6dd067f48683d69c62277aae32caee5cd837a46855c8da5d36c39d104a65536.png)
+
+## Millions of users and beyond
+
+Scaling a system is an iterative process. Iterating on what we have learned in this chapter could get us far. More fine-tuning and new strategies are needed to scale beyond millions of users. For example, you might need to optimize your system and decouple the system to even smaller services. All the techniques learned in this chapter should provide a good foundation to tackle new challenges. To conclude this chapter, we provide a summary of how we scale our system to support millions of users: · Keep web tier stateless · Build redundancy at every tier · Cache data as much as you can · Support multiple data centers · Host static assets in CDN · Scale your data tier by sharding · Split tiers into individual services · Monitor your system and use automation tools
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Hypertext Transfer Protocol: https://en.wikipedia.org/wiki/Hypertext\_Transfer\_Protocol [2] Should you go Beyond Relational Databases?: https://blog.teamtreehouse.com/should-you-go-beyond-relational-databases [3] Replication: https://en.wikipedia.org/wiki/Replication\_(computing) [4] Multi-master replication: https://en.wikipedia.org/wiki/Multi-master\_replication [5] NDB Cluster Replication: Multi-Master and Circular Replication: https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-replication-multi-master.html [6] Caching Strategies and How to Choose the Right One: https://codeahoy.com/2017/08/11/caching-strategies-and-how-to-choose-the-right-one/ [7] R. Nishtala, "Facebook, Scaling Memcache at," 10th USENIX Symposium on Networked Systems Design and Implementation (NSDI '13). [8] Single point of failure: https://en.wikipedia.org/wiki/Single\_point\_of\_failure [9] Amazon CloudFront Dynamic Content Delivery: https://aws.amazon.com/cloudfront/dynamic-content/ [10] Configure Sticky Sessions for Your Classic Load Balancer: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html [11] Active-Active for Multi-Regional Resiliency: https://netflixtechblog.com/active-active-for-multi-regional-resiliency-c47719f6685b [12] Amazon EC2 High Memory Instances: https://aws.amazon.com/ec2/instance-types/high-memory/ [13] What it takes to run Stack Overflow: http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow [14] What The Heck Are You Actually Using NoSQL For: http://highscalability.com/blog/2010/12/6/what-the-heck-are-you-actually-using-nosql-
+
+[for.html](http://highscalability.com/blog/2010/12/6/what-the-heck-are-you-actually-using-nosql-for.html)
+
+## CHAPTER 2: BACK-OF-THE-ENVELOPE ESTIMATION
+
+In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, "back-of-the-envelope calculations are estimates you create using a combination of thought experiments and common performance numbers to get a good feel for which designs will meet your requirements" [1]. You need to have a good sense of scalability basics to effectively carry out back-of-theenvelope estimation. The following concepts should be well understood: power of two [2], latency numbers every programmer should know, and availability numbers.
+
+## Power of two
+
+Although data volume can become enormous when dealing with distributed systems, calculation all boils down to the basics. To obtain correct calculations, it is critical to know the data volume unit using the power of 2. A byte is a sequence of 8 bits. An ASCII character uses one byte of memory (8 bits). Below is a table explaining the data volume unit (Table 21).
+
+Table 2-1
+
+|   Power | Approximate value   | Full name   | Short name   |
+|---------|---------------------|-------------|--------------|
+|      10 | 1 Thousand          | 1 Kilobyte  | 1KB          |
+|      20 | 1 Million           | 1 Megabyte  | 1 MB         |
+|      30 | 1 Billion           | 1 Gigabyte  | 1 GB         |
+|      40 | 1 Trillion          | 1 Terabyte  | 1 TB         |
+|      50 | 1 Quadrillion       | 1 Petabyte  | 1 PB         |
+
+## Latency numbers every programmer should know
+
+Dr. Dean from Google reveals the length of typical computer operations in 2010 [1]. Some numbers are outdated as computers become faster and more powerful. However, those numbers should still be able to give us an idea of the fastness and slowness of different computer operations.
+
+| Operation name                                | Time                    |
+|-----------------------------------------------|-------------------------|
+| L1 cache reference                            | 0.5 ns                  |
+| Branch mispredict                             | 5 ns                    |
+| L2 cache reference                            | 7 ns                    |
+| Mutex lock/unlock                             | 100 ns                  |
+| Main memory reference                         | 100 ns                  |
+| Compress 1K bytes with Zippy                  | 10,000 ns = 10 μs       |
+| Send 2K bytes over1 Gbps network              | 20,000 ns = 20 μs       |
+| Read 1 MB sequentially from memory            | 250,000 ns = 250 μs     |
+| Round trip within the same datacenter         | 500,000 ns = 500 μs     |
+| Disk seek                                     | 10,000,000 ns = 10 ms   |
+| Read 1 MB sequentially from the network       | 10,000,000 ns = 10 ms   |
+| Read 1 MB sequentiallyfrom disk               | 30,000,000 ns = 30 ms   |
+| Send packet CA (California) ->Netherlands->CA | 150,000,000 ns = 150 ms |
+
+Table 2-2
+
+Notes ----------- ns = nanosecond, µs = microsecond, ms = millisecond 1 ns = 10^-9 seconds 1 µs= 10^-6 seconds = 1,000 ns
+
+1 ms = 10^-3 seconds = 1,000 µs = 1,000,000 ns A Google software engineer built a tool to visualize Dr. Dean's numbers. The tool also takes the time factor into consideration. Figures 2-1 shows the visualized latency numbers as of 2020 (source of figures: reference material [3]).
+
+Figure 2-1
+
+![Image](output/image_000029_9e9f120447552c3d75a3b7f5cfe2953157bb1289b632f18eba0ecc09ddcdcb71.png)
+
+By analyzing the numbers in Figure 2-1, we get the following conclusions:
+
+- Memory is fast but the disk is slow.
+- Avoid disk seeks if possible.
+- Simple compression algorithms are fast.
+- Compress data before sending it over the internet if possible.
+- Data centers are usually in different regions, and it takes time to send data between them.
+
+## Availability numbers
+
+High availability is the ability of a system to be continuously operational for a desirably long period of time. High availability is measured as a percentage, with 100% means a service that has 0 downtime. Most services fall between 99% and 100%. A service level agreement (SLA) is a commonly used term for service providers. This is an agreement between you (the service provider) and your customer, and this agreement formally defines the level of uptime your service will deliver. Cloud providers Amazon [4], Google [5] and Microsoft [6] set their SLAs at 99.9% or above. Uptime is traditionally measured in nines. The more the nines, the better. As shown in Table 2-3, the number of nines correlate to the expected system downtime.
+
+| Availability %   | Downtime per day    | Downtime per year   |
+|------------------|---------------------|---------------------|
+| %66              | 14.40minutes        | 3.65 days           |
+| 99.9%            | 1.44 minutes        | 8.77 hours          |
+| 99.99%           | 8.64 seconds        | 52.60minutes        |
+| 99.999%          | 864.00 milliseconds | 5.26 minutes        |
+| 99.9999%         | 86.40 milliseconds  | 31.56 seconds       |
+
+Table 2-3
+
+## Example: Estimate Twitter QPS and storage requirements
+
+Please note the following numbers are for this exercise only as they are not real numbers from Twitter.
+
+Assumptions: · 300 million monthly active users. · 50% of users use Twitter daily. · Users post 2 tweets per day on average. · 10% of tweets contain media. · Data is stored for 5 years. Estimations: Query per second (QPS) estimate: · Daily active users (DAU) = 300 million * 50% = 150 million · Tweets QPS = 150 million * 2 tweets / 24 hour / 3600 seconds = ~3500 · Peek QPS = 2 * QPS = ~7000 We will only estimate media storage here. · Average tweet size: · tweet\_id 64 bytes · text 140 bytes · media 1 MB · Media storage: 150 million * 2 * 10% * 1 MB = 30 TB per day
+
+- 5-year media storage: 30 TB * 365 * 5 = ~55 PB
+
+## Tips
+
+Back-of-the-envelope estimation is all about the process. Solving the problem is more important than obtaining results. Interviewers may test your problem-solving skills. Here are a few tips to follow: · Rounding and Approximation. It is difficult to perform complicated math operations during the interview. For example, what is the result of "99987 / 9.1"? There is no need to spend valuable time to solve complicated math problems. Precision is not expected. Use round numbers and approximation to your advantage. The division question can be simplified as follows: "100,000 / 10". · Write down your assumptions. It is a good idea to write down your assumptions to be referenced later. · Label your units. When you write down "5", does it mean 5 KB or 5 MB? You might confuse yourself with this. Write down the units because "5 MB" helps to remove ambiguity. · Commonly asked back-of-the-envelope estimations: QPS, peak QPS, storage, cache, number of servers, etc. You can practice these calculations when preparing for an interview. Practice makes perfect.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] J. Dean.Google Pro Tip: Use Back-Of-The-Envelope-Calculations To Choose The Best Design: http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelopecalculations-to-choo.html [2] System design primer: https://github.com/donnemartin/system-design-primer [3] Latency Numbers Every Programmer Should Know: https://colin-scott.github.io/personal\_website/research/interactive\_latency.html [4] Amazon Compute Service Level Agreement: https://aws.amazon.com/compute/sla/ [5] Compute Engine Service Level Agreement (SLA): https://cloud.google.com/compute/sla [6] SLA summary for Azure services: https://azure.microsoft.com/enus/support/legal/sla/summary/
+
+## CHAPTER 3: A FRAMEWORK FOR SYSTEM DESIGN INTERVIEWS
+
+You have just landed a coveted on-site interview at your dream company. The hiring coordinator sends you a schedule for that day. Scanning down the list, you feel pretty good about it until your eyes land on this interview session - System Design Interview. System design interviews are often intimidating. It could be as vague as "designing a wellknown product X?". The questions are ambiguous and seem unreasonably broad. Your weariness is understandable. After all, how could anyone design a popular product in an hour that has taken hundreds if not thousands of engineers to build? The good news is that no one expects you to. Real-world system design is extremely complicated. For example, Google search is deceptively simple; however, the amount of technology that underpins that simplicity is truly astonishing. If no one expects you to design a real-world system in an hour, what is the benefit of a system design interview? The system design interview simulates real-life problem solving where two co-workers collaborate on an ambiguous problem and come up with a solution that meets their goals. The problem is open-ended, and there is no perfect answer. The final design is less important compared to the work you put in the design process. This allows you to demonstrate your design skill, defend your design choices, and respond to feedback in a constructive manner. Let us flip the table and consider what goes through the interviewer's head as she walks into the conference room to meet you. The primary goal of the interviewer is to accurately assess your abilities. The last thing she wants is to give an inconclusive evaluation because the session has gone poorly and there are not enough signals. What is an interviewer looking for in a system design interview? Many think that system design interview is all about a person's technical design skills. It is much more than that. An effective system design interview gives strong signals about a person's ability to collaborate, to work under pressure, and to resolve ambiguity constructively. The ability to ask good questions is also an essential skill, and many interviewers specifically look for this skill. A good interviewer also looks for red flags. Over-engineering is a real disease of many engineers as they delight in design purity and ignore tradeoffs. They are often unaware of the compounding costs of over-engineered systems, and many companies pay a high price for that ignorance. You certainly do not want to demonstrate this tendency in a system design interview. Other red flags include narrow mindedness, stubbornness, etc. In this chapter, we will go over some useful tips and introduce a simple and effective framework to solve system design interview problems.
+
+## A 4-step process for effective system design interview
+
+Every system design interview is different. A great system design interview is open-ended and there is no one-size-fits-all solution. However, there are steps and common ground to cover in every system design interview.
+
+## Step 1 - Understand the problem and establish design scope
+
+"Why did the tiger roar?" A hand shot up in the back of the class. "Yes, Jimmy?", the teacher responded. "Because he was HUNGRY". "Very good Jimmy." Throughout his childhood, Jimmy has always been the first to answer questions in the class. Whenever the teacher asks a question, there is always a kid in the classroom who loves to take a crack at the question, no matter if he knows the answer or not. That is Jimmy. Jimmy is an ace student. He takes pride in knowing all the answers fast. In exams, he is usually the first person to finish the questions. He is a teacher's top choice for any academic competition. DON'T be like Jimmy. In a system design interview, giving out an answer quickly without thinking gives you no bonus points. Answering without a thorough understanding of the requirements is a huge red flag as the interview is not a trivia contest. There is no right answer. So, do not jump right in to give a solution. Slow down. Think deeply and ask questions to clarify requirements and assumptions. This is extremely important. As an engineer, we like to solve hard problems and jump into the final design; however, this approach is likely to lead you to design the wrong system. One of the most important skills as an engineer is to ask the right questions, make the proper assumptions, and gather all the information needed to build a system. So, do not be afraid to ask questions. When you ask a question, the interviewer either answers your question directly or asks you to make your assumptions. If the latter happens, write down your assumptions on the whiteboard or paper. You might need them later. What kind of questions to ask? Ask questions to understand the exact requirements. Here is a list of questions to help you get started: · What specific features are we going to build? · How many users does the product have? · How fast does the company anticipate to scale up? What are the anticipated scales in 3 months, 6 months, and a year? · What is the company's technology stack? What existing services you might leverage to simplify the design? Example
+
+If you are asked to design a news feed system, you want to ask questions that help you clarify the requirements. The conversation between you and the interviewer might look like this: Candidate: Is this a mobile app? Or a web app? Or both?
+
+Interviewer: Both. Candidate: What are the most important features for the product? Interviewer: Ability to make a post and see friends' news feed. Candidate: Is the news feed sorted in reverse chronological order or a particular order? The particular order means each post is given a different weight. For instance, posts from your close friends are more important than posts from a group. Interviewer: To keep things simple, let us assume the feed is sorted by reverse chronological order. Candidate: How many friends can a user have? Interviewer: 5000 Candidate: What is the traffic volume? Interviewer: 10 million daily active users (DAU) Candidate: Can feed contain images, videos, or just text? Interviewer: It can contain media files, including both images and videos. Above are some sample questions that you can ask your interviewer. It is important to understand the requirements and clarify ambiguities
+
+## Step 2 - Propose high-level design and get buy-in
+
+In this step, we aim to develop a high-level design and reach an agreement with the interviewer on the design. It is a great idea to collaborate with the interviewer during the process. · Come up with an initial blueprint for the design. Ask for feedback. Treat your interviewer as a teammate and work together. Many good interviewers love to talk and get involved. · Draw box diagrams with key components on the whiteboard or paper. This might include clients (mobile/web), APIs, web servers, data stores, cache, CDN, message queue, etc. · Do back-of-the-envelope calculations to evaluate if your blueprint fits the scale constraints. Think out loud. Communicate with your interviewer if back-of-the-envelope is necessary before diving into it.
+
+If possible, go through a few concrete use cases. This will help you frame the high-level design. It is also likely that the use cases would help you discover edge cases you have not yet considered. Should we include API endpoints and database schema here? This depends on the problem. For large design problems like "Design Google search engine", this is a bit of too low level. For a problem like designing the backend for a multi-player poker game, this is a fair game. Communicate with your interviewer.
+
+## Example
+
+Let us use "Design a news feed system" to demonstrate how to approach the high-level design. Here you are not required to understand how the system actually works. All the details will be explained in Chapter 11. At the high level, the design is divided into two flows: feed publishing and news feed building. · Feed publishing: when a user publishes a post, corresponding data is written into
+
+- cache/database, and the post will be populated into friends' news feed.
+- Newsfeed building: the news feed is built by aggregating friends' posts in a reverse chronological order.
+
+Figure 3-1 and Figure 3-2 present high-level designs for feed publishing and news feed building flows, respectively.
+
+Figure 3-1
+
+![Image](output/image_000030_acd68d1a5030fad3455e94742a8c99873c0da93b6fa9cc78d91bcf832988887f.png)
+
+![Image](output/image_000031_2d96a58b5652add2fd6b49f4db18a8429ed09f6bb5a718bffee389c9a86c5072.png)
+
+Figure 3-2
+
+## Step 3 - Design deep dive
+
+At this step, you and your interviewer should have already achieved the following objectives: · Agreed on the overall goals and feature scope · Sketched out a high-level blueprint for the overall design · Obtained feedback from your interviewer on the high-level design · Had some initial ideas about areas to focus on in deep dive based on her feedback
+
+You shall work with the interviewer to identify and prioritize components in the architecture. It is worth stressing that every interview is different. Sometimes, the interviewer may give off hints that she likes focusing on high-level design. Sometimes, for a senior candidate interview, the discussion could be on the system performance characteristics, likely focusing on the bottlenecks and resource estimations. In most cases, the interviewer may want you to dig into details of some system components. For URL shortener, it is interesting to dive into the hash function design that converts a long URL to a short one. For a chat system, how to reduce latency and how to support online/offline status are two interesting topics. Time management is essential as it is easy to get carried away with minute details that do not demonstrate your abilities. You must be armed with signals to show your interviewer. Try not to get into unnecessary details. For example, talking about the EdgeRank algorithm of Facebook feed ranking in detail is not ideal during a system design interview as this takes much precious time and does not prove your ability in designing a scalable system.
+
+## Example
+
+At this point, we have discussed the high-level design for a news feed system, and the interviewer is happy with your proposal. Next, we will investigate two of the most important use cases:
+
+1. Feed publishing
+2. News feed retrieval
+
+Figure 3-3 and Figure 3-4 show the detailed design for the two use cases, which will be explained in detail in Chapter 11.
+
+Figure 3-3
+
+![Image](output/image_000032_c2f3da34e5246f33ff65abc6ac8349bf21d53931b898e4e9e3d2c02d7ade27b0.png)
+
+![Image](output/image_000033_4defe5d14542ea38198c5e3b2a8d91095f315fd430449bb3cbb215284db5eb0f.png)
+
+## Step 4 - Wrap up
+
+In this final step, the interviewer might ask you a few follow-up questions or give you the freedom to discuss other additional points. Here are a few directions to follow: · The interviewer might want you to identify the system bottlenecks and discuss potential improvements. Never say your design is perfect and nothing can be improved. There is always something to improve upon. This is a great opportunity to show your critical thinking and leave a good final impression. · It could be useful to give the interviewer a recap of your design. This is particularly important if you suggested a few solutions. Refreshing your interviewer's memory can be helpful after a long session. · Error cases (server failure, network loss, etc.) are interesting to talk about. · Operation issues are worth mentioning. How do you monitor metrics and error logs? How to roll out the system? · How to handle the next scale curve is also an interesting topic. For example, if your current design supports 1 million users, what changes do you need to make to support 10 million users?
+
+- Propose other refinements you need if you had more time.
+
+To wrap up, we summarize a list of the Dos and Don'ts.
+
+## Dos
+
+· Always ask for clarification. Do not assume your assumption is correct. · Understand the requirements of the problem. · There is neither the right answer nor the best answer. A solution designed to solve the problems of a young startup is different from that of an established company with millions of users. Make sure you understand the requirements. · Let the interviewer know what you are thinking. Communicate with your interview. · Suggest multiple approaches if possible. · Once you agree with your interviewer on the blueprint, go into details on each component. Design the most critical components first. · Bounce ideas off the interviewer. A good interviewer works with you as a teammate. · Never give up.
+
+## Don'ts
+
+· Don't be unprepared for typical interview questions. · Don't jump into a solution without clarifying the requirements and assumptions. · Don't go into too much detail on a single component in the beginning. Give the highlevel design first then drills down. · If you get stuck, don't hesitate to ask for hints. · Again, communicate. Don't think in silence. · Don't think your interview is done once you give the design. You are not done until your interviewer says you are done. Ask for feedback early and often.
+
+## Time allocation on each step
+
+System design interview questions are usually very broad, and 45 minutes or an hour is not enough to cover the entire design. Time management is essential. How much time should you spend on each step? The following is a very rough guide on distributing your time in a 45minute interview session. Please remember this is a rough estimate, and the actual time distribution depends on the scope of the problem and the requirements from the interviewer. Step 1 Understand the problem and establish design scope: 3 - 10 minutes Step 2 Propose high-level design and get buy-in: 10 - 15 minutes Step 3 Design deep dive: 10 - 25 minutes Step 4 Wrap: 3 - 5 minutes
+
+## CHAPTER 4: DESIGN A RATE LIMITER
+
+In a network system, a rate limiter is used to control the rate of traffic sent by a client or a service. In the HTTP world, a rate limiter limits the number of client requests allowed to be sent over a specified period. If the API request count exceeds the threshold defined by the rate limiter, all the excess calls are blocked. Here are a few examples: · A user can write no more than 2 posts per second. · You can create a maximum of 10 accounts per day from the same IP address. · You can claim rewards no more than 5 times per week from the same device. In this chapter, you are asked to design a rate limiter. Before starting the design, we first look at the benefits of using an API rate limiter: · Prevent resource starvation caused by Denial of Service (DoS) attack [1]. Almost all APIs published by large tech companies enforce some form of rate limiting. For example, Twitter limits the number of tweets to 300 per 3 hours [2]. Google docs APIs have the following default limit: 300 per user per 60 seconds for read requests [3]. A rate limiter prevents DoS attacks, either intentional or unintentional, by blocking the excess calls. · Reduce cost. Limiting excess requests means fewer servers and allocating more resources to high priority APIs. Rate limiting is extremely important for companies that use paid third party APIs. For example, you are charged on a per-call basis for the following external APIs: check credit, make a payment, retrieve health records, etc. Limiting the number of calls is essential to reduce costs. · Prevent servers from being overloaded. To reduce server load, a rate limiter is used to filter out excess requests caused by bots or users' misbehavior.
+
+## Step 1 - Understand the problem and establish design scope
+
+Rate limiting can be implemented using different algorithms, each with its pros and cons. The interactions between an interviewer and a candidate help to clarify the type of rate limiters we are trying to build. Candidate: What kind of rate limiter are we going to design? Is it a client-side rate limiter or server-side API rate limiter? Interviewer: Great question. We focus on the server-side API rate limiter. Candidate: Does the rate limiter throttle API requests based on IP, the user ID, or other properties? Interviewer: The rate limiter should be flexible enough to support different sets of throttle rules. Candidate: What is the scale of the system? Is it built for a startup or a big company with a large user base? Interviewer: The system must be able to handle a large number of requests. Candidate: Will the system work in a distributed environment? Interviewer: Yes. Candidate: Is the rate limiter a separate service or should it be implemented in application code? Interviewer: It is a design decision up to you. Candidate: Do we need to inform users who are throttled?
+
+Here is a summary of the requirements for the system: · Accurately limit excessive requests. · Low latency. The rate limiter should not slow down HTTP response time. · Use as little memory as possible. · Distributed rate limiting. The rate limiter can be shared across multiple servers or processes. · Exception handling. Show clear exceptions to users when their requests are throttled. · High fault tolerance. If there are any problems with the rate limiter (for example, a cache
+
+Interviewer: Yes. Requirements server goes offline), it does not affect the entire system.
+
+## Step 2 - Propose high-level design and get buy-in
+
+Let us keep things simple and use a basic client and server model for communication.
+
+## Where to put the rate limiter?
+
+Intuitively, you can implement a rate limiter at either the client or server-side.
+
+- Client-side implementation. Generally speaking, client is an unreliable place to enforce rate limiting because client requests can easily be forged by malicious actors. Moreover, we might not have control over the client implementation.
+- Server-side implementation. Figure 4-1 shows a rate limiter that is placed on the serverside.
+
+Figure 4-1
+
+![Image](output/image_000034_6fd8e107bd57d4b6b5669d3f4115d862613847bacb0b482a394c42106a2add83.png)
+
+Besides the client and server-side implementations, there is an alternative way. Instead of putting a rate limiter at the API servers, we create a rate limiter middleware, which throttles requests to your APIs as shown in Figure 4-2.
+
+Figure 4-2
+
+![Image](output/image_000035_462dbd1ab30af3792575d6de4edf4bb6046cd4ded1371fa77c6be5425a8eaa45.png)

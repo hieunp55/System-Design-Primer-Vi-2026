@@ -1,0 +1,635 @@
+Bạn là chuyên gia dịch thuật kỹ thuật Anh → Việt, chuyên tài liệu kỹ thuật/công nghệ, có kinh nghiệm dịch như biên dịch viên bản ngữ chuyên nghiệp. Nhiệm vụ: dịch TOÀN BỘ nội dung Markdown dưới đây sang tiếng Việt, không bỏ sót bất kỳ phần nào. Đây là MỘT PHẦN (chunk) của một tài liệu lớn hơn, hãy dịch độc lập đoạn này, không thêm lời mở đầu/kết luận về việc đây chỉ là một phần.
+
+QUY TẮC BẮT BUỘC — VI PHẠM LÀ SAI:
+
+1. XÁC ĐỊNH LOẠI TÀI LIỆU TRƯỚC KHI DỊCH
+   - Tự phân tích nội dung để xác định loại tài liệu (kỹ thuật/lập trình, tài chính, bảo hiểm, pháp lý, marketing, học thuật, vận hành, sản phẩm...).
+   - Chọn văn phong và thuật ngữ CHUẨN NGÀNH tương ứng trong tiếng Việt, nhất quán xuyên suốt.
+
+2. VĂN PHONG — MƯỢT NHƯ NGƯỜI DỊCH, KHÔNG GIẢM CHÍNH XÁC
+   - Dịch mượt, tự nhiên, đúng ngữ pháp tiếng Việt — như biên dịch viên bản ngữ dịch tay, KHÔNG dịch máy móc kiểu word-by-word.
+   - Được phép đảo cấu trúc câu, tách/gộp câu cho tự nhiên, miễn giữ nguyên 100% ý nghĩa, thông tin, logic, số liệu gốc.
+   - Khi "mượt mà" và "chính xác" xung đột → LUÔN ưu tiên chính xác.
+
+3. DỊCH ĐẦY ĐỦ 100%
+   - Không tóm tắt, không rút gọn, không lược bỏ đoạn/câu/mục/bullet nào.
+   - Số lượng heading, đoạn văn, bảng, code block ở output PHẢI khớp 1:1 với input.
+   - Đoạn dài dịch hết, không cắt ngắn.
+
+4. GIỮ NGUYÊN THUẬT NGỮ TIẾNG ANH
+   - Thuật ngữ chuyên ngành (tên công nghệ, framework, pattern, tên hàm/biến, acronym...) giữ nguyên tiếng Anh, không dịch, không phiên âm.
+   - Ngay sau lần xuất hiện ĐẦU TIÊN của mỗi thuật ngữ, thêm chú thích ngắn trong ngoặc giải thích nghĩa bằng tiếng Việt.
+   - Các lần xuất hiện sau KHÔNG cần chú thích lại.
+
+5. GIỮ NGUYÊN FORMAT — RẤT QUAN TRỌNG
+   - VỀ ẢNH (làm trước khi dịch): ĐẾM chính xác số lượng thẻ ảnh dạng ![...](...) trong đoạn gốc bên dưới. Output PHẢI có ĐÚNG số lượng thẻ ảnh đó, không được thiếu một cái nào — kể cả ảnh không có caption, không rõ ngữ cảnh, hay trông như ảnh trang trí/lặp lại. Copy nguyên URL 100%, không sửa, không rút gọn, không thay bằng mô tả text.
+   - Giữ cấp độ heading (#, ##, ###...), giữ đúng số lượng heading.
+   - Giữ cấu trúc bảng (số cột, số hàng, alignment, header row).
+   - Giữ code block (```lang ... ```) — KHÔNG dịch code; comment được dịch tại chỗ; **được phép reformat code, tự động xuống dòng/indent chuẩn, không giữ nguyên code 1 dòng; không đổi logic/cú pháp**.
+   - Giữ blockquote, callout/note/warning (>, [!NOTE], [!WARNING]...).
+   - Giữ list, nested list, checkbox (- [ ]).
+   - Giữ nguyên link thường ([text](url)) — chỉ dịch phần text hiển thị, TUYỆT ĐỐI giữ nguyên URL.
+   - TRƯỚC KHI TRẢ KẾT QUẢ: tự đếm lại số heading, số ảnh, số dòng ``` giữa bản gốc và bản dịch (KHÔNG tính fence 4 backtick ngoài cùng), nếu lệch phải sửa lại cho khớp.
+
+6. GIẢI THÍCH ẨN DỤ / KHÁI NIỆM KHÓ
+   - Với ẩn dụ, thành ngữ, khái niệm trừu tượng khó hiểu với người Việt, thêm khối giải thích riêng ngay sau đoạn đó:
+     > 💡 **Giải thích thêm:** [giải thích dễ hiểu, đủ chuyên sâu, có ví dụ thực tế]
+     > Nguồn tham khảo: [link cụ thể để kiểm chứng]
+   - CHỈ đưa link nếu chắc chắn tồn tại và đúng nội dung — không bịa link.
+   - Không tìm được nguồn tin cậy → ghi rõ: "(Không có nguồn trích dẫn xác thực — cần tự kiểm chứng thêm)".
+
+7. CHỐNG HALLUCINATION (BẮT BUỘC)
+   - Không tự thêm thông tin/số liệu/ví dụ/kết luận KHÔNG có trong bản gốc — trừ phần giải thích ẩn dụ ở mục 6 (phải gắn nhãn rõ là phần bổ sung).
+   - Câu gốc mơ hồ → dịch sát nghĩa nhất, nếu không chắc ghi chú: "[CẦN KIỂM CHỨNG: câu gốc mơ hồ]".
+   - Không tự sửa/thêm/bớt logic kỹ thuật gốc. Không bịa trích dẫn/số liệu/link vô căn cứ.
+   - Không tự tóm tắt các đoạn dài thành ý chính rồi diễn giải lại — phải dịch từng câu.
+
+8. OUTPUT
+   - Trả về DUY NHẤT nội dung Markdown đã dịch, bọc trong MỘT khối code ngoài cùng dùng đúng 4 dấu backtick: dòng đầu là ````markdown, dòng cuối là ````.
+   - Lý do: bên trong có thể chứa code block 3 backtick (```json ... ```). Fence ngoài PHẢI dài hơn fence trong, nếu không khối ngoài sẽ bị đóng sớm.
+   - CẤM dùng 3 backtick cho fence ngoài cùng. Các code block bên trong giữ nguyên 3 backtick như bản gốc.
+   - Nếu bản gốc có fence từ 4 backtick trở lên, fence ngoài dùng nhiều hơn fence dài nhất bên trong ít nhất 1 backtick.
+   - Toàn bộ kết quả nằm trong MỘT khối duy nhất: không đóng/mở lại giữa chừng, không có chữ nào ngoài khối.
+   - Không đổi tiêu đề gốc trừ khi cần dịch tiêu đề.
+
+--- NỘI DUNG GỐC CẦN DỊCH (một phần của tài liệu) ---
+
+[1] The Life of a Typeahead Query: https://www.facebook.com/notes/facebookengineering/the-life-of-a-typeahead-query/389105248919/ [2] How We Built Prefixy: A Scalable Prefix Search Service for Powering Autocomplete: https://medium.com/@prefixyteam/how-we-built-prefixy-a-scalable-prefix-search-servicefor-powering-autocomplete-c20f98e2eff1 [3] Prefix Hash Tree An Indexing Data Structure over Distributed Hash Tables: https://people.eecs.berkeley.edu/~sylvia/papers/pht.pdf [4] MongoDB wikipedia: https://en.wikipedia.org/wiki/MongoDB [5] Unicode frequently asked questions: https://www.unicode.org/faq/basic\_q.html [6] Apache hadoop: https://hadoop.apache.org/ [7] Spark streaming: https://spark.apache.org/streaming/ [8] Apache storm: https://storm.apache.org/ [9] Apache kafka: https://kafka.apache.org/documentation/
+
+## CHAPTER 14: DESIGN YOUTUBE
+
+In this chapter, you are asked to design YouTube. The solution to this question can be applied to other interview questions like designing a video sharing platform such as Netflix and Hulu. Figure 14-1 shows the YouTube homepage.
+
+Figure 14-1
+
+![Image](output/image_000164_b5aebab4710eb82e016f7746b243dc46af07e3b0976d91c678aa6aded1655032.png)
+
+YouTube looks simple: content creators upload videos and viewers click play. Is it really that simple? Not really. There are lots of complex technologies underneath the simplicity. Let us look at some impressive statistics, demographics, and fun facts of YouTube in 2020 [1] [2].
+
+- Total number of monthly active users: 2 billion.
+- Number of videos watched per day: 5 billion.
+- 73% of US adults use YouTube.
+- 50 million creators on YouTube.
+- YouTube's Ad revenue was $15.1 billion for the full year 2019, up 36% from 2018.
+- YouTube is responsible for 37% of all mobile internet traffic.
+- YouTube is available in 80 different languages.
+
+From these statistics, we know YouTube is enormous, global and makes a lot of money.
+
+## Step 1 - Understand the problem and establish design scope
+
+As revealed in Figure 14-1, besides watching a video, you can do a lot more on YouTube. For example, comment, share, or like a video, save a video to playlists, subscribe to a channel, etc. It is impossible to design everything within a 45- or 60-minute interview. Thus, it is important to ask questions to narrow down the scope. Candidate: What features are important? Interviewer: Ability to upload a video and watch a video. Candidate: What clients do we need to support? Interviewer: Mobile apps, web browsers, and smart TV. Candidate: How many daily active users do we have? Interviewer: 5 million Candidate: What is the average daily time spent on the product? Interviewer: 30 minutes. Candidate: Do we need to support international users? Interviewer: Yes, a large percentage of users are international users. Candidate: What are the supported video resolutions? Interviewer: The system accepts most of the video resolutions and formats. Candidate: Is encryption required? Interviewer: Yes Candidate: Any file size requirement for videos? Interviewer: Our platform focuses on small and medium-sized videos. The maximum allowed video size is 1GB. Candidate: Can we leverage some of the existing cloud infrastructures provided by Amazon, Google, or Microsoft? Interviewer: That is a great question. Building everything from scratch is unrealistic for most companies, it is recommended to leverage some of the existing cloud services. In the chapter, we focus on designing a video streaming service with the following features: · Ability to upload videos fast · Smooth video streaming · Ability to change video quality · Low infrastructure cost · High availability, scalability, and reliability requirements · Clients supported: mobile apps, web browser, and smart TV
+
+## Back of the envelope estimation
+
+The following estimations are based on many assumptions, so it is important to communicate with the interviewer to make sure she is on the same page. · Assume the product has 5 million daily active users (DAU). · Users watch 5 videos per day. · 10% of users upload 1 video per day. · Assume the average video size is 300 MB. · Total daily storage space needed: 5 million * 10% * 300 MB = 150TB
+
+- CDN cost.
+- When cloud CDN serves a video, you are charged for data transferred out of the CDN.
+- Let us use Amazon's CDN CloudFront for cost estimation (Figure 14-2) [3]. Assume 100% of traffic is served from the United States. The average cost per GB is $0.02. For simplicity, we only calculate the cost of video streaming.
+- 5 million * 5 videos * 0.3GB * $0.02 = $150,000 per day.
+
+From the rough cost estimation, we know serving videos from the CDN costs lots of money. Even though cloud providers are willing to lower the CDN costs significantly for big customers, the cost is still substantial. We will discuss ways to reduce CDN costs in deep dive.
+
+Figure 14-2 On-demand pricing for Data Transfer to the Internet (per GB).
+
+| Per Month   | United States & Canada   | Europe & Israel   | South Africa & Middle East   | South America   | Japan   | Australia   | Singapore, South Korea, Taiwan, Hong Kong, & Philippines   | India   |
+|-------------|--------------------------|-------------------|------------------------------|-----------------|---------|-------------|------------------------------------------------------------|---------|
+| First 10TB  | $0.085                   | $0.085            | $0.110                       | $0.110          | $0.114  | $0.114      | $0.140                                                     | $0.170  |
+| Next 40TB   | $0.080                   | $0.080            | $0.105                       | $0.105          | $0.089  | $0.098      | $0.135                                                     | $0.130  |
+| Next100TB   | $0.060                   | $0.060            | $0.090                       | $0.090          | $0.086  | $0.094      | $0.120                                                     | $0.110  |
+| Next 350TB  | $0.040                   | $0.040            | $0.080                       | $0.080          | $0.084  | $0.092      | $0.100                                                     | $0.100  |
+| Next 524TB  | $0.030                   | $0.030            | $0.060                       | $0.060          | $0.080  | $0.090      | $0.080                                                     | $0.100  |
+| Next 4PB    | $0.025                   | $0.025            | $0.050                       | $0.050          | $0.070  | $0.085      | $0.070                                                     | $0.100  |
+| Over 5PB    | $0.020                   | $0.020            | $0.040                       | $0.040          | $0.060  | $0.080      | $0.060                                                     | $0.100  |
+
+## Step 2 - Propose high-level design and get buy-in
+
+As discussed previously, the interviewer recommended leveraging existing cloud services instead of building everything from scratch. CDN and blob storage are the cloud services we will leverage. Some readers might ask why not building everything by ourselves? Reasons are listed below: · System design interviews are not about building everything from scratch. Within the limited time frame, choosing the right technology to do a job right is more important than explaining how the technology works in detail. For instance, mentioning blob storage for storing source videos is enough for the interview. Talking about the detailed design for blob storage could be an overkill. · Building scalable blob storage or CDN is extremely complex and costly. Even large companies like Netflix or Facebook do not build everything themselves. Netflix leverages Amazon's cloud services [4], and Facebook uses Akamai's CDN [5]. At the high-level, the system comprises three components (Figure 14-3).
+
+![Image](output/image_000165_b6e5bc677db1bdb1d873111982e21d4d6bd6d31d9dca5e2af31ffeb68921559a.png)
+
+Figure 14-3
+
+Client: You can watch YouTube on your computer, mobile phone, and smartTV. CDN: Videos are stored in CDN. When you press play, a video is streamed from the CDN. API servers: Everything else except video streaming goes through API servers. This includes feed recommendation, generating video upload URL, updating metadata database and cache, user signup, etc. In the question/answer session, the interviewer showed interests in two flows: · Video uploading flow · Video streaming flow We will explore the high-level design for each of them.
+
+## Video uploading flow
+
+Figure 14-4 shows the high-level design for the video uploading.
+
+Figure 14-4
+
+![Image](output/image_000166_bd9d5f8341459feff40709e1e949ac3f86526721eda8f4b5c105096c31d06665.png)
+
+It consists of the following components: · User: A user watches YouTube on devices such as a computer, mobile phone, or smart TV. · Load balancer: A load balancer evenly distributes requests among API servers. · API servers: All user requests go through API servers except video streaming. · Metadata DB: Video metadata are stored in Metadata DB. It is sharded and replicated to meet performance and high availability requirements. · Metadata cache: For better performance, video metadata and user objects are cached. · Original storage: A blob storage system is used to store original videos. A quotation in Wikipedia regarding blob storage shows that: "A Binary Large Object (BLOB) is a collection of binary data stored as a single entity in a database management system" [6]. · Transcoding servers: Video transcoding is also called video encoding. It is the process of converting a video format to other formats (MPEG, HLS, etc), which provide the best video streams possible for different devices and bandwidth capabilities.
+
+· Transcoded storage: It is a blob storage that stores transcoded video files. · CDN: Videos are cached in CDN. When you click the play button, a video is streamed from the CDN. · Completion queue: It is a message queue that stores information about video transcoding completion events. · Completion handler: This consists of a list of workers that pull event data from the completion queue and update metadata cache and database. Now that we understand each component individually, let us examine how the video uploading flow works. The flow is broken down into two processes running in parallel. a. Upload the actual video. b. Update video metadata. Metadata contains information about video URL, size,
+
+- resolution, format, user info, etc.
+
+## Flow a: upload the actual video
+
+![Image](output/image_000167_575c9d1757315ad2caa9087a16b3a345afe8bf54b57dff20558b44b98c553977.png)
+
+Figure 14-5
+
+- Figure 14-5 shows how to upload the actual video. The explanation is shown below: 1. Videos are uploaded to the original storage. 2. Transcoding servers fetch videos from the original storage and start transcoding. 3. Once transcoding is complete, the following two steps are executed in parallel: 3a. Transcoded videos are sent to transcoded storage. 3b. Transcoding completion events are queued in the completion queue. 3a.1. Transcoded videos are distributed to CDN. 3b.1. Completion handler contains a bunch of workers that continuously pull event data from the queue.
+
+3b.1.a. and 3b.1.b. Completion handler updates the metadata database and cache when video transcoding is complete.
+
+4. API servers inform the client that the video is successfully uploaded and is ready for streaming.
+
+## Flow b: update the metadata
+
+While a file is being uploaded to the original storage, the client in parallel sends a request to update the video metadata as shown in Figure 14-6. The request contains video metadata, including file name, size, format, etc. API servers update the metadata cache and database.
+
+![Image](output/image_000168_1176db2db45b0535aafea55c24f9771ae46b317a6f09e5a8f2e647bfe24becd8.png)
+
+Figure 14-6
+
+## Video streaming flow
+
+Whenever you watch a video on YouTube, it usually starts streaming immediately and you do not wait until the whole video is downloaded. Downloading means the whole video is copied to your device, while streaming means your device continuously receives video streams from remote source videos. When you watch streaming videos, your client loads a little bit of data at a time so you can watch videos immediately and continuously. Before we discuss video streaming flow, let us look at an important concept: streaming protocol. This is a standardized way to control data transfer for video streaming. Popular streaming protocols are: · MPEG-DASH. MPEG stands for "Moving Picture Experts Group" and DASH stands for "Dynamic Adaptive Streaming over HTTP". · Apple HLS. HLS stands for "HTTP Live Streaming". · Microsoft Smooth Streaming.
+
+- Adobe HTTP Dynamic Streaming (HDS).
+
+You do not need to fully understand or even remember those streaming protocol names as they are low-level details that require specific domain knowledge. The important thing here is to understand that different streaming protocols support different video encodings and playback players. When we design a video streaming service, we have to choose the right streaming protocol to support our use cases. To learn more about streaming protocols, here is an excellent article [7]. Videos are streamed from CDN directly. The edge server closest to you will deliver the video. Thus, there is very little latency. Figure 14-7 shows a high level of design for video streaming.
+
+![Image](output/image_000169_329c0c1a8a6f53b7c17c39cebe8d850e6e8cd28fd3890596f4323cb27777c238.png)
+
+Figure 14-7
+
+## Step 3 - Design deep dive
+
+In the high-level design, the entire system is broken down in two parts: video uploading flow and video streaming flow. In this section, we will refine both flows with important optimizations and introduce error handling mechanisms.
+
+## Video transcoding
+
+When you record a video, the device (usually a phone or camera) gives the video file a certain format. If you want the video to be played smoothly on other devices, the video must be encoded into compatible bitrates and formats. Bitrate is the rate at which bits are processed over time. A higher bitrate generally means higher video quality. High bitrate streams need more processing power and fast internet speed. Video transcoding is important for the following reasons: · Raw video consumes large amounts of storage space. An hour-long high definition video recorded at 60 frames per second can take up a few hundred GB of space. · Many devices and browsers only support certain types of video formats. Thus, it is important to encode a video to different formats for compatibility reasons. · To ensure users watch high-quality videos while maintaining smooth playback, it is a good idea to deliver higher resolution video to users who have high network bandwidth and lower resolution video to users who have low bandwidth. · Network conditions can change, especially on mobile devices. To ensure a video is played continuously, switching video quality automatically or manually based on network conditions is essential for smooth user experience. Many types of encoding formats are available; however, most of them contain two parts: · Container: This is like a basket that contains the video file, audio, and metadata. You can tell the container format by the file extension, such as .avi, .mov, or .mp4. · Codecs: These are compression and decompression algorithms aim to reduce the video size while preserving the video quality. The most used video codecs are H.264, VP9, and
+
+HEVC.
+
+## Directed acyclic graph (DAG) model
+
+Transcoding a video is computationally expensive and time-consuming. Besides, different content creators may have different video processing requirements. For instance, some content creators require watermarks on top of their videos, some provide thumbnail images themselves, and some upload high definition videos, whereas others do not. To support different video processing pipelines and maintain high parallelism, it is important to add some level of abstraction and let client programmers define what tasks to execute. For example, Facebook's streaming video engine uses a directed acyclic graph (DAG) programming model, which defines tasks in stages so they can be executed sequentially or parallelly [8]. In our design, we adopt a similar DAG model to achieve flexibility and parallelism. Figure 14-8 represents a DAG for video transcoding.
+
+Figure 14-8
+
+![Image](output/image_000170_8b9a878b7ab983b55d0bc77d525f37a57be6fd455cb017f56c1f3e6704a87c37.png)
+
+In Figure 14-8, the original video is split into video, audio, and metadata. Here are some of the tasks that can be applied on a video file:
+
+- Inspection: Make sure videos have good quality and are not malformed.
+- Video encodings: Videos are converted to support different resolutions, codec, bitrates, etc. Figure 14-9 shows an example of video encoded files.
+- Thumbnail. Thumbnails can either be uploaded by a user or automatically generated by the system.
+- Watermark: An image overlay on top of your video contains identifying information about your video.
+
+Figure 14-9
+
+![Image](output/image_000171_25f2126d2386312db25a2b23d4339b699249528fb075a5ce244febf213a44f55.png)
+
+## Video transcoding architecture
+
+The proposed video transcoding architecture that leverages the cloud services, is shown in Figure 14-10.
+
+![Image](output/image_000172_4fb5c51f0b580fc937cf37cbbc171ab84e4c39c044d9629d7f4b6f575413b88a.png)
+
+The architecture has six main components: preprocessor, DAG scheduler, resource manager, task workers, temporary storage, and encoded video as the output. Let us take a close look at each component.
+
+## Preprocessor
+
+![Image](output/image_000173_125e40d69c60536454f58f2ae56b6dd68adea68783b5ad0c176d51da86122014.png)
+
+The preprocessor has 4 responsibilities:
+
+1. Video splitting. Video stream is split or further split into smaller Group of Pictures (GOP) alignment. GOP is a group/chunk of frames arranged in a specific order. Each chunk is an independently playable unit, usually a few seconds in length.
+2. Some old mobile devices or browsers might not support video splitting. Preprocessor split videos by GOP alignment for old clients.
+3. DAG generation. The processor generates DAG based on configuration files client programmers write. Figure 14-12 is a simplified DAG representation which has 2 nodes and 1 edge:
+
+![Image](output/image_000174_2438cbb7e5fc123eada15062ce0b34e96940b6a5c7231bbe3731b813afae0702.png)
+
+Figure 14-12
+
+This DAG representation is generated from the two configuration files below (Figure 14-13):
+
+![Image](output/image_000175_5d80d7b0bd4f24daa2984fe14ae0f44e8f0d7226e1468062af1fb22acd6d312c.png)
+
+Figure 14-13 (source: [9])
+
+4. Cache data. The preprocessor is a cache for segmented videos. For better reliability, the preprocessor stores GOPs and metadata in temporary storage. If video encoding fails, the system could use persisted data for retry operations.
+
+## DAG scheduler
+
+![Image](output/image_000176_d1db6ae45fb71e0212f09984e57fc09b68ad54b89b3d382e0b53f872ef5c6e7f.png)
+
+The DAG scheduler splits a DAG graph into stages of tasks and puts them in the task queue in the resource manager. Figure 14-15 shows an example of how the DAG scheduler works.
+
+![Image](output/image_000177_c4773bb9d15d77ebeedd40726d35063b80bf42ea1990ed82cf34f6df27a8fc23.png)
+
+Figure 14-15
+
+As shown in Figure 14-15, the original video is split into three stages: Stage 1: video, audio, and metadata. The video file is further split into two tasks in stage 2: video encoding and thumbnail. The audio file requires audio encoding as part of the stage 2 tasks.
+
+## Resource manager
+
+![Image](output/image_000178_1416f41e02f2d48aa890c14da18d7c8f1d35b75d7741e7736d8d14c54b644ae5.png)
+
+The resource manager is responsible for managing the efficiency of resource allocation. It
+
+contains 3 queues and a task scheduler as shown in Figure 14-17. · Task queue: It is a priority queue that contains tasks to be executed. · Worker queue: It is a priority queue that contains worker utilization info. · Running queue: It contains info about the currently running tasks and workers running the tasks.
+
+- Task scheduler: It picks the optimal task/worker, and instructs the chosen task worker to execute the job.
+
+Figure 14-17
+
+![Image](output/image_000179_c3a11a278ba8b3613fd367ccc82bbb46c7442eef911dd67a983d5de0d73cc917.png)
+
+The resource manager works as follows: · The task scheduler gets the highest priority task from the task queue. · The task scheduler gets the optimal task worker to run the task from the worker queue. · The task scheduler instructs the chosen task worker to run the task. · The task scheduler binds the task/worker info and puts it in the running queue. · The task scheduler removes the job from the running queue once the job is done.
+
+## Task workers
+
+![Image](output/image_000180_ff27607f11b7cb1a54165a99e95e30710c54a5255e87f5f6b2eba45088e00d2e.png)
+
+Task workers run the tasks which are defined in the DAG. Different task workers may run different tasks as shown in Figure 14-19.
+
+Figure 14-19
+
+![Image](output/image_000181_6c45d857e4ece59dc25d2f95900af25b4e71b1b7f58899b29c7a64a95abcc68e.png)
+
+Figure 14-20
+
+## Temporary storage
+
+![Image](output/image_000182_5fe7a848387fb3188333a5634de7676d431d37ab2a0a3b672ab636d9f73af85d.png)
+
+Multiple storage systems are used here. The choice of storage system depends on factors like data type, data size, access frequency, data life span, etc. For instance, metadata is frequently accessed by workers, and the data size is usually small. Thus, caching metadata in memory is a good idea. For video or audio data, we put them in blob storage. Data in temporary storage is freed up once the corresponding video processing is complete.
+
+## Encoded video
+
+![Image](output/image_000183_3cef5261d49663e7393d6d51ad9a96e83869fbaf72495bf5f82024ab7b238138.png)
+
+Encoded video is the final output of the encoding pipeline. Here is an example of the output: funny\_720p.mp4 .
+
+## System optimizations
+
+At this point, you ought to have good understanding about the video uploading flow, video streaming flow and video transcoding. Next, we will refine the system with optimizations, including speed, safety, and cost-saving.
+
+## Speed optimization: parallelize video uploading
+
+Uploading a video as a whole unit is inefficient. We can split a video into smaller chunks by GOP alignment as shown in Figure 14-22.
+
+Split by GOP
+
+Figure 14-22
+
+![Image](output/image_000184_b5aa6893e7ab41d157662ce4e9f8760e0ff44f918123b61489e4fd39cb001f4d.png)
+
+This allows fast resumable uploads when the previous upload failed. The job of splitting a video file by GOP can be implemented by the client to improve the upload speed as shown in Figure 14-23.
+
+![Image](output/image_000185_fca40e291a4e75d7686048312e9e8751dfe90b87632c671b0d1b4bcc66accf9c.png)
+
+## Figure 14-23
+
+## Speed optimization: place upload centers close to users
+
+Another way to improve the upload speed is by setting up multiple upload centers across the globe (Figure 14-24). People in the United States can upload videos to the North America upload center, and people in China can upload videos to the Asian upload center. To achieve this, we use CDN as upload centers.
+
+![Image](output/image_000186_498c152934d6746a656babad977c61b0cf326361fc0754eb687e38c26cd079ee.png)
+
+## Speed optimization: parallelism everywhere
+
+Achieving low latency requires serious efforts. Another optimization is to build a loosely coupled system and enable high parallelism.
+
+Our design needs some modifications to achieve high parallelism. Let us zoom in to the flow of how a video is transferred from original storage to the CDN. The flow is shown in Figure 14-25, revealing that the output depends on the input of the previous step. This dependency makes parallelism difficult.
+
+![Image](output/image_000187_eca262a13ade9e11db68f03c4d37b138e7386f5995839bca7fd31450532d08bc.png)
+
+To make the system more loosely coupled, we introduced message queues as shown in Figure
+
+14-26. Let us use an example to explain how message queues make the system more loosely
+
+- Before the message queue is introduced, the encoding module must wait for the output of
+
+coupled. the download module.
+
+- After the message queue is introduced, the encoding module does not need to wait for the output of the download module anymore. If there are events in the message queue, the encoding module can execute those jobs in parallel.
+
+![Image](output/image_000188_344c8d8b529f0fc80c43ebd4f699e191dc58efba3f6c320eb04caa8c1c7d3b6a.png)
+
+## Safety optimization: pre-signed upload URL
+
+Safety is one of the most important aspects of any product. To ensure only authorized users upload videos to the right location, we introduce pre-signed URLs as shown in Figure 14-27.
+
+Figure 14-27
+
+![Image](output/image_000189_83f60c3f238190157506ed8a17a480ada772c8431ad556aa077f4dcb6bba3f6d.png)
+
+The upload flow is updated as follows:
+
+1. The client makes a HTTP request to API servers to fetch the pre-signed URL, which gives the access permission to the object identified in the URL. The term pre-signed URL is used by uploading files to Amazon S3. Other cloud service providers might use a different name. For instance, Microsoft Azure blob storage supports the same feature, but call it "Shared Access Signature" [10].
+2. API servers respond with a pre-signed URL.
+3. Once the client receives the response, it uploads the video using the pre-signed URL.
+
+## Safety optimization: protect your videos
+
+Many content makers are reluctant to post videos online because they fear their original videos will be stolen. To protect copyrighted videos, we can adopt one of the following three safety options:
+
+- Digital rights management (DRM) systems: Three major DRM systems are Apple FairPlay, Google Widevine, and Microsoft PlayReady.
+- AES encryption: You can encrypt a video and configure an authorization policy. The encrypted video will be decrypted upon playback. This ensures that only authorized users can watch an encrypted video.
+- Visual watermarking: This is an image overlay on top of your video that contains identifying information for your video. It can be your company logo or company name.
+
+## Cost-saving optimization
+
+CDN is a crucial component of our system. It ensures fast video delivery on a global scale. However, from the back of the envelope calculation, we know CDN is expensive, especially when the data size is large. How can we reduce the cost?
+
+Previous research shows that YouTube video streams follow long-tail distribution [11] [12]. It means a few popular videos are accessed frequently but many others have few or no viewers. Based on this observation, we implement a few optimizations:
+
+1. Only serve the most popular videos from CDN and other videos from our high capacity
+
+storage video servers (Figure 14-28).
+
+![Image](output/image_000190_f7ca900fe28b66ac1c78f213789547cc9dad1cc3933949d92ce16b2deb9ad11d.png)
+
+Figure 14-28
+
+2. For less popular content, we may not need to store many encoded video versions. Short
+2. videos can be encoded on-demand. 3. Some videos are popular only in certain regions. There is no need to distribute these videos to other regions. 4. Build your own CDN like Netflix and partner with Internet Service Providers (ISPs). Building your CDN is a giant project; however, this could make sense for large streaming companies. An ISP can be Comcast, AT&amp;T, Verizon, or other internet providers. ISPs are located all around the world and are close to users. By partnering with ISPs, you can improve the viewing experience and reduce the bandwidth charges.
+
+All those optimizations are based on content popularity, user access pattern, video size, etc. It is important to analyze historical viewing patterns before doing any optimization. Here are some of the interesting articles on this topic: [12] [13].
+
+## Error handling
+
+For a large-scale system, system errors are unavoidable. To build a highly fault-tolerant system, we must handle errors gracefully and recover from them fast. Two types of errors exist: · Recoverable error. For recoverable errors such as video segment fails to transcode, the general idea is to retry the operation a few times. If the task continues to fail and the system believes it is not recoverable, it returns a proper error code to the client. · Non-recoverable error. For non-recoverable errors such as malformed video format, the system stops the running tasks associated with the video and returns the proper error code to the client. Typical errors for each system component are covered by the following playbook:
+
+- Upload error: retry a few times.
+
+· Split video error: if older versions of clients cannot split videos by GOP alignment, the entire video is passed to the server. The job of splitting videos is done on the server-side. · Transcoding error: retry. · Preprocessor error: regenerate DAG diagram. · DAG scheduler error: reschedule a task. · Resource manager queue down: use a replica. · Task worker down: retry the task on a new worker. · API server down: API servers are stateless so requests will be directed to a different API server. · Metadata cache server down: data is replicated multiple times. If one node goes down, you can still access other nodes to fetch data. We can bring up a new cache server to replace the dead one. · Metadata DB server down: · Master is down. If the master is down, promote one of the slaves to act as the new master. · Slave is down. If a slave goes down, you can use another slave for reads and bring up another database server to replace the dead one.
+
+## Step 4 - Wrap up
+
+In this chapter, we presented the architecture design for video streaming services like YouTube. If there is extra time at the end of the interview, here are a few additional points: · Scale the API tier: Because API servers are stateless, it is easy to scale API tier horizontally. · Scale the database: You can talk about database replication and sharding. · Live streaming: It refers to the process of how a video is recorded and broadcasted in real time. Although our system is not designed specifically for live streaming, live streaming and non-live streaming have some similarities: both require uploading, encoding, and streaming. The notable differences are: · Live streaming has a higher latency requirement, so it might need a different streaming protocol. · Live streaming has a lower requirement for parallelism because small chunks of data are already processed in real-time. · Live streaming requires different sets of error handling. Any error handling that takes too much time is not acceptable. · Video takedowns: Videos that violate copyrights, pornography, or other illegal acts shall be removed. Some can be discovered by the system during the upload process, while others might be discovered through user flagging.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] YouTube by the numbers: https://www.omnicoreagency.com/youtube-statistics/ [2] 2019 YouTube Demographics: https://blog.hubspot.com/marketing/youtube-demographics [3] Cloudfront Pricing: https://aws.amazon.com/cloudfront/pricing/ [4] Netflix on AWS: https://aws.amazon.com/solutions/case-studies/netflix/ [5] Akamai homepage: https://www.akamai.com/ [6] Binary large object: https://en.wikipedia.org/wiki/Binary\_large\_object [7] Here's What You Need to Know About Streaming Protocols: https://www.dacast.com/blog/streaming-protocols/ [8] SVE: Distributed Video Processing at Facebook Scale: https://www.cs.princeton.edu/~wlloyd/papers/sve-sosp17.pdf [9] Weibo video processing architecture (in Chinese): https://www.upyun.com/opentalk/399.html [10] Delegate access with a shared access signature: https://docs.microsoft.com/en-us/rest/api/storageservices/delegate-access-with-shared-accesssignature [11] YouTube scalability talk by early YouTube employee: https://www.youtube.com/watch? v=w5WVu624fY8 [12] Understanding the characteristics of internet short video sharing: A youtube-based measurement study. https://arxiv.org/pdf/0707.3670.pdf [13] Content Popularity for Open Connect:
+
+[https://netflixtechblog.com/content-popularity-for-open-connect-b86d56f613b](https://netflixtechblog.com/content-popularity-for-open-connect-b86d56f613b)
+
+## CHAPTER 15: DESIGN GOOGLE DRIVE
+
+In recent years, cloud storage services such as Google Drive, Dropbox, Microsoft OneDrive, and Apple iCloud have become very popular. In this chapter, you are asked to design Google Drive. Let us take a moment to understand Google Drive before jumping into the design. Google Drive is a file storage and synchronization service that helps you store documents, photos, videos, and other files in the cloud. You can access your files from any computer, smartphone, and tablet. You can easily share those files with friends, family, and coworkers [1]. Figure 15-1 and 15-2 show what Google drive looks like on a browser and mobile application, respectively.
+
+V
+
+Figure 15-1
+
+![Image](output/image_000191_d146a8aa0304fe11c27b2d2048b6de57ac31c9ce041ee190a30a54c69040e97b.png)
+
+Figure 15-2
+
+![Image](output/image_000192_c84503fbbb937248301d16acdc45943102c16ea0277330989f1f4ede2c6ea794.png)
+
+## Step 1 - Understand the problem and establish design scope
+
+Designing a Google drive is a big project, so it is important to ask questions to narrow down the scope. Candidate: What are the most important features? Interviewer: Upload and download files, file sync, and notifications. Candidate: Is this a mobile app, a web app, or both? Interviewer: Both. Candidate: What are the supported file formats? Interviewer: Any file type. Candidate: Do files need to be encrypted? Interview: Yes, files in the storage must be encrypted. Candidate: Is there a file size limit? Interview: Yes, files must be 10 GB or smaller. Candidate: How many users does the product have? Interviewer: 10M DAU. In this chapter, we focus on the following features: · Add files. The easiest way to add a file is to drag and drop a file into Google drive. · Download files. · Sync files across multiple devices. When a file is added to one device, it is automatically synced to other devices. · See file revisions. · Share files with your friends, family, and coworkers · Send a notification when a file is edited, deleted, or shared with you. Features not discussed in this chapter include: · Google doc editing and collaboration. Google doc allows multiple people to edit the same document simultaneously. This is out of our design scope. Other than clarifying requirements, it is important to understand non-functional requirements: · Reliability. Reliability is extremely important for a storage system. Data loss is unacceptable. · Fast sync speed. If file sync takes too much time, users will become impatient and abandon the product. · Bandwidth usage. If a product takes a lot of unnecessary network bandwidth, users will be unhappy, especially when they are on a mobile data plan. · Scalability. The system should be able to handle high volumes of traffic. · High availability. Users should still be able to use the system when some servers are
+
+offline, slowed down, or have unexpected network errors. Back of the envelope estimation
+
+· Assume the application has 50 million signed up users and 10 million DAU. · Users get 10 GB free space. · Assume users upload 2 files per day. The average file size is 500 KB. · 1:1 read to write ratio.
+
+· Total space allocated: 50 million * 10 GB = 500 Petabyte · QPS for upload API: 10 million * 2 uploads / 24 hours / 3600 seconds = ~ 240 · Peak QPS = QPS * 2 = 480
+
+## Step 2 - Propose high-level design and get buy-in
+
+Instead of showing the high-level design diagram from the beginning, we will use a slightly different approach. We will start with something simple: build everything in a single server. Then, gradually scale it up to support millions of users. By doing this exercise, it will refresh your memory about some important topics covered in the book.
+
+Let us start with a single server setup as listed below: · A web server to upload and download files. · A database to keep track of metadata like user data, login info, files info, etc. · A storage system to store files. We allocate 1TB of storage space to store files.
+
+We spend a few hours setting up an Apache web server, a MySql database, and a directory called drive/ as the root directory to store uploaded files. Under drive/ directory, there is a list of directories, known as namespaces. Each namespace contains all the uploaded files for that user. The filename on the server is kept the same as the original file name. Each file or folder can be uniquely identified by joining the namespace and the relative path. Figure 15-3 shows an example of how the /drive directory looks like on the left side and its expanded view on the right side.
+
+![Image](output/image_000193_8cfbf2d81b82082f44c5dbbe0245f3da0a4709c73d0655d9073ca538a69ded50.png)
+
+Figure 15-3
+
+## APIs
+
+What do the APIs look like? We primary need 3 APIs: upload a file, download a file, and get file revisions.
+
+## 1. Upload a file to Google Drive
+
+Two types of uploads are supported: · Simple upload. Use this upload type when the file size is small. · Resumable upload. Use this upload type when the file size is large and there is high
+
+- chance of network interruption.
+
+Here is an example of resumable upload API:
+
+## https://api.example.com/files/upload?uploadType=resumable
+
+Params: · uploadType=resumable
+
+- data: Local file to be uploaded.
+
+A resumable upload is achieved by the following 3 steps [2]:
+
+- Send the initial request to retrieve the resumable URL.
+- Upload the data and monitor upload state.
+- If upload is disturbed, resume the upload.
+
+## 2. Download a file from Google Drive
+
+Example API: https://api.example.com/files/download
+
+## Params:
+
+- path: download file path.
+
+```
+Example params: { "path": "/recipes/soup/best_soup.txt" }
+```
+
+## 3. Get file revisions
+
+Example API: https://api.example.com/files/list\_revisions
+
+## Params:
+
+- path: The path to the file you want to get the revision history.
+- limit: The maximum number of revisions to return.
+
+```
+Example params: { "path": "/recipes/soup/best_soup.txt", "limit": 20 }
+```
+
+All the APIs require user authentication and use HTTPS. Secure Sockets Layer (SSL) protects data transfer between the client and backend servers.
+
+## Move away from single server
+
+As more files are uploaded, eventually you get the space full alert as shown in Figure 15-4.
+
+![Image](output/image_000194_fdd3d5009e2cd1a3e32fcdc560e17b6c2891d2f5db85ea43f77107628b12c421.png)
+
+Only 10 MB of storage space is left! This is an emergency as users cannot upload files anymore. The first solution comes to mind is to shard the data, so it is stored on multiple storage servers. Figure 15-5 shows an example of sharding based on user\_id .
+
+![Image](output/image_000195_f52bc96184c53b430b4e700010383ea600d0f2dd41f71758988dcf6091af1895.png)
+
+You pull an all-nighter to set up database sharding and monitor it closely. Everything works smoothly again. You have stopped the fire, but you are still worried about potential data losses in case of storage server outage. You ask around and your backend guru friend Frank told you that many leading companies like Netflix and Airbnb use Amazon S3 for storage. "Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance" [3]. You decide to do some research to see if it is a good fit. After a lot of reading, you gain a good understanding of the S3 storage system and decide to store files in S3. Amazon S3 supports same-region and cross-region replication. A region is a geographic area where Amazon web services (AWS) have data centers. As shown in Figure 15-6, data can be replicated on the same-region (left side) and cross-region (right side). Redundant files are stored in multiple regions to guard against data loss and ensure availability. A bucket is like a folder in file systems.
+
+![Image](output/image_000196_f4486adf5a59c97d1b9c1bf1a5daf2a597e22cfffe9d8f03154f4051275b5162.png)
+
+After putting files in S3, you can finally have a good night's sleep without worrying about data losses. To stop similar problems from happening in the future, you decide to do further research on areas you can improve. Here are a few areas you find: · Load balancer: Add a load balancer to distribute network traffic. A load balancer ensures evenly distributed traffic, and if a web server goes down, it will redistribute the traffic. · Web servers: After a load balancer is added, more web servers can be added/removed easily, depending on the traffic load. · Metadata database: Move the database out of the server to avoid single point of failure. In the meantime, set up data replication and sharding to meet the availability and scalability requirements. · File storage: Amazon S3 is used for file storage. To ensure availability and durability, files are replicated in two separate geographical regions. metadata database, and file storage from a single server. The updated design is shown in After applying the above improvements, you have successfully decoupled web servers, Figure 15-7.
+
+![Image](output/image_000197_d53db6123817e74b605dd77484203a52ca80b428c030368b8a053fdf6a84dcb2.png)
+
+Figure 15-7
+
+## Sync conflicts
+
+For a large storage system like Google Drive, sync conflicts happen from time to time. When two users modify the same file or folder at the same time, a conflict happens. How can we resolve the conflict? Here is our strategy: the first version that gets processed wins, and the version that gets processed later receives a conflict. Figure 15-8 shows an example of a sync conflict.
+
+![Image](output/image_000198_8765d92ab9cf7421cc8687e99794d4c0f4f8bcfed3e0e8e29e80a1d237dd9a5e.png)
+
+In Figure 15-8, user 1 and user 2 tries to update the same file at the same time, but user 1's file is processed by our system first. User 1's update operation goes through, but, user 2 gets a sync conflict. How can we resolve the conflict for user 2? Our system presents both copies of the same file: user 2's local copy and the latest version from the server (Figure 15-9). User 2 has the option to merge both files or override one version with the other.
+
+![Image](output/image_000199_23cf19115687cfb49b633064710a3c133797f418e9b6d9330b663142103caa95.png)
+
+While multiple users are editing the same document at the same, it is challenging to keep the document synchronized. Interested readers should refer to the reference material [4] [5].
+
+## High-level design
+
+Figure 15-10 illustrates the proposed high-level design. Let us examine each component of the system.
+
+![Image](output/image_000200_143178e754850958deb6d8a4a68fcb1b125f7f77c679134f2dbfa340240007f7.png)
+
+Figure 15- 10
+
+User: A user uses the application either through a browser or mobile app. Block servers: Block servers upload blocks to cloud storage. Block storage, referred to as block-level storage, is a technology to store data files on cloud-based environments. A file can be split into several blocks, each with a unique hash value, stored in our metadata database. Each block is treated as an independent object and stored in our storage system (S3). To reconstruct a file, blocks are joined in a particular order. As for the block size, we use Dropbox as a reference: it sets the maximal size of a block to 4MB [6]. Cloud storage: A file is split into smaller blocks and stored in cloud storage. Cold storage: Cold storage is a computer system designed for storing inactive data, meaning files are not accessed for a long time. Load balancer: A load balancer evenly distributes requests among API servers. API servers: These are responsible for almost everything other than the uploading flow. API servers are used for user authentication, managing user profile, updating file metadata, etc. Metadata database: It stores metadata of users, files, blocks, versions, etc. Please note that files are stored in the cloud and the metadata database only contains metadata. Metadata cache: Some of the metadata are cached for fast retrieval. Notification service: It is a publisher/subscriber system that allows data to be transferred from notification service to clients as certain events happen. In our specific case, notification service notifies relevant clients when a file is added/edited/removed elsewhere so they can pull the latest changes. Offline backup queue: If a client is offline and cannot pull the latest file changes, the offline backup queue stores the info so changes will be synced when the client is online. We have discussed the design of Google Drive at the high-level. Some of the components are complicated and worth careful examination; we will discuss these in detail in the deep dive.
+
+## Step 3 - Design deep dive
+
+In this section, we will take a close look at the following: block servers, metadata database,
+
+upload flow, download flow, notification service, save storage space and failure handling. Block servers For large files that are updated regularly, sending the whole file on each update consumes a lot of bandwidth. Two optimizations are proposed to minimize the amount of network traffic being transmitted: · Delta sync. When a file is modified, only modified blocks are synced instead of the whole file using a sync algorithm [7] [8]. · Compression. Applying compression on blocks can significantly reduce the data size. Thus, blocks are compressed using compression algorithms depending on file types. For example, gzip and bzip2 are used to compress text files. Different compression algorithms are needed to compress images and videos. In our system, block servers do the heavy lifting work for uploading files. Block servers process files passed from clients by splitting a file into blocks, compressing each block, and encrypting them. Instead of uploading the whole file to the storage system, only modified blocks are transferred. Figure 15-11 shows how a block server works when a new file is added.
+
+![Image](output/image_000201_05d81ef49230ee4236f47eb3226d58cac1b1eaa49820c3071582bb50cac4ea9a.png)
+
+Figure 15-11
+
+· A file is split into smaller blocks. · Each block is compressed using compression algorithms. · To ensure security, each block is encrypted before it is sent to cloud storage. · Blocks are uploaded to the cloud storage. Figure 15-12 illustrates delta sync, meaning only modified blocks are transferred to cloud storage. Highlighted blocks "block 2" and "block 5" represent changed blocks. Using delta sync, only those two blocks are uploaded to the cloud storage.
+
+![Image](output/image_000202_857a1f770b060677447ec370181ff2bf1464a6338e5c8838375a9a445ab38071.png)
+
+Figure15-12
+
+Block servers allow us to save network traffic by providing delta sync and compression.
+
+## High consistency requirement
+
+Our system requires strong consistency by default. It is unacceptable for a file to be shown differently by different clients at the same time. The system needs to provide strong consistency for metadata cache and database layers. Memory caches adopt an eventual consistency model by default, which means different replicas might have different data. To achieve strong consistency, we must ensure the following: · Data in cache replicas and the master is consistent. · Invalidate caches on database write to ensure cache and database hold the same value. Achieving strong consistency in a relational database is easy because it maintains the ACID (Atomicity, Consistency, Isolation, Durability) properties [9]. However, NoSQL databases do not support ACID properties by default. ACID properties must be programmatically incorporated in synchronization logic. In our design, we choose relational databases because
+
+the ACID is natively supported.
+
+## Metadata database
+
+Figure 15-13 shows the database schema design. Please note this is a highly simplified version as it only includes the most important tables and interesting fields.
+
+Figure 15-13
+
+![Image](output/image_000203_f1dd395b1ba48dbb5a93e145dfc7ed23e469af899ef6d1a6dba8dbd7ac3997b3.png)
+
+User: The user table contains basic information about the user such as username, email, profile photo, etc.
+
+Device: Device table stores device info. Push\_id is used for sending and receiving mobile push notifications. Please note a user can have multiple devices.
+
+Namespace: A namespace is the root directory of a user.
+
+File: File table stores everything related to the latest file.
+
+File\_version: It stores version history of a file. Existing rows are read-only to keep the integrity of the file revision history.
+
+Block: It stores everything related to a file block. A file of any version can be reconstructed by joining all the blocks in the correct order.
+
+## Upload flow
+
+Let us discuss what happens when a client uploads a file. To better understand the flow, we draw the sequence diagram as shown in Figure 15-14.
+
+![Image](output/image_000204_164b1c3e376aada4ff60a9ae3129a809724abdba39f32f184aafb9b4620f62cf.png)
+
+Figure 15-14
+
+In Figure 15-14, two requests are sent in parallel: add file metadata and upload the file to cloud storage. Both requests originate from client 1.
+
+- Add file metadata.
+1. Client 1 sends a request to add the metadata of the new file.
+2. Store the new file metadata in metadata DB and change the file upload status to "pending."
+3. Notify the notification service that a new file is being added.
+4. The notification service notifies relevant clients (client 2) that a file is being uploaded.
+- Upload files to cloud storage.
+- 2.1 Client 1 uploads the content of the file to block servers.
+- 2.2 Block servers chunk the files into blocks, compress, encrypt the blocks, and upload them to cloud storage.
+- 2.3 Once the file is uploaded, cloud storage triggers upload completion callback. The request is sent to API servers.
+- 2.4 File status changed to "uploaded" in Metadata DB.
+- 2.5 Notify the notification service that a file status is changed to "uploaded."
+- 2.6 The notification service notifies relevant clients (client 2) that a file is fully uploaded.
+
+When a file is edited, the flow is similar, so we will not repeat it.
+
+## Download flow
+
+Download flow is triggered when a file is added or edited elsewhere. How does a client know if a file is added or edited by another client? There are two ways a client can know: · If client A is online while a file is changed by another client, notification service will
+
+- inform client A that changes are made somewhere so it needs to pull the latest data.
+
+· If client A is offline while a file is changed by another client, data will be saved to the cache. When the offline client is online again, it pulls the latest changes. Once a client knows a file is changed, it first requests metadata via API servers, then downloads blocks to construct the file. Figure 15-15 shows the detailed flow. Note, only the most important components are shown in the diagram due to space constraint.
+
+![Image](output/image_000205_13470406357b62c0d2f7d03b10aae9f6e8a9f37605cbaa695d322141c30cf34c.png)
+
+Figure 15-15
+
+1. Notification service informs client 2 that a file is changed somewhere else. 2. Once client 2 knows that new updates are available, it sends a request to fetch metadata. 3. API servers call metadata DB to fetch metadata of the changes. 4. Metadata is returned to the API servers. 5. Client 2 gets the metadata. 6. Once the client receives the metadata, it sends requests to block servers to download blocks. 7. Block servers first download blocks from cloud storage. 8. Cloud storage returns blocks to the block servers.
+9. Client 2 downloads all the new blocks to reconstruct the file.
+
+## Notification service
+
+To maintain file consistency, any mutation of a file performed locally needs to be informed to other clients to reduce conflicts. Notification service is built to serve this purpose. At the high-level, notification service allows data to be transferred to clients as events happen. Here are a few options: · Long polling. Dropbox uses long polling [10]. · WebSocket. WebSocket provides a persistent connection between the client and the server. Communication is bi-directional. Even though both options work well, we opt for long polling for the following two reasons: · Communication for notification service is not bi-directional. The server sends information about file changes to the client, but not vice versa.
+
+- WebSocket is suited for real-time bi-directional communication such as a chat app. For
+
+Google Drive, notifications are sent infrequently with no burst of data. With long polling, each client establishes a long poll connection to the notification service. If changes to a file are detected, the client will close the long poll connection. Closing the connection means a client must connect to the metadata server to download the latest changes. After a response is received or connection timeout is reached, a client immediately sends a new request to keep the connection open.
+
+## Save storage space
+
+To support file version history and ensure reliability, multiple versions of the same file are stored across multiple data centers. Storage space can be filled up quickly with frequent backups of all file revisions. Three techniques are proposed to reduce storage costs: · De-duplicate data blocks. Eliminating redundant blocks at the account level is an easy way to save space. Two blocks are identical if they have the same hash value. · Adopt an intelligent data backup strategy. Two optimization strategies can be applied: · Set a limit: We can set a limit for the number of versions to store. If the limit is reached, the oldest version will be replaced with the new version. · Keep valuable versions only: Some files might be edited frequently. For example, saving every edited version for a heavily modified document could mean the file is saved over 1000 times within a short period. To avoid unnecessary copies, we could limit the number of saved versions. We give more weight to recent versions. Experimentation is helpful to figure out the optimal number of versions to save. · Moving infrequently used data to cold storage. Cold data is the data that has not been active for months or years. Cold storage like Amazon S3 glacier [11] is much cheaper than S3.
+
+## Failure Handling
+
+Failures can occur in a large-scale system and we must adopt design strategies to address these failures. Your interviewer might be interested in hearing about how you handle the following system failures: · Load balancer failure: If a load balancer fails, the secondary would become active and pick up the traffic. Load balancers usually monitor each other using a heartbeat, a periodic signal sent between load balancers. A load balancer is considered as failed if it has not sent a heartbeat for some time. · Block server failure: If a block server fails, other servers pick up unfinished or pending jobs. · Cloud storage failure: S3 buckets are replicated multiple times in different regions. If files are not available in one region, they can be fetched from different regions. · API server failure: It is a stateless service. If an API server fails, the traffic is redirected to other API servers by a load balancer. · Metadata cache failure: Metadata cache servers are replicated multiple times. If one node goes down, you can still access other nodes to fetch data. We will bring up a new cache server to replace the failed one. · Metadata DB failure. · Master down: If the master is down, promote one of the slaves to act as a new master and bring up a new slave node. · Slave down: If a slave is down, you can use another slave for read operations and bring another database server to replace the failed one. · Notification service failure: Every online user keeps a long poll connection with the notification server. Thus, each notification server is connected with many users. According to the Dropbox talk in 2012 [6], over 1 million connections are open per machine. If a server goes down, all the long poll connections are lost so clients must reconnect to a different server. Even though one server can keep many open connections, it cannot reconnect all the lost connections at once. Reconnecting with all the lost clients is a relatively slow process. · Offline backup queue failure: Queues are replicated multiple times. If one queue fails,
+
+- consumers of the queue may need to re-subscribe to the backup queue.
+
+## Step 4 - Wrap up
+
+In this chapter, we proposed a system design to support Google Drive. The combination of strong consistency, low network bandwidth and fast sync make the design interesting. Our design contains two flows: manage file metadata and file sync. Notification service is another important component of the system. It uses long polling to keep clients up to date with file changes. Like any system design interview questions, there is no perfect solution. Every company has its unique constraints and you must design a system to fit those constraints. Knowing the tradeoffs of your design and technology choices are important. If there are a few minutes left, you can talk about different design choices. For example, we can upload files directly to cloud storage from the client instead of going through block servers. The advantage of this approach is that it makes file upload faster because a file only needs to be transferred once to the cloud storage. In our design, a file is transferred to block servers first, and then to the cloud storage. However, the new approach has a few drawbacks: · First, the same chunking, compression, and encryption logic must be implemented on different platforms (iOS, Android, Web). It is error-prone and requires a lot of engineering effort. In our design, all those logics are implemented in a centralized place: block servers. · Second, as a client can easily be hacked or manipulated, implementing encrypting logic on the client side is not ideal. Another interesting evolution of the system is moving online/offline logic to a separate service. Let us call it presence service. By moving presence service out of notification servers, online/offline functionality can easily be integrated by other services.
+
+Congratulations on getting this far! Now give yourself a pat on the back. Good job!
+
+## Reference materials
+
+[1] Google Drive: https://www.google.com/drive/ [2] Upload file data: https://developers.google.com/drive/api/v2/manage-uploads [3] Amazon S3: https://aws.amazon.com/s3 [4] Differential Synchronization https://neil.fraser.name/writing/sync/ [5] Differential Synchronization youtube talk https://www.youtube.com/watch? v=S2Hp\_1jqpY8 [6] How We've Scaled Dropbox: https://youtu.be/PE4gwstWhmc [7] Tridgell, A., &amp; Mackerras, P. (1996). The rsync algorithm. [8] Librsync. (n.d.). Retrieved April 18, 2015, from https://github.com/librsync/librsync [9] ACID: https://en.wikipedia.org/wiki/ACID [10] Dropbox security white paper: https://www.dropbox.com/static/business/resources/Security\_Whitepaper.pdf [11] Amazon S3 Glacier: https://aws.amazon.com/glacier/faqs/
+
+## CHAPTER 16: THE LEARNING CONTINUES
+
+Designing good systems requires years of accumulation of knowledge. One shortcut is to dive into real-world system architectures. Below is a collection of helpful reading materials. We highly recommend you pay attention to both the shared principles and the underlying technologies. Researching each technology and understanding what problems it solves is a great way to strengthen your knowledge base and refine the design process.
+
+## Real-world systems
+
+The following materials can help you understand general design ideas of real system architectures behind different companies. Facebook Timeline: Brought To You By The Power Of Denormalization: https://goo.gl/FCNrbm Scale at Facebook: https://goo.gl/NGTdCs Building Timeline: Scaling up to hold your life story: https://goo.gl/8p5wDV Erlang at Facebook (Facebook chat): https://goo.gl/zSLHrj Facebook Chat: https://goo.gl/qzSiWC Finding a needle in Haystack: Facebook's photo storage: https://goo.gl/edj4FL Serving Facebook Multifeed: Efficiency, performance gains through redesign: https://goo.gl/adFVMQ Scaling Memcache at Facebook: https://goo.gl/rZiAhX TAO: Facebook's Distributed Data Store for the Social Graph: https://goo.gl/Tk1DyH Amazon Architecture: https://goo.gl/k4feoW Dynamo: Amazon's Highly Available Key-value Store: https://goo.gl/C7zxDL A 360 Degree View Of The Entire Netflix Stack: https://goo.gl/rYSDTz It's All A/Bout Testing: The Netflix Experimentation Platform: https://goo.gl/agbA4K Netflix Recommendations: Beyond the 5 stars (Part 1): https://goo.gl/A4FkYi Netflix Recommendations: Beyond the 5 stars (Part 2): https://goo.gl/XNPMXm Google Architecture: https://goo.gl/dvkDiY The Google File System (Google Docs): https://goo.gl/xj5n9R Differential Synchronization (Google Docs): https://goo.gl/9zqG7x YouTube Architecture: https://goo.gl/mCPRUF Seattle Conference on Scalability: YouTube Scalability: https://goo.gl/dH3zYq Bigtable: A Distributed Storage System for Structured Data: https://goo.gl/6NaZca Instagram Architecture: 14 Million Users, Terabytes Of Photos, 100s Of Instances, Dozens Of Technologies: https://goo.gl/s1VcW5 The Architecture Twitter Uses To Deal With 150M Active Users: https://goo.gl/EwvfRd Scaling Twitter: Making Twitter 10000 Percent Faster: https://goo.gl/nYGC1k Announcing Snowflake (Snowflake is a network service for generating unique ID numbers at high scale with some simple guarantees): https://goo.gl/GzVWYm Timelines at Scale: https://goo.gl/8KbqTy How Uber Scales Their Real-Time Market Platform: https://goo.gl/kGZuVy Scaling Pinterest: https://goo.gl/KtmjW3
+
+Pinterest Architecture Update: https://goo.gl/w6rRsf A Brief History of Scaling LinkedIn: https://goo.gl/8A1Pi8 Flickr Architecture: https://goo.gl/dWtgYa How We've Scaled Dropbox: https://goo.gl/NjBDtC The WhatsApp Architecture Facebook Bought For $19 Billion: https://bit.ly/2AHJnFn
+
+## Company engineering blogs
+
+If you are going to interview with a company, it is a great idea to read their engineering blogs and get familiar with technologies and systems adopted and implemented there. Besides, engineering blogs provide invaluable insights about certain fields. Reading them regularly could help us become better engineers. Here is a list of engineering blogs of well-known large companies and startups. Airbnb: https://medium.com/airbnb-engineering Amazon: https://developer.amazon.com/blogs Asana: https://blog.asana.com/category/eng Atlassian: https://developer.atlassian.com/blog Bittorrent: http://engineering.bittorrent.com Cloudera: https://blog.cloudera.com Docker: https://blog.docker.com Dropbox: https://blogs.dropbox.com/tech eBay: http://www.ebaytechblog.com Facebook: https://code.facebook.com/posts GitHub: https://githubengineering.com Google: https://developers.googleblog.com Groupon: https://engineering.groupon.com Highscalability: http://highscalability.com Instacart: https://tech.instacart.com Instagram: https://engineering.instagram.com Linkedin: https://engineering.linkedin.com/blog Mixpanel: https://mixpanel.com/blog Netflix: https://medium.com/netflix-techblog Nextdoor: https://engblog.nextdoor.com PayPal: https://www.paypal-engineering.com Pinterest: https://engineering.pinterest.com Quora: https://engineering.quora.com Reddit: https://redditblog.com Salesforce: https://developer.salesforce.com/blogs/engineering Shopify: https://engineering.shopify.com Slack: https://slack.engineering Soundcloud: https://developers.soundcloud.com/blog Spotify: https://labs.spotify.com Stripe: https://stripe.com/blog/engineering System design primer: https://github.com/donnemartin/system-design-primer Twitter: https://blog.twitter.com/engineering/en\_us.html Thumbtack: https://www.thumbtack.com/engineering Uber: http://eng.uber.com Yahoo: https://yahooeng.tumblr.com Yelp: https://engineeringblog.yelp.com Zoom: https://medium.com/zoom-developer-blog
+
+## AFTERWORD
